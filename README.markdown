@@ -32,7 +32,7 @@ Follow these steps to use the repository:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/paras-a/Recursion.git
-   cd recursion
+   cd Recursion
    ```
 
 2. **Requirements**:
