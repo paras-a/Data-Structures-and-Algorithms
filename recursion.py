@@ -1956,9 +1956,11 @@ def flatten_list(lst):
     """
     if len(lst) == 0:
         return lst
-    new_lst = []
     if isinstance(lst[0], list):
-        for i in range len(lst)
+        if len(lst[0]) > 1:
+            return [lst[0][0]] + flatten_list([lst[0][1]] + lst[1:])
+        return lst[0] + flatten_list(lst[1:])
+    return [lst[0]] + flatten_list(lst[1:])
 
 
 def recursive_palindrome(s):
@@ -2056,4 +2058,4 @@ def count_balanced_prefixes(s):
     pass
 
 if __name__ == "__main__":
-    print(sum_digits_recursive(9999))
+    print(flatten_list([1, [2, 3], [4, [5]]]))
