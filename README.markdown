@@ -50,12 +50,13 @@ Follow these steps to use the repository:
    - Use the docstring examples to guide your solution and verify correctness.
 
 5. **Running the Code**:
-   - Test individual functions in a Python interpreter:
+   - Test individual functions in a Python interpreter. 
+   - Or create a script to test multiple cases:
+
      ```python
         from recursion import climb_stairs
         print(climb_stairs(3))  # Should print 3
      ```
-   - Or create a script to test multiple cases:
      ```python 
         from recursion import count_nested_depth
         print(count_nested_depth([1, [2, 3], [4, [5]]]))  # Should print 3
