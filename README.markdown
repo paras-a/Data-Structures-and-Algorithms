@@ -31,7 +31,7 @@ Follow these steps to use the repository:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/paras-a/recursion.git
+   git clone https://github.com/paras-a/Recursion.git
    cd recursion
    ```
 
