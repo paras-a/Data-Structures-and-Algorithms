@@ -1979,7 +1979,17 @@ def recursive_palindrome(s):
         >>> recursive_palindrome("")
         True
     """
-    pass
+    if len(s) == 0:
+        return True
+    if s[0].isalpha() and s[-1].isalpha():
+        if s[0].lower() != s[-1].lower():
+            return False
+    if not s[0].isalpha():
+        return recursive_palindrome(s[1:])
+    if not s[-1].isalpha():
+        return recursive_palindrome(s[:-1])
+    return recursive_palindrome(s[1:-1])
+
 
 def permute(s: str) -> list[str]:
     """
@@ -1993,7 +2003,23 @@ def permute(s: str) -> list[str]:
         >>> permute("a")
         ['a']
     """
-    pass
+    # Reference: https://llego.dev/posts/how-generate-all-possible-permutations-string-python/
+
+    if len(s) == 0:
+        return []
+    if len(s) == 1:
+        return [s]
+
+    permutations = []
+
+    for i, char in enumerate(s):
+        leader = s[i]
+        followers = s[:i] + s[i+1:]
+        followers_list = permute(followers)
+        for follower in followers_list:
+            permutations.append(leader + follower)
+
+    return permutations
 
 
 def count_permutations(n: int, items: list) -> int:
@@ -2374,4 +2400,4 @@ def count_balanced_prefixes(s):
     pass
 
 if __name__ == "__main__":
-    print(count_paths(2, 2))
+    print(permute("abc"))
