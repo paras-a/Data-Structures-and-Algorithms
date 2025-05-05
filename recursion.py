@@ -2013,11 +2013,10 @@ def permute(s: str) -> list[str]:
     permutations = []
 
     for i, char in enumerate(s):
-        leader = s[i]
-        followers = s[:i] + s[i+1:]
-        followers_list = permute(followers)
-        for follower in followers_list:
-            permutations.append(leader + follower)
+        remaining_chars = s[:i] + s[i+1:]
+        permutated = permute(remaining_chars)
+        for string in permutated:
+            permutations.append(char + string)
 
     return permutations
 
