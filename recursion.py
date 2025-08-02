@@ -1855,6 +1855,24 @@ def count_nested_depth(lst):
         0
         >>> count_nested_depth([1, 2, 3])
         1
+        >>> count_nested_depth([[]])
+        2
+        >>> count_nested_depth([1, [2, [3, 4]], [5]])
+        3
+        >>> count_nested_depth([[[[]]]])
+        4
+        >>> count_nested_depth([1, [], [2, []]])
+        2
+        >>> count_nested_depth([[1], [[2], [3]], [4]])
+        3
+        >>> count_nested_depth([[], [], []])
+        2
+        >>> count_nested_depth([1, [2, [3, [4, 5]]]])
+        4
+        >>> count_nested_depth([[[]], [[]]])
+        3
+        >>> count_nested_depth([1, [2, 3, [4, 5, [6]]], 7])
+        4
     """
     if len(lst) == 0:
         return 0
