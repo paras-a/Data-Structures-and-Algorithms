@@ -1581,6 +1581,101 @@ def remove_consecutive_numbers(lst):
     return new_lst + remove_consecutive_numbers(lst[2::])
 
 
+def count_char(s, target):
+    """
+    Count how many times the character `target` appears in string `s` using recursion.
+    Examples:
+        >>> count_char("abba", "a")
+        2
+        >>> count_char("aaaa", "a")
+        4
+        >>> count_char("bbaa", "b")
+        2
+        >>> count_char("", "a")
+        0
+        >>> count_char("abcabc", "c")
+        2
+        >>> count_char("aaaaaa", "b")
+        0
+    """
+
+def is_balanced_substring(s):
+    """
+    Check if a string contains an equal number of 'a' and 'b' characters using recursion.
+    Examples:
+        >>> is_balanced_substring("abab")
+        True
+        >>> is_balanced_substring("aaa")
+        False
+        >>> is_balanced_substring("bbaa")
+        True
+        >>> is_balanced_substring("abbb")
+        False
+        >>> is_balanced_substring("aabb")
+        True
+        >>> is_balanced_substring("")
+        True  # Edge case: 0 a's and 0 b's is balanced
+    """
+
+def generate_substrings(s):
+    """
+    Generate all substrings of string `s` using recursion.
+    Examples:
+        >>> generate_substrings("a")
+        ['a']
+        >>> generate_substrings("ab")
+        ['a', 'ab', 'b']
+        >>> generate_substrings("abc")
+        ['a', 'ab', 'abc', 'b', 'bc', 'c']
+        >>> generate_substrings("")
+        []  # No substrings
+        >>> generate_substrings("aa")
+        ['a', 'aa', 'a']
+    """
+
+
+def count_balanced_prefixes(s):
+    """
+    Count how many prefixes of the string are balanced (equal number of 'a' and 'b').
+
+    Examples:
+        >>> count_balanced_prefixes("aabb")
+        2  # prefixes: "a", "aa", "aab", "aabb"
+        >>> count_balanced_prefixes("abab")
+        2  # "ab" and "abab"
+        >>> count_balanced_prefixes("aaaa")
+        0
+        >>> count_balanced_prefixes("ab")
+        1
+        >>> count_balanced_prefixes("baba")
+        2  # "ba", "baba"
+        >>> count_balanced_prefixes("")
+        0
+    """
+
+
+def count_balanced_substrings(s, start=0):
+    """
+    Count all substrings starting from index `start` that have equal numbers of 'a' and 'b'.
+
+    Examples:
+        >>> count_balanced_substrings("aabb")
+        2  # "aa", "aab", "abb", "aabb"
+        >>> count_balanced_substrings("abab")
+        3  # "ab", "abab", "ba"
+        >>> count_balanced_substrings("ab")
+        1
+        >>> count_balanced_substrings("a")
+        0
+        >>> count_balanced_substrings("aaaabbbb")
+        4  # includes substrings like "aaabbb", "aabbbb", etc.
+        >>> count_balanced_substrings("baba")
+        3
+        >>> count_balanced_substrings("")
+        0
+    """
+
+
 def count_valid_substrings(s):
     """
     Count the number of substrings with equal numbers of 'a' and 'b' characters using recursion.
@@ -1594,6 +1689,26 @@ def count_valid_substrings(s):
         2
         >>> count_valid_substrings("ab")
         1
+        >>> count_valid_substrings("abab")
+        3
+        >>> count_valid_substrings("aaaa")
+        0
+        >>> count_valid_substrings("baba")
+        3
+        >>> count_valid_substrings("abba")
+        2
+        >>> count_valid_substrings("aabbaa")
+        2
+        >>> count_valid_substrings("aabbbbaa")
+        4
+        >>> count_valid_substrings("ababab")
+        6
+        >>> count_valid_substrings("")
+        0
+        >>> count_valid_substrings("aaaabbbb")
+        4
+        >>> count_valid_substrings("abbaab")
+        3
     """
     pass
 
@@ -1845,42 +1960,42 @@ def count_nested_depth(lst):
     Calculate the maximum nesting depth of a nested list using recursion.
 
     @param lst: A list that may contain nested lists
-    @return: The maximum nesting depth (empty list has depth 0)
+    @return: The maximum nesting depth (empty list has depth 1)
     @rtype: int
 
     Examples:
         >>> count_nested_depth([1, [2, 3], [4, [5]]])
         3
         >>> count_nested_depth([])
-        0
+        1
         >>> count_nested_depth([1, 2, 3])
         1
         >>> count_nested_depth([[]])
         2
         >>> count_nested_depth([1, [2, [3, 4]], [5]])
         3
-        >>> count_nested_depth([[[[]]]])
+        >>> count_nested_depth([[[[]]]]) #fail
         4
         >>> count_nested_depth([1, [], [2, []]])
-        2
-        >>> count_nested_depth([[1], [[2], [3]], [4]])
         3
-        >>> count_nested_depth([[], [], []])
+        >>> count_nested_depth([[1], [[2], [3]], [4]]) #fail
+        3
+        >>> count_nested_depth([[], [], []]) #fail
         2
-        >>> count_nested_depth([1, [2, [3, [4, 5]]]])
+        >>> count_nested_depth([1, [2, [3, [4, 5]]]]) #fail
         4
         >>> count_nested_depth([[[]], [[]]])
         3
-        >>> count_nested_depth([1, [2, 3, [4, 5, [6]]], 7])
+        >>> count_nested_depth([1, [2, 3, [4, 5, [6]]], 7]) #fail
         4
     """
-    if len(lst) == 0:
-        return 0
-    depth = 0
-    if isinstance(lst, list):
-        depth += 1
-    return depth + count_nested_depth(lst[1:])
 
+    if not isinstance(lst, list):
+        return 0
+    elif len(lst) == 0:
+        return 1
+    else:
+        return 1 + max(count_nested_depth(item) for item in lst)
 
 def interleave_strings(s1, s2, k):
     """
@@ -1998,6 +2113,7 @@ def recursive_palindrome(s):
         True
     """
     if len(s) == 0:
+
         return True
     if s[0].isalpha() and s[-1].isalpha():
         if s[0].lower() != s[-1].lower():
@@ -2009,4 +2125,4 @@ def recursive_palindrome(s):
     return recursive_palindrome(s[1:-1])
 
 if __name__ == "__main__":
-    print(permute("abc"))
+    print(count_nested_depth([[[[]]]]))

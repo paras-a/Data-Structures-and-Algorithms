@@ -700,6 +700,62 @@ class TestRecursionProblems(unittest.TestCase):
         self.assertTrue(contains_string("hello", "ll"), "Should return True for substring in middle")
         self.assertTrue(contains_string("abc", "a"), "Should return True for single char")
 
+    def test_count_nested_depth(self):
+        """Test count_nested_depth function with various inputs."""
+        self.assertEqual(count_nested_depth([1, [2, 3], [4, [5]]]), 3, "Should return 3 for nested list with depth 3")
+        self.assertEqual(count_nested_depth([]), 1, "Empty list should return 1")
+        self.assertEqual(count_nested_depth([1, 2, 3]), 1, "Flat list should return 1")
+        self.assertEqual(count_nested_depth([[]]), 2, "List with empty list should return 2")
+        self.assertEqual(count_nested_depth([1, [], [2, []]]), 3, "List with empty and nested lists should return 3")
+        self.assertEqual(count_nested_depth([[[[]]]]), 4, "Deeply nested empty lists should return 4")
+        self.assertEqual(count_nested_depth([[1], [2, [3]], [4]]), 3, "Multiple nested lists should return 3")
+        self.assertEqual(count_nested_depth([1, [2, [3, [4]]]]), 4, "Deep nesting should return 4")
+        self.assertEqual(count_nested_depth([[], [], []]), 2, "List with multiple empty lists should return 2")
+        self.assertEqual(count_nested_depth([1, [[2, 3], [4]], []]), 3, "Mixed nesting should return 3")
+        self.assertEqual(count_nested_depth([1, [2, 3, [4, [5]]], 6]), 4, "Complex nesting should return 4")
+        self.assertEqual(count_nested_depth([[[]], [[]], []]), 3, "Nested empty lists should return 3")
+
+
+    def test_interleave_strings(self):
+        """Test interleave_strings function with various inputs."""
+        self.assertEqual(interleave_strings("abc", "xyz", 2), "abxy", "k=2 should interleave 2 chars each")
+        self.assertEqual(interleave_strings("hello", "world", 1), "hweolrllod", "k=1 should interleave 1 char each")
+        self.assertEqual(interleave_strings("", "abc", 2), "abc", "Empty s1 should return s2")
+        self.assertEqual(interleave_strings("abc", "", 2), "abc", "Empty s2 should return s1")
+        self.assertEqual(interleave_strings("", "", 1), "", "Both empty strings should return empty")
+        self.assertEqual(interleave_strings("abcdef", "xyz", 3), "abcxyz",
+                         "Unequal lengths should interleave up to k")
+        with self.assertRaises(ValueError):
+            interleave_strings("abc", "xyz", -1)  # Negative k should raise ValueError
+
+    def test_sum_digits_recursive(self):
+        """Test sum_digits_recursive function with various inputs."""
+        self.assertEqual(sum_digits_recursive(123), 6, "123 should return 1+2+3=6")
+        self.assertEqual(sum_digits_recursive(0), 0, "0 should return 0")
+        self.assertEqual(sum_digits_recursive(9999), 36, "9999 should return 9+9+9+9=36")
+        self.assertEqual(sum_digits_recursive(1), 1, "Single digit should return itself")
+        self.assertEqual(sum_digits_recursive(1000), 1, "1000 should return 1+0+0+0=1")
+
+    def test_flatten_list(self):
+        """Test flatten_list function with various inputs."""
+        self.assertEqual(flatten_list([1, [2, 3], [4, [5]]]), [1, 2, 3, 4, 5], "Nested list should flatten")
+        self.assertEqual(flatten_list([]), [], "Empty list should return empty list")
+        self.assertEqual(flatten_list([[1], [2], [3]]), [1, 2, 3], "List of single-element lists should flatten")
+        self.assertEqual(flatten_list([[]]), [], "List with empty list should return empty")
+        self.assertEqual(flatten_list([[[]]]), [], "Deeply nested empty lists should return empty")
+        self.assertEqual(flatten_list([1, [2, [3, [4]]], 5]), [1, 2, 3, 4, 5], "Deeply nested list should flatten")
+
+    def test_recursive_palindrome(self):
+        """Test recursive_palindrome function with various inputs."""
+        self.assertTrue(recursive_palindrome("A man, a plan, a canal: Panama"), "Should be a palindrome")
+        self.assertFalse(recursive_palindrome("race a car"), "Should not be a palindrome")
+        self.assertTrue(recursive_palindrome(""), "Empty string should be a palindrome")
+        self.assertTrue(recursive_palindrome("A"), "Single character should be a palindrome")
+        self.assertTrue(recursive_palindrome("!!"), "Non-alphanumeric string should be a palindrome")
+        self.assertTrue(recursive_palindrome("Was it a car or a cat I saw?"),
+                        "Complex palindrome should return True")
+        self.assertFalse(recursive_palindrome("hello"), "Non-palindrome should return False")
+
 
 if __name__ == '__main__':
     unittest.main()
