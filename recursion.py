@@ -1581,24 +1581,6 @@ def remove_consecutive_numbers(lst):
     return new_lst + remove_consecutive_numbers(lst[2::])
 
 
-def count_char(s, target):
-    """
-    Count how many times the character `target` appears in string `s` using recursion.
-    Examples:
-        >>> count_char("abba", "a")
-        2
-        >>> count_char("aaaa", "a")
-        4
-        >>> count_char("bbaa", "b")
-        2
-        >>> count_char("", "a")
-        0
-        >>> count_char("abcabc", "c")
-        2
-        >>> count_char("aaaaaa", "b")
-        0
-    """
-
 def is_balanced_substring(s):
     """
     Check if a string contains an equal number of 'a' and 'b' characters using recursion.
@@ -1616,6 +1598,7 @@ def is_balanced_substring(s):
         >>> is_balanced_substring("")
         True  # Edge case: 0 a's and 0 b's is balanced
     """
+
 
 def generate_substrings(s):
     """
