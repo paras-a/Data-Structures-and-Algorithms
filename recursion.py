@@ -1,5 +1,6 @@
 import math
 from itertools import combinations
+from threading import active_count
 
 
 def factorial(n):
@@ -1581,6 +1582,56 @@ def remove_consecutive_numbers(lst):
     return new_lst + remove_consecutive_numbers(lst[2::])
 
 
+def count_letter(s, target):
+    """
+    Recursively count how many times the character `target` appears in string `s`.
+
+    Examples:
+        >>> count_letter("abba", "a")
+        2
+        >>> count_letter("aaaaa", "a")
+        5
+        >>> count_letter("abcabc", "c")
+        2
+        >>> count_letter("", "a")
+        0
+    """
+
+    if len(s) == 0:
+        return 0
+    count = 0
+    if s[0] == target:
+        count += 1
+    return count + count_letter(s[1:], target)
+
+
+def count_pair_letters(s, c1, c2):
+    """
+    Recursively count how many times characters `c1` and `c2` appear in string `s`.
+
+    Return a tuple: (count of c1, count of c2)
+
+    Examples:
+        >>> count_pair_letters("abba", "a", "b")
+        (2, 2)
+        >>> count_pair_letters("aabbbb", "a", "b")
+        (2, 4)
+        >>> count_pair_letters("abc", "a", "z")
+        (1, 0)
+        >>> count_pair_letters("", "a", "b")
+        (0, 0)
+    """
+    if not s:
+        return 0,0
+    count_c1 = 0
+    count_c2 = 0
+    if s[0] == c1:
+        count_c1 += 1
+    if s[0] == c2:
+        count_c2 += 1
+    return count_c1 + count_pair_letters(s[1:], c1, c2)[0], count_c2 + count_pair_letters(s[1:], c1, c2)[1]
+
+
 def is_balanced_substring(s):
     """
     Check if a string contains an equal number of 'a' and 'b' characters using recursion.
@@ -1598,6 +1649,24 @@ def is_balanced_substring(s):
         >>> is_balanced_substring("")
         True  # Edge case: 0 a's and 0 b's is balanced
     """
+
+    if len(s) == 0:
+        return True
+    if len(s) == 1:
+        return False
+
+    def substring_counter(string, index, a_count, b_count):
+        if index == len(s):
+            return a_count == b_count
+
+        if string[index] == "a":
+            a_count += 1
+        elif string[index] == "b":
+            b_count += 1
+
+        return substring_counter(s, index + 1, a_count, b_count)
+
+    return substring_counter(s, index=0, a_count=0, b_count=0)
 
 
 def generate_substrings(s):
@@ -2108,4 +2177,4 @@ def recursive_palindrome(s):
     return recursive_palindrome(s[1:-1])
 
 if __name__ == "__main__":
-    print(count_nested_depth([[[[]]]]))
+    print(is_balanced_substring("abab"))
