@@ -2193,5 +2193,190 @@ def recursive_palindrome(s):
         return recursive_palindrome(s[:-1])
     return recursive_palindrome(s[1:-1])
 
+
+def count_valid_pairs(s):
+    """
+    Count the number of valid nested parentheses pairs in a string using recursion.
+
+    @param s: A string containing only '(' and ')'
+    @return: Number of valid nested pairs
+    @rtype: int
+
+    Examples:
+        >>> count_valid_pairs("(())")
+        2  # Pairs: "()" and "(())"
+        >>> count_valid_pairs("()()")
+        2  # Pairs: "()" and "()"
+        >>> count_valid_pairs("")
+        0
+    """
+    pass
+
+def reverse_list_segments(lst, k):
+    """
+    Reverse segments of a list of length k using recursion.
+
+    @param lst: List of elements
+    @param k: Length of each segment to reverse
+    @return: List with each segment of length k reversed
+    @rtype: list
+
+    Examples:
+        >>> reverse_list_segments([1, 2, 3, 4, 5, 6], 2)
+        [2, 1, 4, 3, 6, 5]
+        >>> reverse_list_segments([1, 2, 3, 4, 5], 3)
+        [3, 2, 1, 5, 4]
+        >>> reverse_list_segments([], 1)
+        []
+    """
+    pass
+
+def sum_nested_list(lst):
+    """
+    Calculate the sum of all numbers in a nested list using recursion.
+
+    @param lst: A list containing numbers and/or nested lists
+    @return: Sum of all numbers
+    @rtype: int or float
+
+    Examples:
+        >>> sum_nested_list([1, [2, 3], [4, [5]]])
+        15  # 1 + 2 + 3 + 4 + 5
+        >>> sum_nested_list([])
+        0
+        >>> sum_nested_list([1, [2], [3]])
+        6
+    """
+    pass
+
+def alternate_case(s):
+    """
+    Generate a string with alternating case (uppercase, lowercase) starting with uppercase, using recursion.
+
+    @param s: Input string of lowercase letters
+    @return: String with alternating case
+    @rtype: str
+
+    Examples:
+        >>> alternate_case("hello")
+        "HeLlO"
+        >>> alternate_case("abc")
+        "AbC"
+        >>> alternate_case("")
+        ""
+    """
+    pass
+
+def count_equal_splits(lst):
+    """
+    Count the number of ways to split a list into two parts with equal sums using recursion.
+
+    @param lst: List of non-negative integers
+    @return: Number of valid splits
+    @rtype: int
+
+    Examples:
+        >>> count_equal_splits([1, 1, 1, 1])
+        3  # Splits: [1]|[1,1,1], [1,1]|[1,1], [1,1,1]|[1]
+        >>> count_equal_splits([1, 2])
+        0
+        >>> count_equal_splits([])
+        0
+    """
+    pass
+
+def max_subarray_sum(lst):
+    """
+    Find the maximum sum of a contiguous subarray using recursion.
+
+    @param lst: List of integers
+    @return: Maximum sum of any contiguous subarray
+    @rtype: int
+
+    Examples:
+        >>> max_subarray_sum([1, -2, 3, -1, 2])
+        4  # Subarray [3, -1, 2]
+        >>> max_subarray_sum([-1, -2, -3])
+        -1
+        >>> max_subarray_sum([5])
+        5
+    """
+    pass
+
+def is_nested_balanced(s):
+    """
+    Check if a string of parentheses is balanced using recursion.
+
+    @param s: String containing only '(' and ')'
+    @return: True if balanced, False otherwise
+    @rtype: bool
+
+    Examples:
+        >>> is_nested_balanced("(())")
+        True
+        >>> is_nested_balanced("(()")
+        False
+        >>> is_nested_balanced("")
+        True
+    """
+    pass
+
+def concatenate_reversed(s):
+    """
+    Concatenate a string with its reverse using recursion.
+
+    @param s: Input string
+    @return: String concatenated with its reverse
+    @rtype: str
+
+    Examples:
+        >>> concatenate_reversed("abc")
+        "abccba"
+        >>> concatenate_reversed("hello")
+        "helloolleh"
+        >>> concatenate_reversed("")
+        ""
+    """
+    pass
+
+def count_greater_elements(lst, x):
+    """
+    Count elements in a list greater than x using recursion.
+
+    @param lst: List of numbers
+    @param x: Threshold value
+    @return: Number of elements greater than x
+    @rtype: int
+
+    Examples:
+        >>> count_greater_elements([1, 2, 3, 4], 2)
+        2  # 3, 4 are greater than 2
+        >>> count_greater_elements([1, 1, 1], 1)
+        0
+        >>> count_greater_elements([], 5)
+        0
+    """
+    pass
+
+def partition_list(lst, k):
+    """
+    Partition a list into sublists of size k using recursion.
+
+    @param lst: List of elements
+    @param k: Size of each partition
+    @return: List of sublists, each of size k (last may be smaller)
+    @rtype: list
+
+    Examples:
+        >>> partition_list([1, 2, 3, 4, 5], 2)
+        [[1, 2], [3, 4], [5]]
+        >>> partition_list([1, 2, 3], 1)
+        [[1], [2], [3]]
+        >>> partition_list([], 1)
+        []
+    """
+    pass
+
+
 if __name__ == "__main__":
     print(count_substring_occurrences("abc", "xyz"))
