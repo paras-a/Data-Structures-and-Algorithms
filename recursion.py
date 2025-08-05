@@ -1124,7 +1124,6 @@ def trim_spaces(s):
     return my_str + trim_spaces(s[1:])
 
 
-
 def is_power_of_five(n):
     """
     Check if a number is a power of 5 using recursion.
@@ -1242,6 +1241,7 @@ def interleave_lists(lst1, lst2):
     if len(lst1) == 1 and len(lst2) == 1:
         return interleaved
     return interleaved + interleave_lists(lst1[1:], lst2[1:])
+
 
 def count_equal(lst, target):
     """
@@ -1944,6 +1944,7 @@ def merge_sorted_lists(lst1, lst2):
     else:
         return [lst2[0]] + merge_sorted_lists(lst1[0:], lst2[1:])
 
+
 def longest_common_prefix(str1, str2):
     """
     Find the longest common prefix of two strings using recursion.
@@ -2114,13 +2115,29 @@ def count_substring_occurrences(main, sub):
 
     Examples:
         >>> count_substring_occurrences("banana", "ana")
-        2  # "ana" at positions 2-4 and 4-6
+        1  # "ana" appears once non-overlapping at index 1–3
         >>> count_substring_occurrences("aaaa", "aa")
-        2  # "aa" at positions 1-2 and 3-4
+        2  # "aa" appears at indices 0–1 and 2–3 (non-overlapping)
         >>> count_substring_occurrences("abc", "xyz")
         0
     """
-    pass
+    if len(sub) == 0 or len(main) == 0:
+        return 0
+
+    def helper(main_string, sub_string, count, sub_index, main_index):
+        if sub_index == len(sub):
+            count += 1
+            sub_index = 0
+
+        if main_index > len(main_string) - 1:
+            return count
+
+        if main_string[main_index] == sub_string[sub_index]:
+            return helper(main_string, sub_string, count, sub_index+1, main_index+1)
+
+        return helper(main_string, sub_string, count, sub_index, main_index+1)
+
+    return helper(main, sub, count=0, sub_index=0, main_index=0)
 
 
 def flatten_list(lst):
@@ -2177,4 +2194,4 @@ def recursive_palindrome(s):
     return recursive_palindrome(s[1:-1])
 
 if __name__ == "__main__":
-    print(is_balanced_substring("abab"))
+    print(count_substring_occurrences("abc", "xyz"))
