@@ -2185,15 +2185,37 @@ def count_equal_splits(lst):
 
     Examples:
         >>> count_equal_splits([1, 1, 1, 1])
-        1  # Splits: [1,1]|[1,1]
+        1  # Split: [1, 1]|[1, 1]
         >>> count_equal_splits([1, 2])
-        0
+        0  # No splits with equal sums
         >>> count_equal_splits([])
-        0
+        0  # No splits possible
+        >>> count_equal_splits([0, 0, 0, 0])
+        3  # Splits: [0]|[0, 0, 0], [0, 0]|[0, 0], [0, 0, 0]|[0]
+        >>> count_equal_splits([2, 2])
+        1  # Split: [2]|[2]
+        >>> count_equal_splits([1])
+        0  # Cannot split single element
+        >>> count_equal_splits([2, 2, 2, 2, 2, 2])
+        1  # Split: [2, 2, 2]|[2, 2, 2]
+        >>> count_equal_splits([1, 0, 1])
+        2  # Splits: [1]|[0, 1], [1, 0]|[1]
+        >>> count_equal_splits([4, 2, 2, 4])
+        1  # Split: [4, 2]|[2, 4]
+        >>> count_equal_splits([1, 2, 3])
+        1  # No splits with equal sums
     """
     if len(lst) <= 1:
         return 0
-
+    def helper(a, index, count):
+        if index == len(a):
+            return count
+        head = sum(a[:index])
+        tail = sum(a[index:])
+        if head == tail:
+            count += 1
+        return helper(lst, index+1, count)
+    return helper(lst, index=1, count=0)
 
 
 def max_subarray_sum(lst):
@@ -2364,4 +2386,4 @@ def partition_list(lst, k):
 
 
 if __name__ == "__main__":
-    print(max_subarray_sum([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+    print(count_equal_splits([1, 2, 3]))
