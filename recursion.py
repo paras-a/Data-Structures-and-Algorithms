@@ -1598,7 +1598,17 @@ def is_balanced_substring(s):
         >>> is_balanced_substring("")
         True  # Edge case: 0 a's and 0 b's is balanced
     """
-    pass
+    if len(s) == 0:
+        return True
+    def helper(string, a_count, b_count):
+        if len(string) == 0:
+            return a_count == b_count
+        if string[0] == "a":
+            a_count += 1
+        if string[0] == "b":
+            b_count += 1
+        return helper(string[1:], a_count, b_count)
+    return helper(s, a_count=0, b_count=0)
 
 
 def generate_substrings(s):
@@ -1616,7 +1626,7 @@ def generate_substrings(s):
         >>> generate_substrings("aa")
         ['a', 'aa', 'a']
     """
-    pass
+    #TODO
 
 
 def count_balanced_prefixes(s):
@@ -1637,7 +1647,7 @@ def count_balanced_prefixes(s):
         >>> count_balanced_prefixes("")
         0
     """
-    pass
+    #TODO
 
 
 def count_balanced_substrings(s, start=0):
@@ -1660,7 +1670,7 @@ def count_balanced_substrings(s, start=0):
         >>> count_balanced_substrings("")
         0
     """
-    pass
+    #TODO
 
 
 def count_valid_substrings(s):
@@ -1697,7 +1707,7 @@ def count_valid_substrings(s):
         >>> count_valid_substrings("abbaab")
         3
     """
-    pass
+    #TODO
 
 
 def recursive_partition(lst, n):
@@ -2054,7 +2064,7 @@ def count_substring_occurrences(main, sub):
         >>> count_substring_occurrences("abc", "xyz")
         0
     """
-    pass
+    #TODO
 
 
 def flatten_list(lst):
@@ -2127,7 +2137,7 @@ def count_valid_pairs(s):
         >>> count_valid_pairs("")
         0
     """
-    pass
+    #TODO
 
 
 def reverse_list_segments(lst, k):
@@ -2172,7 +2182,7 @@ def sum_nested_list(lst):
         >>> sum_nested_list([1, [2], [3]])
         6
     """
-    pass
+    #TODO
 
 
 def count_equal_splits(lst):
@@ -2386,4 +2396,4 @@ def partition_list(lst, k):
 
 
 if __name__ == "__main__":
-    print(count_equal_splits([1, 2, 3]))
+    print(is_balanced_substring("aaa"))
