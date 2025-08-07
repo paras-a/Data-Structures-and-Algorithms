@@ -2051,13 +2051,42 @@ def count_substring_occurrences(main, sub):
 
     Examples:
         >>> count_substring_occurrences("banana", "ana")
-        2  # "ana" at positions 2-4 and 4-6
+        1  # "ana" at positions 2-4 (indices 1-3)
         >>> count_substring_occurrences("aaaa", "aa")
-        2  # "aa" at positions 1-2 and 3-4
+        2  # "aa" at positions 1-2 (indices 0-1), 3-4 (indices 2-3)
         >>> count_substring_occurrences("abc", "xyz")
-        0
+        0  # No occurrences of "xyz"
+        >>> count_substring_occurrences("bananaana", "ana")
+        2  # "ana" at positions 2-4 (indices 1-3), 6-8 (indices 5-7)
+        >>> count_substring_occurrences("aaaaaa", "aaa")
+        2  # "aaa" at positions 1-3 (indices 0-2), 4-6 (indices 3-5)
+        >>> count_substring_occurrences("ababab", "ab")
+        3  # "ab" at positions 1-2 (indices 0-1), 3-4 (indices 2-3), 5-6 (indices 4-5)
+        >>> count_substring_occurrences("", "a")
+        0  # No occurrences in empty string
+        >>> count_substring_occurrences("hellohello", "hello")
+        2  # "hello" at positions 1-5 (indices 0-4), 6-10 (indices 5-9)
+        >>> count_substring_occurrences("abcabc", "abcabc")
+        1  # "abcabc" at positions 1-6 (indices 0-5)
+        >>> count_substring_occurrences("aaaa", "a")
+        4  # "a" at positions 1, 2, 3, 4 (indices 0, 1, 2, 3)
+        >>> count_substring_occurrences("abcabcabc", "abc")
+        3  # "abc" at positions 1-3 (indices 0-2), 4-6 (indices 3-5), 7-9 (indices 6-8)
+        >>> count_substring_occurrences("aabaa", "aa")
+        2  # "aa" at positions 1-2 (indices 0-1), 4-5 (indices 3-4)
+        >>> count_substring_occurrences("xyzxyz", "yzx")
+        0  # No occurrences of "yzx"
+        >>> count_substring_occurrences("banana", "")
+        0  # Empty substring not counted
     """
-    #TODO
+    if len(main) == 0 or len(sub) == 0:
+        return 0
+    count = 0
+    if main[:len(sub)] == sub:
+        count += 1
+    if count > 0:
+        return count + count_substring_occurrences(main[len(sub):], sub)
+    return count + count_substring_occurrences(main[1:], sub)
 
 
 def flatten_list(lst):
@@ -2124,13 +2153,42 @@ def count_valid_pairs(s):
 
     Examples:
         >>> count_valid_pairs("(())")
-        2  # Pairs: "()" and "(())"
+        2  # Pairs: inner "()" (indices 1-2), outer "(())" (indices 0-3)
         >>> count_valid_pairs("()()")
-        2  # Pairs: "()" and "()"
+        2  # Pairs: "()" (indices 0-1), "()" (indices 2-3)
         >>> count_valid_pairs("")
-        0
+        0  # No pairs
+        >>> count_valid_pairs("((()))")
+        3  # Pairs: inner "()" (indices 2-3), middle "(())" (indices 1-4), outer "((()))" (indices 0-5)
+        >>> count_valid_pairs("()")
+        1  # Pair: "()" (indices 0-1)
+        >>> count_valid_pairs("(()())")
+        3  # Pairs: inner "()" (indices 1-2), inner "()" (indices 3-4), outer "(()())" (indices 0-5)
+        >>> count_valid_pairs("((())())")
+        4  # Pairs: inner "()" (indices 2-3), middle "(())" (indices 1-4), "()" (indices 5-6), outer "((())())" (indices 0-7)
+        >>> count_valid_pairs("()()()")
+        3  # Pairs: "()" (indices 0-1), "()" (indices 2-3), "()" (indices 4-5)
+        >>> count_valid_pairs("(()(()))")
+        4  # Pairs: inner "()" (indices 1-2), inner "()" (indices 4-5), middle "(())" (indices 3-6), outer "(()(()))" (indices 0-7)
     """
-    #TODO
+    if len(s) == 0:
+        return 0
+    def helper(string, index, balance, open_count, close_count):
+        if len(string) == index:
+            return balance
+        if s[index] == "(":
+            open_count += 1
+        if s[index] == ")":
+            close_count += 1
+        if open_count == close_count:
+            balance = open_count
+        if open_count > close_count:
+            balance = close_count
+        if close_count > open_count:
+            balance = open_count
+        return helper(string, index+1, balance, open_count, close_count)
+    return helper(s, index=0, balance=0, open_count=0, close_count=0)
+
 
 
 def reverse_list_segments(lst, k):
@@ -2412,4 +2470,4 @@ def partition_list(lst, k):
 
 
 if __name__ == "__main__":
-    print(sum_nested_list([1, [2, [3, [4]]]]))
+    print(count_substring_occurrences("hellohello", "hello"))
