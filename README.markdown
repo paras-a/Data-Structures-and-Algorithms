@@ -100,7 +100,7 @@ To ensure that the implementations are correct, I did the following:
 4. **Caveat**:
    - Please note that unittests, such as those implemented in the `recursion_unittest.py` file, are not available for 
      all functions, and some functions may lack comprehensive test coverage to verify their behavior across all possible
-     inputs. Unittest was generated on best efforts basis and exists only to demonstrate understanding of the core ideas
+     inputs. Unittest was created on best efforts basis to demonstrate understanding of the core ideas
      and concepts, it is not intended to be exhaustive.
 
 ## Guidelines
