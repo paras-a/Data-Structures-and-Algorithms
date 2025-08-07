@@ -1703,66 +1703,6 @@ def count_balanced_prefixes(s):
     return helper(s, a_count=0, b_count=0, balance_count=0)
 
 
-def count_balanced_substrings(s, start=0):
-    """
-    Count all substrings starting from index `start` that have equal numbers of 'a' and 'b'.
-
-    Examples:
-        >>> count_balanced_substrings("aabb")
-        2  # "aa", "aab", "abb", "aabb"
-        >>> count_balanced_substrings("abab")
-        3  # "ab", "abab", "ba"
-        >>> count_balanced_substrings("ab")
-        1
-        >>> count_balanced_substrings("a")
-        0
-        >>> count_balanced_substrings("aaaabbbb")
-        4  # includes substrings like "aaabbb", "aabbbb", etc.
-        >>> count_balanced_substrings("baba")
-        3
-        >>> count_balanced_substrings("")
-        0
-    """
-    #TODO
-
-
-def count_valid_substrings(s):
-    """
-    Count the number of substrings with equal numbers of 'a' and 'b' characters using recursion.
-
-    @param s: A string containing only 'a' and 'b'
-    @return: The number of substrings with equal 'a' and 'b' counts
-    @rtype: int
-
-    Examples:
-        >>> count_valid_substrings("aabb")
-        2
-        >>> count_valid_substrings("ab")
-        1
-        >>> count_valid_substrings("abab")
-        3
-        >>> count_valid_substrings("aaaa")
-        0
-        >>> count_valid_substrings("baba")
-        3
-        >>> count_valid_substrings("abba")
-        2
-        >>> count_valid_substrings("aabbaa")
-        2
-        >>> count_valid_substrings("aabbbbaa")
-        4
-        >>> count_valid_substrings("ababab")
-        6
-        >>> count_valid_substrings("")
-        0
-        >>> count_valid_substrings("aaaabbbb")
-        4
-        >>> count_valid_substrings("abbaab")
-        3
-    """
-    #TODO
-
-
 def recursive_partition(lst, n):
     """
     Partition a list into sublists of size n using recursion.
@@ -2231,11 +2171,34 @@ def sum_nested_list(lst):
         >>> sum_nested_list([1, [2, 3], [4, [5]]])
         15  # 1 + 2 + 3 + 4 + 5
         >>> sum_nested_list([])
-        0
+        0   # No numbers
         >>> sum_nested_list([1, [2], [3]])
-        6
+        6   # 1 + 2 + 3
+        >>> sum_nested_list([1, 2, [3, 4], []])
+        10  # 1 + 2 + 3 + 4
+        >>> sum_nested_list([[1, [2, 3]], [4], 5])
+        15  # 1 + 2 + 3 + 4 + 5
+        >>> sum_nested_list([1.5, [2.5, [3.0]], 4])
+        11.0  # 1.5 + 2.5 + 3.0 + 4
+        >>> sum_nested_list([[]])
+        0   # No numbers in nested empty list
+        >>> sum_nested_list([1, [2, [3, [4]]]])
+        10  # 1 + 2 + 3 + 4
+        >>> sum_nested_list([0, [0], [[0]]])
+        0   # 0 + 0 + 0
     """
-    #TODO
+    if not lst:
+        return 0
+    nested_sum = 0
+    if isinstance(lst[0], list):
+        for i in range(len(lst[0])):
+            if isinstance(lst[0][i], int) or isinstance(lst[0][i], float):
+                nested_sum += lst[0][i]
+            else:
+                nested_sum += sum_nested_list(lst[0][i:])
+    else:
+        nested_sum += lst[0]
+    return nested_sum + sum_nested_list(lst[1:])
 
 
 def count_equal_splits(lst):
@@ -2449,4 +2412,4 @@ def partition_list(lst, k):
 
 
 if __name__ == "__main__":
-    print(count_balanced_prefixes("aababb"))
+    print(sum_nested_list([1, [2, [3, [4]]]]))
