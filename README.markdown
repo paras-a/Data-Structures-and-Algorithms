@@ -97,6 +97,12 @@ To ensure that the implementations are correct, I did the following:
      - `count_nested_depth([[]])` → `2`
      - `count_paths(1, 1)` → `1`
 
+4. **Caveat**:
+   - Please note that unittests, such as those implemented in the `recursion_unittest.py` file, are not available for 
+     all functions, and some functions may lack comprehensive test coverage to verify their behavior across all possible
+     inputs. Unittest was generated on best efforts basis and exists only to demonstrate understanding of the core ideas
+     and concepts, it is not intended to be exhaustive.
+
 ## Guidelines
 - Use Python 3 and maintain consistent formatting (e.g., PEP 8).
 - Include docstrings with `@param`, `@return`, `@rtype`, and examples.
