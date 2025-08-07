@@ -14,7 +14,18 @@ def find_maximum_subarray_sum(arr):
         >>> find_maximum_subarray_sum([5, 4, -1, 7, 8])
         23  # The subarray [5, 4, -1, 7, 8] has the maximum sum
     """
-    pass
+    if len(arr) == 0:
+        return 0
+    if len(arr) == 1:
+        return arr[0]
+    max_sum = arr[0]
+    rolling_sum = 0
+    for i in range(len(arr)):
+        rolling_sum += arr[i]
+        max_sum = max(rolling_sum, max_sum)
+    next_sum = find_maximum_subarray_sum(arr[1:])
+    max_sum = max(next_sum, max_sum)
+    return max_sum
 
 def rotate_array(arr, k):
     """
@@ -181,3 +192,6 @@ def find_longest_consecutive_sequence(arr):
         0
     """
     pass
+
+if __name__ == "__main__":
+    print(find_maximum_subarray_sum([-1, -2, -3, -4]))
