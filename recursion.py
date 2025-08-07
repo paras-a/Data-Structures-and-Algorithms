@@ -1615,18 +1615,36 @@ def generate_substrings(s):
     """
     Generate all substrings of string `s` using recursion.
     Examples:
-        >>> generate_substrings("a")
-        ['a']
-        >>> generate_substrings("ab")
-        ['a', 'ab', 'b']
-        >>> generate_substrings("abc")
-        ['a', 'ab', 'abc', 'b', 'bc', 'c']
+        >>> generate_substrings("abcd")
+        ['a', 'ab', 'abc', 'abcd', 'b', 'bc', 'bcd', 'c', 'cd', 'd']
+        >>> generate_substrings("aaa")
+        ['a', 'aa', 'aaa', 'a', 'aa', 'a']
+        >>> generate_substrings("x")
+        ['x']
+        >>> generate_substrings("hello")
+        ['h', 'he', 'hel', 'hell', 'hello', 'e', 'el', 'ell', 'ello', 'l', 'll', 'llo', 'l', 'lo', 'o']
+        >>> generate_substrings("a b")
+        ['a', 'a ', 'a b', ' ', ' b', 'b']
+        >>> generate_substrings("123")
+        ['1', '12', '123', '2', '23', '3']
+        >>> generate_substrings("    ")
+        [' ', '  ', '   ', '    ', ' ', '  ', '   ', ' ', '  ', ' ']
+        >>> generate_substrings("xy")
+        ['x', 'xy', 'y']
+        >>> generate_substrings("aaaa")
+        ['a', 'aa', 'aaa', 'aaaa', 'a', 'aa', 'aaa', 'a', 'aa', 'a']
         >>> generate_substrings("")
         []  # No substrings
-        >>> generate_substrings("aa")
-        ['a', 'aa', 'a']
     """
-    #TODO
+    if len(s) == 0:
+        return []
+    substring_array = []
+    if len(substring_array) == 0:
+        substring_array.append(s[0])
+    for i in range(1, len(s)):
+        next_string = substring_array[len(substring_array)-1] + s[i]
+        substring_array.append(next_string)
+    return substring_array + generate_substrings(s[1:])
 
 
 def count_balanced_prefixes(s):
@@ -1635,19 +1653,54 @@ def count_balanced_prefixes(s):
 
     Examples:
         >>> count_balanced_prefixes("aabb")
-        2  # prefixes: "a", "aa", "aab", "aabb"
+        1  # Prefixes: "a", "aa", "aab", "aabb"
+           # Balanced: "aabb" (2 'a', 2 'b')
         >>> count_balanced_prefixes("abab")
-        2  # "ab" and "abab"
+        2  # Prefixes: "a", "ab", "aba", "abab"
+           # Balanced: "ab" (1 'a', 1 'b'), "abab" (2 'a', 2 'b')
         >>> count_balanced_prefixes("aaaa")
-        0
+        0  # Prefixes: "a", "aa", "aaa", "aaaa"
+           # Balanced: None (no prefixes have equal 'a' and 'b')
         >>> count_balanced_prefixes("ab")
-        1
+        1  # Prefixes: "a", "ab"
+           # Balanced: "ab" (1 'a', 1 'b')
         >>> count_balanced_prefixes("baba")
-        2  # "ba", "baba"
+        2  # Prefixes: "b", "ba", "bab", "baba"
+           # Balanced: "ba" (1 'a', 1 'b'), "baba" (2 'a', 2 'b')
         >>> count_balanced_prefixes("")
-        0
+        0  # No prefixes (or empty prefix with 0 'a', 0 'b', typically not counted)
+        >>> count_balanced_prefixes("aababb")
+        1  # Prefixes: "a", "aa", "aab", "aaba", "aabab", "aababb"
+           # Balanced: "aababb" (3 'a', 3 'b')
+        >>> count_balanced_prefixes("abba")
+        2  # Prefixes: "a", "ab", "abb", "abba"
+           # Balanced: "ab" (1 'a', 1 'b'), "abba" (2 'a', 2 'b')
+        >>> count_balanced_prefixes("aaaabb")
+        0  # Prefixes: "a", "aa", "aaa", "aaaa", "aaaab", "aaaabb"
+           # Balanced: None (no prefixes have equal 'a' and 'b')
+        >>> count_balanced_prefixes("baab")
+        2  # Prefixes: "b", "ba", "baa", "baab"
+           # Balanced: "ba" (1 'a', 1 'b'), "baab" (2 'a', 2 'b')
+        >>> count_balanced_prefixes("a")
+        0  # Prefixes: "a"
+           # Balanced: None (1 'a', 0 'b')
+        >>> count_balanced_prefixes("bbaa")
+        1  # Prefixes: "b", "bb", "bba", "bbaa"
+           # Balanced: "bbaa" (2 'a', 2 'b')
     """
-    #TODO
+    if len(s) <= 1:
+        return 0
+    def helper(string, a_count, b_count, balance_count):
+        if len(string) == 0:
+            return balance_count
+        if string[0] == "a":
+            a_count += 1
+        if string[0] == "b":
+            b_count += 1
+        if a_count == b_count:
+            balance_count += 1
+        return helper(string[1:], a_count, b_count, balance_count)
+    return helper(s, a_count=0, b_count=0, balance_count=0)
 
 
 def count_balanced_substrings(s, start=0):
@@ -2396,4 +2449,4 @@ def partition_list(lst, k):
 
 
 if __name__ == "__main__":
-    print(is_balanced_substring("aaa"))
+    print(count_balanced_prefixes("aababb"))
