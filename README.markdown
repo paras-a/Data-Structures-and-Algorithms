@@ -14,12 +14,15 @@ developers, and enthusiasts of algorithms and data structures.
 
 ## Current Status
 As of August 7, 2025, the repository includes:
-- **Recursion**: Fully implemented with problems and solutions, including:
+- **[Recursion](Recursion)**: Fully implemented with problems and solutions, including:
   - Counting valid nested parentheses pairs.
   - Summing numbers in nested lists.
   - Counting non-overlapping substring occurrences.
   - More recursion-based problems with detailed explanations.
   - Unit test for the vast majority of the problems is available.
+  - Problems range from easy to moderate. 
+  - Future updates will include more advanced recursion problems that require understanding and knowledge of algorithms
+    for optimal implementation.
 
 Other data structures and algorithms listed below are planned for future development. Each topic will include a variety 
 of problems with solutions, explanations, and, where applicable, unit tests to verify correctness.
