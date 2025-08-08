@@ -3,7 +3,7 @@
 This repository contains Python files with moderate-level recursion problems that avoid specialized algorithms (e.g., dynamic programming, backtracking). The problems focus on recursive logic, state management, and data structures like nested lists and strings.
 
 This repository contains two Python files:
-- `recursion.py`: This file contains recursion problems
+- `recursion.py`: This file contains recursion 96 solved recursion problems
 - `recursion_unittest.py`: This file contains unittest of problems in `recursion.py`.
 
 Each problem includes a function signature and epytext docstring with examples.

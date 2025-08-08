@@ -27,6 +27,7 @@ def find_maximum_subarray_sum(arr):
     max_sum = max(next_sum, max_sum)
     return max_sum
 
+
 def rotate_array(arr, k):
     """
     Rotate the array to the right by k steps.
@@ -47,6 +48,7 @@ def rotate_array(arr, k):
     if len(arr) < k or k == 0:
         return arr
     return arr[-k:] + arr[:len(arr)-k]
+
 
 def find_missing_number(arr, n):
     """
@@ -70,6 +72,7 @@ def find_missing_number(arr, n):
         if i + 1 not in arr:
             missing = i + 1
     return missing
+
 
 def merge_sorted_arrays(arr1, arr2):
     """
@@ -104,6 +107,7 @@ def merge_sorted_arrays(arr1, arr2):
         merged.append(arr2[0])
         return merged + merge_sorted_arrays(arr1, arr2[1:])
 
+
 def find_duplicate_number(arr):
     """
     Find the duplicate number in an array containing n+1 integers between 1 and n.
@@ -131,6 +135,7 @@ def find_duplicate_number(arr):
                 duplicate = current_number
     return duplicate
 
+
 def move_zeros_to_end(arr):
     """
     Move all zeros to the end of the array while maintaining the relative order of non-zero elements.
@@ -153,6 +158,7 @@ def move_zeros_to_end(arr):
             arr.append(0)
     return arr
 
+
 def find_first_unique_element(arr):
     """
     Find the first non-repeating element in the array.
@@ -169,7 +175,15 @@ def find_first_unique_element(arr):
         >>> find_first_unique_element([2, 2, 3, 3, 1])
         1
     """
-    pass
+    duplicate = []
+    for i in range(len(arr)):
+        current_element = arr[i]
+        for j in range(len(arr)):
+            next_element = arr[j]
+            if i != j and current_element == next_element:
+                duplicate.append(current_element)
+    return set(arr).difference(set(duplicate)).pop()
+
 
 def find_kth_largest(arr, k):
     """
@@ -189,6 +203,7 @@ def find_kth_largest(arr, k):
         6
     """
     pass
+
 
 def product_except_self(arr):
     """
@@ -227,4 +242,4 @@ def find_longest_consecutive_sequence(arr):
     pass
 
 if __name__ == "__main__":
-    print(move_zeros_to_end([0, 1, 0, 3, 12]))
+    print(find_first_unique_element([7, 3, 5, 3, 5, 7, 4]))
