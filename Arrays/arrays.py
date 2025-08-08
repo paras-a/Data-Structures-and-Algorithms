@@ -44,7 +44,9 @@ def rotate_array(arr, k):
         >>> rotate_array([1], 3)
         [1]  # Single element array remains unchanged
     """
-    pass
+    if len(arr) < k or k == 0:
+        return arr
+    return arr[-k:] + arr[:len(arr)-k]
 
 def find_missing_number(arr, n):
     """
@@ -63,7 +65,11 @@ def find_missing_number(arr, n):
         >>> find_missing_number([1, 2, 3], 4)
         4
     """
-    pass
+    missing = 0
+    for i in range(n):
+        if i + 1 not in arr:
+            missing = i + 1
+    return missing
 
 def merge_sorted_arrays(arr1, arr2):
     """
@@ -82,7 +88,21 @@ def merge_sorted_arrays(arr1, arr2):
         >>> merge_sorted_arrays([1, 1, 1], [2, 2, 2])
         [1, 1, 1, 2, 2, 2]
     """
-    pass
+    if not arr1 and arr2:
+        return arr2
+    if not arr2 and arr1:
+        return arr1
+    merged = []
+    if arr1[0] < arr2[0]:
+        merged.append(arr1[0])
+        return merged + merge_sorted_arrays(arr1[1:], arr2)
+    elif arr1[0] == arr2[0]:
+        merged.append(arr1[0])
+        merged.append(arr2[0])
+        return merged + merge_sorted_arrays(arr1[1:], arr2[1:])
+    else:
+        merged.append(arr2[0])
+        return merged + merge_sorted_arrays(arr1, arr2[1:])
 
 def find_duplicate_number(arr):
     """
@@ -100,7 +120,16 @@ def find_duplicate_number(arr):
         >>> find_duplicate_number([4, 2, 1, 3, 2])
         2
     """
-    pass
+    if not arr:
+        return 0
+    duplicate = 0
+    for i in range(len(arr)):
+        current_number = arr[i]
+        for j in range(len(arr)):
+            next_number = arr[j]
+            if i != j and current_number == next_number:
+                duplicate = current_number
+    return duplicate
 
 def move_zeros_to_end(arr):
     """
@@ -118,7 +147,11 @@ def move_zeros_to_end(arr):
         >>> move_zeros_to_end([1, 0, 0, 2, 0, 3])
         [1, 2, 3, 0, 0, 0]
     """
-    pass
+    for i in range(len(arr)):
+        if arr[i] == 0:
+            arr.pop(i)
+            arr.append(0)
+    return arr
 
 def find_first_unique_element(arr):
     """
@@ -194,4 +227,4 @@ def find_longest_consecutive_sequence(arr):
     pass
 
 if __name__ == "__main__":
-    print(find_maximum_subarray_sum([-1, -2, -3, -4]))
+    print(move_zeros_to_end([0, 1, 0, 3, 12]))
