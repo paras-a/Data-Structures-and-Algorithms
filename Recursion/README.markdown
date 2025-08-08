@@ -6,7 +6,7 @@ This repository contains two Python files:
 - `recursion.py`: This file contains recursion 96 solved recursion problems
 - `recursion_unittest.py`: This file contains unittest of problems in `recursion.py`.
 
-Each problem includes a function signature and epytext docstring with examples.
+Each problem includes a function signature and `epytext` docstring with examples.
 
 ## Table of Contents
 - [Why Recursion?](#why-recursion)
@@ -15,7 +15,8 @@ Each problem includes a function signature and epytext docstring with examples.
 - [Guidelines](#Guidelines)
 
 ## Why Recursion?
-Recursion is a powerful programming technique where a function calls itself to solve smaller instances of the same problem. It’s particularly useful for problems involving:
+Recursion is a powerful programming technique where a function calls itself to solve smaller instances of the same 
+problem. It’s particularly useful for problems involving:
 - Hierarchical or nested structures (e.g., lists within lists).
 - Divide-and-conquer strategies.
 - Combinatorial tasks (e.g., counting paths or substrings).
