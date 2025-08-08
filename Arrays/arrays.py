@@ -1,3 +1,6 @@
+from gc import get_threshold
+
+
 def find_maximum_subarray_sum(arr):
     """
     Find the maximum sum of any contiguous subarray within the given array.
@@ -279,5 +282,200 @@ def find_longest_consecutive_sequence(arr):
     return sequence_count
 
 
+def sum_array(arr):
+    """
+    Calculate the sum of all elements in the array.
+
+    @param arr: List[int] -- Array of integers
+    @return: int -- Sum of all elements
+    @example:
+        >>> sum_array([1, 2, 3, 4])
+        10
+        >>> sum_array([])
+        0
+        >>> sum_array([-1, 1])
+        0
+    """
+    return sum(arr)
+
+def count_evens(arr):
+    """
+    Count the number of even elements in the array.
+
+    @param arr: List[int] -- Array of integers
+    @return: int -- Number of even elements
+    @example:
+        >>> count_evens([2, 4, 1, 6, 3])
+        3
+        >>> count_evens([1, 3, 5])
+        0
+        >>> count_evens([])
+        0
+    """
+    evens = 0
+    for element in arr:
+        if element % 2 == 0:
+            evens += 1
+    return evens
+
+def reverse_array(arr):
+    """
+    Reverse the elements of the array.
+
+    @param arr: List[int] -- Array of integers
+    @return: List[int] -- Reversed array
+    @example:
+        >>> reverse_array([1, 2, 3, 4])
+        [4, 3, 2, 1]
+        >>> reverse_array([1])
+        [1]
+        >>> reverse_array([])
+        []
+    """
+    # can also use the inbuilt method to reverse the array but this is more fun!
+    head_index = 0
+    tail_index = len(arr) - 1
+    while tail_index > head_index:
+        current_element = arr[head_index]
+        arr[head_index] = arr[tail_index]
+        arr[tail_index] = current_element
+        tail_index -= 1
+        head_index += 1
+    return arr
+
+def find_max_element(arr):
+    """
+    Find the maximum element in the array.
+
+    @param arr: List[int] -- Array of integers
+    @return: int -- Maximum element, or None if array is empty
+    @example:
+        >>> find_max_element([3, 5, 1, 4, 2])
+        5
+        >>> find_max_element([1])
+        1
+        >>> find_max_element([])
+        None
+    """
+    # can also use the max method to get the maximum element but this is more fun!
+    if not arr:
+        return None
+    max_element = arr[0]
+    for element in arr:
+        if element > max_element:
+            max_element = element
+    return max_element
+
+def replace_negatives(arr):
+    """
+    Replace all negative elements in the array with 0.
+
+    @param arr: List[int] -- Array of integers
+    @return: List[int] -- Array with negative elements replaced by 0
+    @example:
+        >>> replace_negatives([-1, 2, -3, 4])
+        [0, 2, 0, 4]
+        >>> replace_negatives([1, 2, 3])
+        [1, 2, 3]
+        >>> replace_negatives([-1, -2])
+        [0, 0]
+    """
+    for i in range(len(arr)):
+        arr[i] = 0 if arr[i] < 0 else arr[i]
+    return arr
+
+def find_element_index(arr, target):
+    """
+    Find the index of the first occurrence of the target element.
+
+    @param arr: List[int] -- Array of integers
+    @param target: int -- Element to find
+    @return: int -- Index of first occurrence, or -1 if not found
+    @example:
+        >>> find_element_index([1, 2, 3, 2], 2)
+        1
+        >>> find_element_index([1, 3, 4], 5)
+        -1
+        >>> find_element_index([], 1)
+        -1
+    """
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+def filter_greater_than(arr, threshold):
+    """
+    Return a new array containing elements greater than the threshold.
+
+    @param arr: List[int] -- Array of integers
+    @param threshold: int -- Threshold value
+    @return: List[int] -- Array with elements greater than threshold
+    @example:
+        >>> filter_greater_than([1, 5, 2, 6, 3], 3)
+        [5, 6]
+        >>> filter_greater_than([1, 2, 3], 5)
+        []
+        >>> filter_greater_than([], 0)
+        []
+    """
+    greater_than_list = []
+    for i in range(len(arr)):
+        if arr[i] > threshold:
+            greater_than_list.append(arr[i])
+    return greater_than_list
+
+def multiply_array(arr, factor):
+    """
+    Multiply each element in the array by a given factor.
+
+    @param arr: List[int] -- Array of integers
+    @param factor: int -- Factor to multiply by
+    @return: List[int] -- Array with elements multiplied by factor
+    @example:
+        >>> multiply_array([1, 2, 3], 2)
+        [2, 4, 6]
+        >>> multiply_array([0, 1, -2], 3)
+        [0, 3, -6]
+        >>> multiply_array([], 5)
+        []
+    """
+    if not arr:
+        return []
+    return [arr[0] * factor] + multiply_array(arr[1:], factor)
+
+def remove_duplicates(arr):
+    """
+    Remove duplicate elements from the array, keeping the first occurrence.
+
+    @param arr: List[int] -- Array of integers
+    @return: List[int] -- Array with duplicates removed
+    @example:
+        >>> remove_duplicates([1, 2, 2, 3, 1])
+        [1, 2, 3]
+        >>> remove_duplicates([1, 1, 1])
+        [1]
+        >>> remove_duplicates([])
+        []
+    """
+    # TODO
+
+def shift_elements(arr, shift):
+    """
+    Shift all elements in the array to the left by the given shift amount, filling with 0.
+
+    @param arr: List[int] -- Array of integers
+    @param shift: int -- Number of positions to shift left
+    @return: List[int] -- Array after shifting
+    @example:
+        >>> shift_elements([1, 2, 3, 4], 2)
+        [3, 4, 0, 0]
+        >>> shift_elements([1, 2, 3], 0)
+        [1, 2, 3]
+        >>> shift_elements([1], 5)
+        [0]
+    """
+    # TODO
+
 if __name__ == "__main__":
-    print(move_zeros_to_end([0, 0, 0, 1]))
+    print(multiply_array([0, 1, -2], 3))
