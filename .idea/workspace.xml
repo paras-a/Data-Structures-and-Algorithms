@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="Solved problems">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arrays/arrays.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recursion/README.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/Recursion/README.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recursion/README.md" beforeDir="false" />
+    <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="Updated README.markdown">
+      <change beforePath="$PROJECT_DIR$/README.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/README.markdown" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +135,7 @@
       <workItem from="1754602086831" duration="754000" />
       <workItem from="1754605314388" duration="259000" />
       <workItem from="1754605577996" duration="3924000" />
-      <workItem from="1754654300524" duration="3837000" />
+      <workItem from="1754654300524" duration="4185000" />
     </task>
     <task id="LOCAL-00001" summary="Updated README.markdown">
       <option name="closed" value="true" />
@@ -180,16 +177,32 @@
       <option name="project" value="LOCAL" />
       <updated>1754625262896</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Solved problems">
+      <option name="closed" value="true" />
+      <created>1754661839360</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1754661839360</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated README.markdown">
+      <option name="closed" value="true" />
+      <created>1754661973343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1754661973343</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated README.markdown" />
     <MESSAGE value="Solved problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solved problems" />
+    <MESSAGE value="Updated README.markdown" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README.markdown" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
