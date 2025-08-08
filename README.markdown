@@ -27,7 +27,7 @@ of problems with solutions, explanations, and, where applicable, unit tests to v
 ## Data Structures
 The following data structures will be covered, with problems and solutions added progressively:
 1. **[Recursion](Recursion)** - Completed with problems like balanced substring counting and nested list summation.
-2. **Arrays** - Planned (e.g., array manipulation, searching, and sorting problems).
+2. **[Arrays](Arrays)** - Planned (e.g., array manipulation, searching, and sorting problems).
 3. **Linked Lists** - Planned (e.g., singly/doubly linked lists, reversal, cycle detection).
 4. **Stacks** - Planned (e.g., stack operations, expression evaluation).
 5. **Queues** - Planned (e.g., queue implementations, priority queues).
