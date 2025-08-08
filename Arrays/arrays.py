@@ -15,7 +15,7 @@ def find_maximum_subarray_sum(arr):
         23  # The subarray [5, 4, -1, 7, 8] has the maximum sum
     """
     if len(arr) == 0:
-        return 0
+        return None
     if len(arr) == 1:
         return arr[0]
     max_sum = arr[0]
@@ -91,6 +91,8 @@ def merge_sorted_arrays(arr1, arr2):
         >>> merge_sorted_arrays([1, 1, 1], [2, 2, 2])
         [1, 1, 1, 2, 2, 2]
     """
+    if not arr1 and not arr2:
+        return arr1
     if not arr1 and arr2:
         return arr2
     if not arr2 and arr1:
@@ -175,6 +177,8 @@ def find_first_unique_element(arr):
         >>> find_first_unique_element([2, 2, 3, 3, 1])
         1
     """
+    if len(arr) == 0:
+        return None
     duplicate = []
     for i in range(len(arr)):
         current_element = arr[i]
@@ -182,7 +186,12 @@ def find_first_unique_element(arr):
             next_element = arr[j]
             if i != j and current_element == next_element:
                 duplicate.append(current_element)
-    return set(arr).difference(set(duplicate)).pop()
+    if len(duplicate) == 0:
+        return arr[0]
+    unique = set(arr).difference(set(duplicate))
+    if len(unique) > 0:
+        return unique.pop()
+    return None
 
 
 def find_kth_largest(arr, k):
@@ -194,15 +203,27 @@ def find_kth_largest(arr, k):
     @return: int -- kth largest element
     @example:
         >>> find_kth_largest([3, 2, 1, 5, 6, 4], 2)
-        5
+        5  # Second largest element in [6, 5, 4, 3, 2, 1]
         >>> find_kth_largest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)
-        4
+        4  # Fourth largest element in [6, 5, 5, 4, 3, 3, 2, 2, 1]
         >>> find_kth_largest([1], 1)
-        1
+        1  # First largest element in [1]
         >>> find_kth_largest([7, 4, 6, 3, 9, 1], 3)
-        6
+        6  # Third largest element in [9, 7, 6, 4, 3, 1]
+        >>> find_kth_largest([10, -1, 2, 5, 0, 8], 1)
+        10  # First largest element in [10, 8, 5, 2, 0, -1]
+        >>> find_kth_largest([3, 3, 3, 3], 2)
+        3  # Second largest element in [3, 3, 3, 3]
+        >>> find_kth_largest([-5, -2, -10, -1, -3], 3)
+        -3  # Third largest element in [-1, -2, -3, -5, -10]
+        >>> find_kth_largest([1, 2, 3, 4, 5], 5)
+        1  # Fifth largest element in [5, 4, 3, 2, 1]
+        >>> find_kth_largest([8, 8, 7, 7, 6, 6], 4)
+        7  # Fourth largest element in [8, 8, 7, 7, 6, 6]
+        >>> find_kth_largest([100, 50, 25, 75, 10], 2)
+        75  # Second largest element in [100, 75, 50, 25, 10]
     """
-    pass
+    return sorted(arr)[len(arr)-k]
 
 
 def product_except_self(arr):
@@ -221,7 +242,15 @@ def product_except_self(arr):
         >>> product_except_self([2, 3, 0, 4])
         [0, 0, 24, 0]
     """
-    pass
+    product_list = []
+    for i in range(len(arr)):
+        product = 1
+        for j in range(len(arr)):
+            if i != j:
+                product *= arr[j]
+        product_list.append(product)
+    return product_list
+
 
 def find_longest_consecutive_sequence(arr):
     """
@@ -239,7 +268,16 @@ def find_longest_consecutive_sequence(arr):
         >>> find_longest_consecutive_sequence([])
         0
     """
-    pass
+    if not arr:
+        return 0
+    sorted_arr_set = set(arr)
+    sorted_arr_set_list = sorted(list(sorted_arr_set))
+    sequence_count = 1
+    for i in range(len(sorted_arr_set_list)-1):
+        if sorted_arr_set_list[i+1] - sorted_arr_set_list[i] == 1:
+            sequence_count += 1
+    return sequence_count
+
 
 if __name__ == "__main__":
-    print(find_first_unique_element([7, 3, 5, 3, 5, 7, 4]))
+    print(move_zeros_to_end([0, 0, 0, 1]))
