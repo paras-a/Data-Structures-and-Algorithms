@@ -889,7 +889,10 @@ def interleave_arrays(arr1, arr2):
         >>> interleave_arrays([], [])
         []
     """
-    # TODO
+    if len(arr1) == 0 or len(arr2) == 0:
+        return arr2 if len(arr1) == 0 else arr1
+    interleaved_array = [arr1[0]] + [arr2[0]]
+    return interleaved_array + interleave_arrays(arr1[1:], arr2[1:])
 
 def find_most_frequent(arr):
     """
@@ -927,4 +930,4 @@ def find_most_frequent(arr):
     return element
 
 if __name__ == "__main__":
-    print(find_most_frequent([1, 2, 3, 4, 5]))
+    print(count_subarrays_with_sum([1, 2, 3, -2], 3))

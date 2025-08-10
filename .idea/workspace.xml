@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="Added unittest">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arrays/arrays.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +161,7 @@
       <workItem from="1754602086831" duration="754000" />
       <workItem from="1754605314388" duration="259000" />
       <workItem from="1754605577996" duration="3924000" />
-      <workItem from="1754654300524" duration="31586000" />
+      <workItem from="1754654300524" duration="34004000" />
     </task>
     <task id="LOCAL-00001" summary="Updated README.markdown">
       <option name="closed" value="true" />
@@ -274,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754849200149</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added unittest">
+      <option name="closed" value="true" />
+      <created>1754849664087</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1754849664087</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,15 +300,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Arrays/arrays.py</url>
-          <line>910</line>
-          <option name="timeStamp" value="2" />
+          <line>937</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$Doctests_in_arrays.coverage" NAME="Doctests in arrays Coverage Results" MODIFIED="1754606125138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
-    <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$arrays.coverage" NAME="arrays Coverage Results" MODIFIED="1754832493231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
+    <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$arrays.coverage" NAME="arrays Coverage Results" MODIFIED="1754850787574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
     <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$Doctest_find_kth_largest.coverage" NAME="Doctest find_kth_largest Coverage Results" MODIFIED="1754606157323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
     <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$arrays_unittest.coverage" NAME="arrays_unittest Coverage Results" MODIFIED="1754681926708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
   </component>
