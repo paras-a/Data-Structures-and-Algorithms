@@ -899,13 +899,32 @@ def find_most_frequent(arr):
     @return: int -- Most frequent element, or None if array is empty
     @example:
         >>> find_most_frequent([1, 2, 2, 3, 1])
-        2  # 2 appears twice
+        1  # 1 and 2 appear twice, 1 is first
         >>> find_most_frequent([1])
         1
         >>> find_most_frequent([])
         None
+        >>> find_most_frequent([2, 2, 2, 3])
+        2  # 2 appears three times
+        >>> find_most_frequent([-1, -1, 0, 0])
+        -1  # -1 and 0 appear twice, -1 is first
+        >>> find_most_frequent([1, 1, 1, 1])
+        1  # 1 appears four times
+        >>> find_most_frequent([0, 1, 0, 1])
+        0  # 0 and 1 appear twice, 0 is first
+        >>> find_most_frequent([-2, -2, -3, -2, -3])
+        -2  # -2 appears three times
     """
-    # TODO
+    if not arr:
+        return None
+    element = 0
+    num_appearances = 0
+    for i in range(len(arr)):
+        count = arr.count(arr[i])
+        if num_appearances < count:
+            num_appearances = count
+            element = arr[i]
+    return element
 
 if __name__ == "__main__":
-    print(segregate_pos_neg([-1, 2, -3, 4, -5]))
+    print(find_most_frequent([1, 2, 3, 4, 5]))

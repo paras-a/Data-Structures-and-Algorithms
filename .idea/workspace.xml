@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="Added unittest">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arrays/arrays.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +160,7 @@
       <workItem from="1754602086831" duration="754000" />
       <workItem from="1754605314388" duration="259000" />
       <workItem from="1754605577996" duration="3924000" />
-      <workItem from="1754654300524" duration="31284000" />
+      <workItem from="1754654300524" duration="31586000" />
     </task>
     <task id="LOCAL-00001" summary="Updated README.markdown">
       <option name="closed" value="true" />
@@ -267,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754794141285</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added unittest">
+      <option name="closed" value="true" />
+      <created>1754849200149</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1754849200149</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
