@@ -648,7 +648,15 @@ def find_pairs_with_sum(arr, target):
         >>> find_pairs_with_sum([2, 2, 2], 4)
         [(2, 2)]
     """
-    # TODO
+    if sum(arr) < target:
+        return []
+
+    sum_list = []
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if i != j and ((arr[i], arr[j]) and (arr[j], arr[i]) not in sum_list) and (arr[i] + arr[j] == target):
+                sum_list.append((arr[i], arr[j]))
+    return sum_list
 
 def segregate_pos_neg(arr):
     """
@@ -663,6 +671,22 @@ def segregate_pos_neg(arr):
         [1, 2, 3]
         >>> segregate_pos_neg([-1, -2, -3])
         [-1, -2, -3]
+        >>> segregate_pos_neg([])
+        []
+        >>> segregate_pos_neg([0, 1, -1, 0])
+        [0, 1, 0, -1]
+        >>> segregate_pos_neg([2, 2, -2, -2])
+        [2, 2, -2, -2]
+        >>> segregate_pos_neg([5])
+        [5]
+        >>> segregate_pos_neg([-5])
+        [-5]
+        >>> segregate_pos_neg([0, 0, 0])
+        [0, 0, 0]
+        >>> segregate_pos_neg([1, -1, 1, -1])
+        [1, 1, -1, -1]
+        >>> segregate_pos_neg([10, -10, 20, -20, 0])
+        [10, 20, 0, -10, -20]
     """
     # TODO
 
@@ -884,4 +908,4 @@ def find_most_frequent(arr):
     # TODO
 
 if __name__ == "__main__":
-    print(rotate_left_by_one([1]))
+    print(segregate_pos_neg([-1, 2, -3, 4, -5]))
