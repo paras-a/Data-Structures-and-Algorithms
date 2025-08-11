@@ -853,7 +853,29 @@ def swap_elements(arr, k):
         >>> swap_elements([1, 2, 3], 5)
         [1, 2, 3]  # No swap possible
         >>> swap_elements([], 1)
-        []
+        []  # Empty array
+        >>> swap_elements([1], 1)
+        [1]  # Single element, no swap possible
+        >>> swap_elements([1, 2, 3, 4], 1)
+        [2, 1, 4, 3]  # Swap 1 with 2, 3 with 4
+        >>> swap_elements([-1, -2, -3, -4], 2)
+        [-3, -2, -1, -4]  # Swap -1 with -3
+        >>> swap_elements([0, 1, 2, 3, 4], 3)
+        [3, 1, 2, 0, 4]  # Swap 0 with 3
+        >>> swap_elements([1, 1, 1, 1], 2)
+        [1, 1, 1, 1]  # Swap 1 with 1, no visible change
+        >>> swap_elements([1, 2, 3, 4, 5, 6], 3)
+        [4, 2, 3, 1, 5, 6]  # Swap 1 with 4
+        >>> swap_elements([1, 2, 3, 4, 5, 6, 7, 8], 2)
+        [3, 2, 1, 4, 7, 6, 5, 8]  # Swap 1 with 3, 5 with 7
+        >>> swap_elements([0, -1, 2, -3, 4, -5, 6, -7, 8], 3)
+        [-3, -1, 2, 0, -5, 5, 6, -7, 8]  # Swap 0 with -3, 4 with -5
+        >>> swap_elements([1, 1, 2, 2, 3, 3, 4, 4, 5, 5], 4)
+        [3, 1, 2, 2, 1, 3, 4, 4, 5, 5]  # Swap 1 with 3
+        >>> swap_elements([10, 20, 30, 40, 50, 60, 70], 6)
+        [70, 20, 30, 40, 50, 60, 10]  # Swap 10 with 70
+        >>> swap_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
+        [6, 2, 3, 4, 5, 1, 7, 8, 9, 10]  # Swap 1 with 6
     """
     # TODO
 
