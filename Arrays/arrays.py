@@ -1,6 +1,3 @@
-from gc import get_threshold
-
-
 def find_maximum_subarray_sum(arr):
     """
     Find the maximum sum of any contiguous subarray within the given array.
@@ -688,7 +685,16 @@ def segregate_pos_neg(arr):
         >>> segregate_pos_neg([10, -10, 20, -20, 0])
         [10, 20, 0, -10, -20]
     """
-    # TODO
+    if not arr:
+        return []
+    arr = sorted(arr)
+    negatives = [element for element in arr if element < 0][::-1]
+    positives = [element for element in arr if element >= 0]
+    for i in range(len(positives)):
+        if positives[i] == 0:
+            positives.pop(i)
+            positives.append(0)
+    return positives + negatives
 
 def find_subarray_with_sum(arr, target_sum):
     """
@@ -699,7 +705,7 @@ def find_subarray_with_sum(arr, target_sum):
     @return: tuple[int, int] -- Start and end indices of subarray, or (-1, -1) if not found
     @example:
         >>> find_subarray_with_sum([1, 2, 3, 4], 5)
-        (0, 1)  # Subarray [1, 2]
+        (1, 2)  # Subarray [2, 3]
         >>> find_subarray_with_sum([1, 2, 3], 10)
         (-1, -1)
         >>> find_subarray_with_sum([], 0)
@@ -721,7 +727,8 @@ def alternate_elements(arr):
         >>> alternate_elements([])
         []
     """
-    # TODO
+    return arr[0:len(arr):2]
+
 
 def count_frequency(arr):
     """
@@ -737,7 +744,10 @@ def count_frequency(arr):
         >>> count_frequency([1, 1, 1])
         {1: 3}
     """
-    # TODO
+    frequency_dict = dict.fromkeys(arr, 0)
+    for k,v in frequency_dict.items():
+        frequency_dict[k] = arr.count(k)
+    return frequency_dict
 
 def find_subarray_product(arr, target_product):
     """
@@ -771,7 +781,14 @@ def merge_alternate(arr1, arr2):
         >>> merge_alternate([], [1, 2])
         [1, 2]
     """
-    # TODO
+    if not arr1 and arr2:
+        return arr2
+    if not arr2 and arr1:
+        return arr1
+    if not arr1 and arr2:
+        return []
+    merged = [arr1[0]] + [arr2[0]]
+    return merged + merge_alternate(arr1[1:], arr2[1:])
 
 def find_min_max_difference(arr):
     """
@@ -952,4 +969,4 @@ def find_most_frequent(arr):
     return element
 
 if __name__ == "__main__":
-    print(count_subarrays_with_sum([1, 2, 3, -2], 3))
+    print(merge_alternate([1, 3, 5, 6, 7, 8, 9], [2, 4, 6]))
