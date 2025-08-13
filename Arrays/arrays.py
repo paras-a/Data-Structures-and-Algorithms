@@ -804,7 +804,9 @@ def find_min_max_difference(arr):
         >>> find_min_max_difference([])
         0
     """
-    # TODO
+    if len(arr) <= 1:
+        return 0
+    return max(arr) - min(arr)
 
 def partition_array(arr, pivot):
     """
@@ -838,7 +840,8 @@ def find_unique_elements(arr1, arr2):
         >>> find_unique_elements([], [1])
         [1]
     """
-    # TODO
+    return list(set(arr1).difference(set(arr2))) + list(set(arr2).difference(set(arr1)))
+
 
 def sum_pairs_to_target(arr, target):
     """
@@ -911,7 +914,18 @@ def count_subarrays_with_sum(arr, target_sum):
         >>> count_subarrays_with_sum([], 0)
         0
     """
-    # TODO
+    if sum(arr) < target_sum:
+        return 0
+    subarray_count = 0
+    if target_sum in arr:
+        subarray_count += 1
+    visited = []
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if i != j and arr[i] + arr[j] == target_sum and ((arr[i], arr[j]) and (arr[j], arr[i]) not in visited):
+                visited.append((arr[i], arr[j]))
+                subarray_count += 1
+    return subarray_count
 
 def interleave_arrays(arr1, arr2):
     """
@@ -969,4 +983,4 @@ def find_most_frequent(arr):
     return element
 
 if __name__ == "__main__":
-    print(merge_alternate([1, 3, 5, 6, 7, 8, 9], [2, 4, 6]))
+    print(count_subarrays_with_sum([], 0))
