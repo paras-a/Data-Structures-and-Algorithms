@@ -910,7 +910,7 @@ def swap_elements(arr, k):
     @return: List[int] -- Array after swapping elements
     @example:
         >>> swap_elements([1, 2, 3, 4, 5], 2)
-        [3, 2, 1, 4, 5]  # Swap 1 with 3
+        [3, 2, 5, 4, 1]  # Swap 1 with 3, 5 with 1
         >>> swap_elements([1, 2, 3], 5)
         [1, 2, 3]  # No swap possible
         >>> swap_elements([], 1)
@@ -918,7 +918,7 @@ def swap_elements(arr, k):
         >>> swap_elements([1], 1)
         [1]  # Single element, no swap possible
         >>> swap_elements([1, 2, 3, 4], 1)
-        [2, 1, 4, 3]  # Swap 1 with 2, 3 with 4
+        [2, 3, 4, 1]  # Swap 1 with 2, 3 with 4, 4 with 1
         >>> swap_elements([-1, -2, -3, -4], 2)
         [-3, -2, -1, -4]  # Swap -1 with -3
         >>> swap_elements([0, 1, 2, 3, 4], 3)
@@ -928,17 +928,22 @@ def swap_elements(arr, k):
         >>> swap_elements([1, 2, 3, 4, 5, 6], 3)
         [4, 2, 3, 1, 5, 6]  # Swap 1 with 4
         >>> swap_elements([1, 2, 3, 4, 5, 6, 7, 8], 2)
-        [3, 2, 1, 4, 7, 6, 5, 8]  # Swap 1 with 3, 5 with 7
+        [3, 2, 5, 4, 7, 6, 1, 8]  # Swap 1 with 3, 5 with 7
         >>> swap_elements([0, -1, 2, -3, 4, -5, 6, -7, 8], 3)
-        [-3, -1, 2, 0, -5, 5, 6, -7, 8]  # Swap 0 with -3, 4 with -5
+        [-3, -1, 2, 6, 4, -5, 0, -7, 8]  # Swap 0 with -3, 6 with 0
         >>> swap_elements([1, 1, 2, 2, 3, 3, 4, 4, 5, 5], 4)
-        [3, 1, 2, 2, 1, 3, 4, 4, 5, 5]  # Swap 1 with 3
+        [3, 1, 2, 2, 5, 3, 4, 4, 1, 5]  # Swap 1 with 3, 5 with 1
         >>> swap_elements([10, 20, 30, 40, 50, 60, 70], 6)
         [70, 20, 30, 40, 50, 60, 10]  # Swap 10 with 70
         >>> swap_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
         [6, 2, 3, 4, 5, 1, 7, 8, 9, 10]  # Swap 1 with 6
     """
-    # TODO
+    for i in range(0, len(arr)-k, k):
+        element = arr[i]
+        arr[i] = arr[i+k]
+        arr[i+k] = element
+    return arr
+
 
 def count_subarrays_with_sum(arr, target_sum):
     """
@@ -1033,17 +1038,27 @@ def find_all_subarrays_with_sum(arr, target_sum):
     @return: List[tuple[int, int]] -- List of (start, end) indices of subarrays with target sum
     @example:
         >>> find_all_subarrays_with_sum([1, 2, 3, -2], 3)
-        [(0, 1), (2, 2)]  # Subarrays [1, 2] and [3]
+        [(0, 1), (1, 3), (2, 2)]  # Subarrays [1, 2], [2, 3, -2], [3]
         >>> find_all_subarrays_with_sum([1, 2, 3], 10)
-        []
+        []  # No subarrays sum to 10
         >>> find_all_subarrays_with_sum([], 0)
-        []
+        []  # Empty array
         >>> find_all_subarrays_with_sum([0, 0, 0], 0)
-        [(0, 0), (0, 1), (0, 2), (1, 1), (1, 2), (2, 2)]
+        [(0, 0), (0, 1), (0, 2), (1, 1), (1, 2), (2, 2)]  # All subarrays sum to 0
         >>> find_all_subarrays_with_sum([-1, 1, 0, 2], 0)
-        [(0, 1), (2, 2)]
+        [(0, 1), (0, 2), (2, 2)]  # Subarrays [-1, 1], [-1, 1, 0], [0]
     """
-    # TODO
+    subarray = []
+    if sum(arr) < target_sum:
+        return subarray
+    for i in range(len(arr)):
+        if arr[i] == target_sum:
+            subarray.append((i, i))
+        for j in range(len(arr)):
+            if i != j and sum(arr[i:j+1]) == target_sum and j >= i:
+                subarray.append((i, j))
+    return subarray
+
 
 def merge_three_arrays(arr1, arr2, arr3):
     """
@@ -1199,17 +1214,28 @@ def find_missing_and_repeated(arr):
     @return: tuple[int, int] -- (missing, repeated) numbers
     @example:
         >>> find_missing_and_repeated([1, 2, 2, 4])
-        (3, 2)
+        (3, 2)  # 3 is missing, 2 is repeated
         >>> find_missing_and_repeated([3, 1, 3])
-        (2, 3)
+        (2, 3)  # 2 is missing, 3 is repeated
         >>> find_missing_and_repeated([1, 1])
-        (2, 1)
-        >>> find_missing_and_repeated([2, 2, 2, 2])
-        (1, 2)
+        (2, 1)  # 2 is missing, 1 is repeated
+        >>> find_missing_and_repeated([1, 2, 3, 4, 2])
+        (5, 2)  # 5 is missing, 2 is repeated
         >>> find_missing_and_repeated([1, 2, 3, 3])
-        (4, 3)
+        (4, 3)  # 4 is missing, 3 is repeated
     """
-    # TODO
+    repeated = 0
+    missing = 0
+    arr = sorted(arr)
+
+    for i in range(len(arr)):
+        if arr.count(arr[i]) > 1:
+            repeated = arr[i]
+
+    for i in range(1, len(arr)+1):
+        if i not in arr:
+            missing = i
+    return missing, repeated
 
 def zigzag_array(arr):
     """
@@ -2089,4 +2115,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    print(sum_pairs_to_target([1, 2, 3, 4], 5))
+    print(find_all_subarrays_with_sum([-1, 1, 0, 2], 0))
