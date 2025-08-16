@@ -1080,7 +1080,17 @@ def merge_three_arrays(arr1, arr2, arr3):
         >>> merge_three_arrays([1, 1], [2, 2], [])
         [1, 2, 1, 2]
     """
-    # TODO
+    interleaved = []
+    max_length = max(len(arr1), len(arr2), len(arr3))
+    for i in range(max_length):
+        if i < len(arr1):
+            interleaved.append(arr1[i])
+        if i < len(arr2):
+            interleaved.append(arr2[i])
+        if i < len(arr3):
+            interleaved.append(arr3[i])
+    return interleaved
+
 
 def max_sum_alternate_elements(arr):
     """
@@ -1100,7 +1110,14 @@ def max_sum_alternate_elements(arr):
         >>> max_sum_alternate_elements([2, 2, 2, 2])
         4  # Sum of [2, 2] = 4
     """
-    # TODO
+    if not arr:
+        return 0
+    if len(arr) == 1:
+        return arr[0]
+    odd_sum = sum(arr[0:len(arr):2])
+    even_sum = sum(arr[1:len(arr):2])
+    return max(odd_sum, even_sum)
+
 
 def find_triplets_with_sum(arr, target_sum):
     """
@@ -1111,17 +1128,25 @@ def find_triplets_with_sum(arr, target_sum):
     @return: List[tuple[int, int, int]] -- List of triplets summing to target
     @example:
         >>> find_triplets_with_sum([1, 2, 3, 4, 5], 12)
-        [(2, 3, 7)]  # Assuming input typo in example, corrected to include 7
+        [(3, 4, 5)]  # Subarray [3, 4, 5]
         >>> find_triplets_with_sum([1, 2, 3], 12)
-        []
+        []  # No triplets sum to 12
         >>> find_triplets_with_sum([], 0)
-        []
+        []  # Empty array
         >>> find_triplets_with_sum([0, 0, 0], 0)
-        [(0, 0, 0)]
+        [(0, 0, 0)]  # Triplet [0, 0, 0]
         >>> find_triplets_with_sum([-1, 1, 0, 2], 2)
-        [(-1, 1, 2)]
+        [(-1, 1, 2)]  # Triplet [-1, 1, 2]
     """
-    # TODO
+    if not arr or sum(arr) < target_sum:
+        return []
+    triplets = []
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            for k in range(j, len(arr)):
+                if i != j and j != k and i != k and arr[i] + arr[j] + arr[k] == target_sum:
+                    triplets.append((arr[i], arr[j], arr[k]))
+    return triplets
 
 def segregate_even_odd(arr):
     """
@@ -1849,6 +1874,7 @@ def find_subarray_with_k_median(arr, k, median):
         >>> find_subarray_with_k_median([-1, 0, 1, 2], 3, 0)
         (0, 2)  # Subarray [-1,0,1], median 0
     """
+
     # TODO
 
 def count_subarrays_with_sum_and_product(arr, target_sum, target_product):
@@ -2115,4 +2141,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    print(find_all_subarrays_with_sum([-1, 1, 0, 2], 0))
+    print(find_triplets_with_sum([1, 2, 3, 4, 5, 7], 12))
