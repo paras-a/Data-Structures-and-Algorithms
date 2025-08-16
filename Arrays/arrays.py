@@ -1166,7 +1166,15 @@ def segregate_even_odd(arr):
         >>> segregate_even_odd([1, 1, 2, 2])
         [2, 2, 1, 1]
     """
-    # TODO
+    odds = []
+    evens = []
+    for i in range(len(arr)):
+        if arr[i] % 2 == 0:
+            evens.append(arr[i])
+    for i in range(len(arr)):
+        if arr[i] % 2 != 0:
+            odds.append(arr[i])
+    return evens + odds
 
 def find_k_largest_pairs(arr1, arr2, k):
     """
@@ -1188,7 +1196,18 @@ def find_k_largest_pairs(arr1, arr2, k):
         >>> find_k_largest_pairs([-1, 0], [1, 2], 2)
         [(0, 2), (0, 1)]
     """
-    # TODO
+    if not arr1 or not arr2:
+        return []
+    pairs = []
+    arr1 = sorted(arr1)
+    arr2 = sorted(arr2)
+    if len(arr1) >= len(arr2):
+        for i in range(len(arr1)-1, -1, -1):
+            for j in range(len(arr2)-1, -1, -1):
+                pair = arr1[i], arr2[j]
+                pairs.append(pair)
+    return pairs[:k]
+
 
 def replace_with_next_greater(arr):
     """
@@ -2141,4 +2160,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    print(find_triplets_with_sum([1, 2, 3, 4, 5, 7], 12))
+    print(find_k_largest_pairs([1, 1], [2, 2], 2))
