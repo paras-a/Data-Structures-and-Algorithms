@@ -1196,17 +1196,7 @@ def find_k_largest_pairs(arr1, arr2, k):
         >>> find_k_largest_pairs([-1, 0], [1, 2], 2)
         [(0, 2), (0, 1)]
     """
-    if not arr1 or not arr2:
-        return []
-    pairs = []
-    arr1 = sorted(arr1)
-    arr2 = sorted(arr2)
-    if len(arr1) >= len(arr2):
-        for i in range(len(arr1)-1, -1, -1):
-            for j in range(len(arr2)-1, -1, -1):
-                pair = arr1[i], arr2[j]
-                pairs.append(pair)
-    return pairs[:k]
+    # TODO
 
 
 def replace_with_next_greater(arr):
@@ -2160,4 +2150,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    print(find_k_largest_pairs([1, 1], [2, 2], 2))
+    print(find_k_largest_pairs([4, 5], [1, 2, 3], 3))
