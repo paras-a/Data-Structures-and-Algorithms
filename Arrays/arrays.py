@@ -1216,11 +1216,9 @@ def find_k_largest_pairs(arr1, arr2, k):
         >>> find_k_largest_pairs([10, 10, 10, 10], [10, 10, 10, 10], 3)
         [(10, 10), (10, 10), (10, 10)]  # Sums: 20, 20, 20
     """
-    sums = []
     pairs = []
     for i in range(len(arr1)):
         for j in range(len(arr2)):
-            sums.append(arr1[i] + arr2[j])
             pairs.append((arr1[i], arr2[j]))
     return sorted(pairs, key=lambda x: (sum(x), x[0]))[len(pairs)-k:][::-1]
 
