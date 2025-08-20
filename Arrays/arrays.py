@@ -1186,17 +1186,43 @@ def find_k_largest_pairs(arr1, arr2, k):
     @return: List[tuple[int, int]] -- k pairs with largest sums
     @example:
         >>> find_k_largest_pairs([1, 2, 3], [4, 5], 3)
-        [(3, 5), (3, 4), (2, 5)]
+        [(3, 5), (3, 4), (2, 5)]  # Sums: 8, 7, 7
         >>> find_k_largest_pairs([1], [2], 2)
-        [(1, 2)]
+        [(1, 2)]  # Only one pair possible, sum: 3
         >>> find_k_largest_pairs([], [1], 1)
-        []
+        []  # No pairs possible with empty arr1
         >>> find_k_largest_pairs([1, 1], [2, 2], 2)
-        [(1, 2), (1, 2)]
+        [(1, 2), (1, 2)]  # Sums: 3, 3
         >>> find_k_largest_pairs([-1, 0], [1, 2], 2)
-        [(0, 2), (0, 1)]
+        [(0, 2), (0, 1)]  # Sums: 2, 1
+        >>> find_k_largest_pairs([10, 5, 0, -5, 8], [7, 3, 9, 1, 4], 5)
+        [(10, 9), (10, 7), (8, 9), (8, 7), (10, 4)]  # Sums: 19, 17, 17, 15, 14
+        >>> find_k_largest_pairs([1, 2], [3, 4], 10)
+        [(2, 4), (2, 3), (1, 4), (1, 3)]  # All pairs, sums: 6, 5, 5, 4
+        >>> find_k_largest_pairs([], [10, 20, 30, 40, 50], 3)
+        []  # No pairs possible with empty arr1
+        >>> find_k_largest_pairs([2, 2, 2], [3, 3], 4)
+        [(2, 3), (2, 3), (2, 3), (2, 3)]  # Sums: 5, 5, 5, 5
+        >>> find_k_largest_pairs([-1, -2, -3, -4], [-5, -6, -7], 3)
+        [(-1, -5), (-1, -6), (-2, -5)]  # Sums: -6, -7, -7
+        >>> find_k_largest_pairs([0, 0, 1, 2], [0, 3, 0], 6)
+        [(2, 3), (1, 3), (0, 3), (0, 3), (2, 0), (2, 0)]  # Sums: 5, 4, 3, 3, 2, 2
+        >>> find_k_largest_pairs([5], [10], 1)
+        [(5, 10)]  # Sum: 15
+        >>> find_k_largest_pairs([100, 50, 25, 10, 5], [200, 150, 100, 50], 2)
+        [(100, 200), (100, 150)]  # Sums: 300, 250
+        >>> find_k_largest_pairs([], [], 5)
+        []  # No pairs possible with both arrays empty
+        >>> find_k_largest_pairs([10, 10, 10, 10], [10, 10, 10, 10], 3)
+        [(10, 10), (10, 10), (10, 10)]  # Sums: 20, 20, 20
     """
-    # TODO
+    sums = []
+    pairs = []
+    for i in range(len(arr1)):
+        for j in range(len(arr2)):
+            sums.append(arr1[i] + arr2[j])
+            pairs.append((arr1[i], arr2[j]))
+    return sorted(pairs, key=lambda x: (sum(x), x[0]))[len(pairs)-k:][::-1]
 
 
 def replace_with_next_greater(arr):
@@ -2150,4 +2176,20 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    print(find_k_largest_pairs([4, 5], [1, 2, 3], 3))
+    # Test all examples from the docstring
+    assert find_k_largest_pairs([1, 2, 3], [4, 5], 3) == [(3, 5), (3, 4), (2, 5)], "Test case 1 failed"
+    assert find_k_largest_pairs([1], [2], 2) == [(1, 2)], "Test case 2 failed"
+    assert find_k_largest_pairs([], [1], 1) == [], "Test case 3 failed"
+    assert find_k_largest_pairs([1, 1], [2, 2], 2) == [(1, 2), (1, 2)], "Test case 4 failed"
+    assert find_k_largest_pairs([-1, 0], [1, 2], 2) == [(0, 2), (0, 1)], "Test case 5 failed"
+    assert find_k_largest_pairs([10, 5, 0, -5, 8], [7, 3, 9, 1, 4], 5) == [(10, 9), (10, 7), (8, 9), (8, 7), (10, 4)], "Test case 6 failed"
+    assert find_k_largest_pairs([1, 2], [3, 4], 10) == [(2, 4), (2, 3), (1, 4), (1, 3)], "Test case 7 failed"
+    assert find_k_largest_pairs([], [10, 20, 30, 40, 50], 3) == [], "Test case 8 failed"
+    assert find_k_largest_pairs([2, 2, 2], [3, 3], 4) == [(2, 3), (2, 3), (2, 3), (2, 3)], "Test case 9 failed"
+    assert find_k_largest_pairs([-1, -2, -3, -4], [-5, -6, -7], 3) == [(-1, -5), (-1, -6), (-2, -5)], "Test case 10 failed"
+    assert find_k_largest_pairs([0, 0, 1, 2], [0, 3, 0], 6) == [(2, 3), (1, 3), (0, 3), (0, 3), (2, 0), (2, 0)], "Test case 11 failed"
+    assert find_k_largest_pairs([5], [10], 1) == [(5, 10)], "Test case 12 failed"
+    assert find_k_largest_pairs([100, 50, 25, 10, 5], [200, 150, 100, 50], 2) == [(100, 200), (100, 150)], "Test case 13 failed"
+    assert find_k_largest_pairs([], [], 5) == [], "Test case 14 failed"
+    assert find_k_largest_pairs([10, 10, 10, 10], [10, 10, 10, 10], 3) == [(10, 10), (10, 10), (10, 10)], "Test case 15 failed"
+    print("All test cases passed!")
