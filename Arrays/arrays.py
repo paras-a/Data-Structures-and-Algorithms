@@ -50,7 +50,7 @@ def rotate_array(arr, k):
     """
     if len(arr) < k or k == 0:
         return arr
-    return arr[-k:] + arr[:len(arr)-k]
+    return arr[-k:] + arr[:len(arr) - k]
 
 
 def find_missing_number(arr, n):
@@ -229,7 +229,7 @@ def find_kth_largest(arr, k):
         >>> find_kth_largest([100, 50, 25, 75, 10], 2)
         75  # Second largest element in [100, 75, 50, 25, 10]
     """
-    return sorted(arr)[len(arr)-k]
+    return sorted(arr)[len(arr) - k]
 
 
 def product_except_self(arr):
@@ -279,8 +279,8 @@ def find_longest_consecutive_sequence(arr):
     sorted_arr_set = set(arr)
     sorted_arr_set_list = sorted(list(sorted_arr_set))
     sequence_count = 1
-    for i in range(len(sorted_arr_set_list)-1):
-        if sorted_arr_set_list[i+1] - sorted_arr_set_list[i] == 1:
+    for i in range(len(sorted_arr_set_list) - 1):
+        if sorted_arr_set_list[i + 1] - sorted_arr_set_list[i] == 1:
             sequence_count += 1
     return sequence_count
 
@@ -301,6 +301,7 @@ def sum_array(arr):
     """
     return sum(arr)
 
+
 def count_evens(arr):
     """
     Count the number of even elements in the array.
@@ -320,6 +321,7 @@ def count_evens(arr):
         if element % 2 == 0:
             evens += 1
     return evens
+
 
 def reverse_array(arr):
     """
@@ -346,6 +348,7 @@ def reverse_array(arr):
         head_index += 1
     return arr
 
+
 def find_max_element(arr):
     """
     Find the maximum element in the array.
@@ -369,6 +372,7 @@ def find_max_element(arr):
             max_element = element
     return max_element
 
+
 def replace_negatives(arr):
     """
     Replace all negative elements in the array with 0.
@@ -386,6 +390,7 @@ def replace_negatives(arr):
     for i in range(len(arr)):
         arr[i] = 0 if arr[i] < 0 else arr[i]
     return arr
+
 
 def find_element_index(arr, target):
     """
@@ -406,6 +411,7 @@ def find_element_index(arr, target):
         if arr[i] == target:
             return i
     return -1
+
 
 def filter_greater_than(arr, threshold):
     """
@@ -428,6 +434,7 @@ def filter_greater_than(arr, threshold):
             greater_than_list.append(arr[i])
     return greater_than_list
 
+
 def multiply_array(arr, factor):
     """
     Multiply each element in the array by a given factor.
@@ -447,6 +454,7 @@ def multiply_array(arr, factor):
         return []
     return [arr[0] * factor] + multiply_array(arr[1:], factor)
 
+
 def remove_duplicates(arr):
     """
     Remove duplicate elements from the array, keeping the first occurrence.
@@ -462,6 +470,7 @@ def remove_duplicates(arr):
         []
     """
     return list(set(arr))
+
 
 def shift_elements(arr, shift):
     """
@@ -482,11 +491,12 @@ def shift_elements(arr, shift):
         return [0] * len(arr)
     index = 0
     while shift > 0:
-        arr[index] = arr[len(arr)-shift]
-        arr[len(arr)-shift] = 0
+        arr[index] = arr[len(arr) - shift]
+        arr[len(arr) - shift] = 0
         shift -= 1
         index += 1
     return arr
+
 
 def group_by_sum(arr, target_sum):
     """
@@ -517,6 +527,7 @@ def group_by_sum(arr, target_sum):
             sum_list.append([target_sum])
     return sum_list
 
+
 def split_array_equal_sums(arr):
     """
     Split the array into two parts with equal sums.
@@ -543,9 +554,9 @@ def split_array_equal_sums(arr):
         >>> split_array_equal_sums([5, 5, 5, 5, 5, 5])
         3  # Split at index 3: [5, 5, 5] and [5, 5, 5], both sum to 15
     """
-    arr_a = arr[:len(arr)//2]
-    arr_b = arr[len(arr)//2:]
-    difference = (sum(arr_a) - sum(arr_b))//2
+    arr_a = arr[:len(arr) // 2]
+    arr_b = arr[len(arr) // 2:]
+    difference = (sum(arr_a) - sum(arr_b)) // 2
     if difference < 0:
         if abs(difference) in arr_b:
             return len(arr_a) + 1
@@ -553,8 +564,9 @@ def split_array_equal_sums(arr):
         if difference in arr_a:
             return len(arr_b) + 1
     elif difference == 0:
-        return len(arr)//2
+        return len(arr) // 2
     return -1
+
 
 def max_product_pair(arr):
     """
@@ -614,6 +626,7 @@ def find_common_elements(arr1, arr2):
         return list(a.intersection(b))
     return list(b.intersection(a))
 
+
 def rotate_left_by_one(arr):
     """
     Rotate the array left by one position.
@@ -629,9 +642,10 @@ def rotate_left_by_one(arr):
         []
     """
     first = arr[0]
-    arr[0] = arr[len(arr)-1]
-    arr[len(arr)-1] = first
+    arr[0] = arr[len(arr) - 1]
+    arr[len(arr) - 1] = first
     return arr
+
 
 def find_pairs_with_sum(arr, target):
     """
@@ -657,6 +671,7 @@ def find_pairs_with_sum(arr, target):
             if i != j and ((arr[i], arr[j]) and (arr[j], arr[i]) not in sum_list) and (arr[i] + arr[j] == target):
                 sum_list.append((arr[i], arr[j]))
     return sum_list
+
 
 def segregate_pos_neg(arr):
     """
@@ -699,6 +714,7 @@ def segregate_pos_neg(arr):
             positives.append(0)
     return positives + negatives
 
+
 def find_subarray_with_sum(arr, target_sum):
     """
     Find the first subarray with the given sum.
@@ -728,9 +744,10 @@ def find_subarray_with_sum(arr, target_sum):
         return -1, -1
     for i in range(len(arr)):
         for j in range(i, len(arr)):
-            if sum(arr[i:j+1]) == target_sum:
+            if sum(arr[i:j + 1]) == target_sum:
                 return i, j
     return -1, -1
+
 
 def alternate_elements(arr):
     """
@@ -764,9 +781,10 @@ def count_frequency(arr):
         {1: 3}
     """
     frequency_dict = dict.fromkeys(arr, 0)
-    for k,v in frequency_dict.items():
+    for k, v in frequency_dict.items():
         frequency_dict[k] = arr.count(k)
     return frequency_dict
+
 
 def find_subarray_product(arr, target_product):
     """
@@ -787,9 +805,10 @@ def find_subarray_product(arr, target_product):
         return -1, -1
     for i in range(len(arr)):
         for j in range(i, len(arr)):
-            if math.prod(arr[i:j+1]) == target_product:
+            if math.prod(arr[i:j + 1]) == target_product:
                 return i, j
     return -1, -1
+
 
 def merge_alternate(arr1, arr2):
     """
@@ -815,6 +834,7 @@ def merge_alternate(arr1, arr2):
     merged = [arr1[0]] + [arr2[0]]
     return merged + merge_alternate(arr1[1:], arr2[1:])
 
+
 def find_min_max_difference(arr):
     """
     Find the difference between the maximum and minimum elements in the array.
@@ -832,6 +852,7 @@ def find_min_max_difference(arr):
     if len(arr) <= 1:
         return 0
     return max(arr) - min(arr)
+
 
 def partition_array(arr, pivot):
     """
@@ -859,6 +880,7 @@ def partition_array(arr, pivot):
     less_than = [x for x in arr if x < pivot]
     greater_than = [x for x in arr if x >= pivot]
     return sorted(less_than) + sorted(greater_than)
+
 
 def find_unique_elements(arr1, arr2):
     """
@@ -938,10 +960,10 @@ def swap_elements(arr, k):
         >>> swap_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5)
         [6, 2, 3, 4, 5, 1, 7, 8, 9, 10]  # Swap 1 with 6
     """
-    for i in range(0, len(arr)-k, k):
+    for i in range(0, len(arr) - k, k):
         element = arr[i]
-        arr[i] = arr[i+k]
-        arr[i+k] = element
+        arr[i] = arr[i + k]
+        arr[i + k] = element
     return arr
 
 
@@ -973,6 +995,7 @@ def count_subarrays_with_sum(arr, target_sum):
                 subarray_count += 1
     return subarray_count
 
+
 def interleave_arrays(arr1, arr2):
     """
     Interleave two arrays, taking elements alternately until one is exhausted, then append the rest.
@@ -992,6 +1015,7 @@ def interleave_arrays(arr1, arr2):
         return arr2 if len(arr1) == 0 else arr1
     interleaved_array = [arr1[0]] + [arr2[0]]
     return interleaved_array + interleave_arrays(arr1[1:], arr2[1:])
+
 
 def find_most_frequent(arr):
     """
@@ -1055,7 +1079,7 @@ def find_all_subarrays_with_sum(arr, target_sum):
         if arr[i] == target_sum:
             subarray.append((i, i))
         for j in range(len(arr)):
-            if i != j and sum(arr[i:j+1]) == target_sum and j >= i:
+            if i != j and sum(arr[i:j + 1]) == target_sum and j >= i:
                 subarray.append((i, j))
     return subarray
 
@@ -1148,6 +1172,7 @@ def find_triplets_with_sum(arr, target_sum):
                     triplets.append((arr[i], arr[j], arr[k]))
     return triplets
 
+
 def segregate_even_odd(arr):
     """
     Segregate even and odd numbers, maintaining relative order within each group.
@@ -1175,6 +1200,7 @@ def segregate_even_odd(arr):
         if arr[i] % 2 != 0:
             odds.append(arr[i])
     return evens + odds
+
 
 def find_k_largest_pairs(arr1, arr2, k):
     """
@@ -1220,7 +1246,7 @@ def find_k_largest_pairs(arr1, arr2, k):
     for i in range(len(arr1)):
         for j in range(len(arr2)):
             pairs.append((arr1[i], arr2[j]))
-    return sorted(pairs, key=lambda x: (sum(x), x[0]))[len(pairs)-k:][::-1]
+    return sorted(pairs, key=lambda x: (sum(x), x[0]))[len(pairs) - k:][::-1]
 
 
 def replace_with_next_greater(arr):
@@ -1264,6 +1290,7 @@ def replace_with_next_greater(arr):
                 replaced.append(-1)
     return replaced
 
+
 def find_subarray_max_min_diff(arr, k):
     """
     Find the subarray of length k with the minimum max-min difference.
@@ -1284,12 +1311,12 @@ def find_subarray_max_min_diff(arr, k):
         (0, 1)  # Subarray [-1, 0] has max-min = 1
     """
     max_min = max(arr[:k]) - min(arr[:k])
-    indices = 0, k-1
-    for i in range(len(arr)-k+1):
-        subarray = arr[i:i+k]
+    indices = 0, k - 1
+    for i in range(len(arr) - k + 1):
+        subarray = arr[i:i + k]
         if max(subarray) - min(subarray) < max_min:
             max_min = max(subarray) - min(subarray)
-            indices = i, i+k
+            indices = i, i + k
     return indices
 
 
@@ -1319,10 +1346,11 @@ def find_missing_and_repeated(arr):
         if arr.count(arr[i]) > 1:
             repeated = arr[i]
 
-    for i in range(1, len(arr)+1):
+    for i in range(1, len(arr) + 1):
         if i not in arr:
             missing = i
     return missing, repeated
+
 
 def zigzag_array(arr):
     """
@@ -1356,11 +1384,12 @@ def zigzag_array(arr):
     """
     arr = sorted(arr)
     for i in range(1, len(arr)):
-        if i % 2 != 0 and i+1 != len(arr):
+        if i % 2 != 0 and i + 1 != len(arr):
             swap = arr[i]
-            arr[i] = arr[i+1]
-            arr[i+1] = swap
+            arr[i] = arr[i + 1]
+            arr[i + 1] = swap
     return arr
+
 
 def find_all_pairs_with_product(arr, target_product):
     """
@@ -1383,6 +1412,7 @@ def find_all_pairs_with_product(arr, target_product):
     """
     # TODO
 
+
 def interleave_with_reverse(arr1, arr2):
     """
     Interleave two arrays, with the second array in reverse order.
@@ -1404,6 +1434,7 @@ def interleave_with_reverse(arr1, arr2):
     """
     # TODO
 
+
 def max_sum_subarray_length_k(arr, k):
     """
     Find the maximum sum of a subarray of length k.
@@ -1424,6 +1455,7 @@ def max_sum_subarray_length_k(arr, k):
         2  # Subarray [1, 1]
     """
     # TODO
+
 
 def find_elements_with_sum(arr1, arr2, target_sum):
     """
@@ -1447,6 +1479,7 @@ def find_elements_with_sum(arr1, arr2, target_sum):
     """
     # TODO
 
+
 def rearrange_alternate_sign(arr):
     """
     Rearrange array so that elements alternate in sign (positive, negative, positive, ...).
@@ -1466,6 +1499,7 @@ def rearrange_alternate_sign(arr):
         []
     """
     # TODO
+
 
 def find_k_smallest_sums(arr1, arr2, k):
     """
@@ -1489,6 +1523,7 @@ def find_k_smallest_sums(arr1, arr2, k):
     """
     # TODO
 
+
 def replace_with_previous_smaller(arr):
     """
     Replace each element with the previous smaller element, or -1 if none exists.
@@ -1508,6 +1543,7 @@ def replace_with_previous_smaller(arr):
         [-1, -1, -1]
     """
     # TODO
+
 
 def find_subarray_with_median(arr, k, median):
     """
@@ -1531,6 +1567,7 @@ def find_subarray_with_median(arr, k, median):
     """
     # TODO
 
+
 def count_distinct_in_window(arr, k):
     """
     Count distinct elements in every window of size k.
@@ -1551,6 +1588,7 @@ def count_distinct_in_window(arr, k):
         []
     """
     # TODO
+
 
 def find_maximum_in_each_window(arr, k):
     """
@@ -1573,6 +1611,7 @@ def find_maximum_in_each_window(arr, k):
     """
     # TODO
 
+
 def find_subarrays_with_k_distinct(arr, k):
     """
     Find all subarrays with exactly k distinct elements.
@@ -1593,6 +1632,7 @@ def find_subarrays_with_k_distinct(arr, k):
         [(0, 2), (1, 2)]  # Subarrays [-1,-1,0], [-1,0]
     """
     # TODO
+
 
 def merge_arrays_with_sum(arr1, arr2, target_sum):
     """
@@ -1616,6 +1656,7 @@ def merge_arrays_with_sum(arr1, arr2, target_sum):
     """
     # TODO
 
+
 def max_product_subarray_length_k(arr, k):
     """
     Find the maximum product of a subarray of length k.
@@ -1636,6 +1677,7 @@ def max_product_subarray_length_k(arr, k):
         0  # Subarray [0,1] or [1,0]
     """
     # TODO
+
 
 def find_elements_with_product(arr1, arr2, target_product):
     """
@@ -1659,6 +1701,7 @@ def find_elements_with_product(arr1, arr2, target_product):
     """
     # TODO
 
+
 def rearrange_alternate_high_low(arr):
     """
     Rearrange array to alternate high and low elements (high, low, high, ...).
@@ -1678,6 +1721,7 @@ def rearrange_alternate_high_low(arr):
         [2, -1, 1, 0]
     """
     # TODO
+
 
 def count_pairs_with_diff_k(arr, k):
     """
@@ -1700,6 +1744,7 @@ def count_pairs_with_diff_k(arr, k):
     """
     # TODO
 
+
 def replace_with_nearest_larger(arr):
     """
     Replace each element with the nearest larger element to its right, or -1 if none exists.
@@ -1719,6 +1764,7 @@ def replace_with_nearest_larger(arr):
         [-1, -1, -1]
     """
     # TODO
+
 
 def find_subarray_with_sum_range(arr, min_sum, max_sum):
     """
@@ -1742,6 +1788,7 @@ def find_subarray_with_sum_range(arr, min_sum, max_sum):
     """
     # TODO
 
+
 def count_subarrays_with_product_less_k(arr, k):
     """
     Count subarrays with product less than k.
@@ -1762,6 +1809,7 @@ def count_subarrays_with_product_less_k(arr, k):
         3  # Subarrays [1], [1], [1]
     """
     # TODO
+
 
 def find_min_difference_in_windows(arr, k):
     """
@@ -1784,6 +1832,7 @@ def find_min_difference_in_windows(arr, k):
     """
     # TODO
 
+
 def find_subarrays_with_k_pairs_sum(arr, k, target_sum):
     """
     Find all subarrays containing exactly k pairs of elements summing to target_sum.
@@ -1805,6 +1854,7 @@ def find_subarrays_with_k_pairs_sum(arr, k, target_sum):
         [(0, 1), (1, 2), (2, 3)]  # Subarrays [2,2] (pair: 2+2)
     """
     # TODO
+
 
 def merge_four_arrays_alternate(arr1, arr2, arr3, arr4):
     """
@@ -1829,6 +1879,7 @@ def merge_four_arrays_alternate(arr1, arr2, arr3, arr4):
     """
     # TODO
 
+
 def max_sum_subarray_with_min_k(arr, k):
     """
     Find the maximum sum of a subarray with at least k elements.
@@ -1849,6 +1900,7 @@ def max_sum_subarray_with_min_k(arr, k):
         0  # Subarray [0,0]
     """
     # TODO
+
 
 def find_triplets_with_product(arr, target_product):
     """
@@ -1871,6 +1923,7 @@ def find_triplets_with_product(arr, target_product):
     """
     # TODO
 
+
 def segregate_by_frequency(arr):
     """
     Segregate elements by frequency, with higher frequency elements first, maintaining relative order.
@@ -1890,6 +1943,7 @@ def segregate_by_frequency(arr):
         [1, 2, 3]  # Freq: 1(1), 2(1), 3(1)
     """
     # TODO
+
 
 def find_k_largest_triplets(arr1, arr2, arr3, k):
     """
@@ -1914,6 +1968,7 @@ def find_k_largest_triplets(arr1, arr2, arr3, k):
     """
     # TODO
 
+
 def replace_with_closest_smaller(arr):
     """
     Replace each element with the closest smaller element to its left, or -1 if none exists.
@@ -1933,6 +1988,7 @@ def replace_with_closest_smaller(arr):
         [-1, -1, -1]
     """
     # TODO
+
 
 def find_subarray_with_k_median(arr, k, median):
     """
@@ -1957,6 +2013,7 @@ def find_subarray_with_k_median(arr, k, median):
 
     # TODO
 
+
 def count_subarrays_with_sum_and_product(arr, target_sum, target_product):
     """
     Count subarrays with given sum and product.
@@ -1978,6 +2035,7 @@ def count_subarrays_with_sum_and_product(arr, target_sum, target_product):
         1  # Subarray [2,2]
     """
     # TODO
+
 
 def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
     """
@@ -2001,6 +2059,7 @@ def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
     """
     # TODO
 
+
 def find_subarrays_with_k_triplets(arr, k, target_sum):
     """
     Find all subarrays containing exactly k triplets with the given sum.
@@ -2022,6 +2081,7 @@ def find_subarrays_with_k_triplets(arr, k, target_sum):
         [(0, 2), (1, 3)]  # Subarrays [2,2,2] have triplet (2,2,2)
     """
     # TODO
+
 
 def interleave_arrays_with_diff(arr1, arr2, diff):
     """
@@ -2045,6 +2105,7 @@ def interleave_arrays_with_diff(arr1, arr2, diff):
     """
     # TODO
 
+
 def max_product_subarray_with_min_k(arr, k):
     """
     Find the maximum product of a subarray with at least k elements.
@@ -2065,6 +2126,7 @@ def max_product_subarray_with_min_k(arr, k):
         0  # Subarray [0,1]
     """
     # TODO
+
 
 def find_pairs_with_sum_and_product(arr1, arr2, target_sum, target_product):
     """
@@ -2089,6 +2151,7 @@ def find_pairs_with_sum_and_product(arr1, arr2, target_sum, target_product):
     """
     # TODO
 
+
 def rearrange_by_value_and_frequency(arr):
     """
     Rearrange array by value (descending) and frequency (ascending) within same values.
@@ -2108,6 +2171,7 @@ def rearrange_by_value_and_frequency(arr):
         [3, 2, 1]  # 3(freq 1), 2(freq 1), 1(freq 1)
     """
     # TODO
+
 
 def find_k_smallest_quads(arr1, arr2, arr3, arr4, k):
     """
@@ -2133,6 +2197,7 @@ def find_k_smallest_quads(arr1, arr2, arr3, arr4, k):
     """
     # TODO
 
+
 def replace_with_furthest_larger(arr):
     """
     Replace each element with the furthest larger element to its right, or -1 if none exists.
@@ -2152,6 +2217,7 @@ def replace_with_furthest_larger(arr):
         [-1, -1, -1]
     """
     # TODO
+
 
 def find_subarray_with_k_sum_range(arr, k, min_sum, max_sum):
     """
@@ -2176,6 +2242,7 @@ def find_subarray_with_k_sum_range(arr, k, min_sum, max_sum):
     """
     # TODO
 
+
 def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
     """
     Count subarrays with given median and sum.
@@ -2198,6 +2265,7 @@ def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
     """
     # TODO
 
+
 def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     """
     Find the minimum product of elements in each window of size window_size with at most k distinct elements.
@@ -2219,6 +2287,7 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
         []  # No window with 1 distinct element
     """
     # TODO
+
 
 if __name__ == "__main__":
     print(zigzag_array([10, 8, 6, 5]))
