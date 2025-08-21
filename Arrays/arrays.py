@@ -1362,7 +1362,6 @@ def zigzag_array(arr):
             arr[i+1] = swap
     return arr
 
-
 def find_all_pairs_with_product(arr, target_product):
     """
     Find all pairs of elements in the array with the given product.
