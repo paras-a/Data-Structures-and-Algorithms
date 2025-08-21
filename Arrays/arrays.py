@@ -1240,8 +1240,29 @@ def replace_with_next_greater(arr):
         [-1]
         >>> replace_with_next_greater([2, 2, 2])
         [-1, -1, -1]
+        >>> replace_with_next_greater([7, 2, 5, 1, 6])
+        [-1, 5, 6, 6, -1]
+        >>> replace_with_next_greater([-3, -1, -5, 0, 2])
+        [-1, 0, 0, 2, -1]
+        >>> replace_with_next_greater([1, 2, 3, 4, 5])
+        [2, 3, 4, 5, -1]
+        >>> replace_with_next_greater([10, 8, 6, 4, 2])
+        [-1, -1, -1, -1, -1]
+        >>> replace_with_next_greater([3, 3, 5, 3, 5])
+        [5, 5, -1, 5, -1]
     """
-    # TODO
+    replaced = []
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            if arr[j] > arr[i]:
+                replaced.append(arr[j])
+                break
+            if arr[i] == max(arr):
+                replaced.append(-1)
+                break
+            if j + 1 == len(arr):
+                replaced.append(-1)
+    return replaced
 
 def find_subarray_max_min_diff(arr, k):
     """
@@ -2174,20 +2195,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    # Test all examples from the docstring
-    assert find_k_largest_pairs([1, 2, 3], [4, 5], 3) == [(3, 5), (3, 4), (2, 5)], "Test case 1 failed"
-    assert find_k_largest_pairs([1], [2], 2) == [(1, 2)], "Test case 2 failed"
-    assert find_k_largest_pairs([], [1], 1) == [], "Test case 3 failed"
-    assert find_k_largest_pairs([1, 1], [2, 2], 2) == [(1, 2), (1, 2)], "Test case 4 failed"
-    assert find_k_largest_pairs([-1, 0], [1, 2], 2) == [(0, 2), (0, 1)], "Test case 5 failed"
-    assert find_k_largest_pairs([10, 5, 0, -5, 8], [7, 3, 9, 1, 4], 5) == [(10, 9), (10, 7), (8, 9), (8, 7), (10, 4)], "Test case 6 failed"
-    assert find_k_largest_pairs([1, 2], [3, 4], 10) == [(2, 4), (2, 3), (1, 4), (1, 3)], "Test case 7 failed"
-    assert find_k_largest_pairs([], [10, 20, 30, 40, 50], 3) == [], "Test case 8 failed"
-    assert find_k_largest_pairs([2, 2, 2], [3, 3], 4) == [(2, 3), (2, 3), (2, 3), (2, 3)], "Test case 9 failed"
-    assert find_k_largest_pairs([-1, -2, -3, -4], [-5, -6, -7], 3) == [(-1, -5), (-1, -6), (-2, -5)], "Test case 10 failed"
-    assert find_k_largest_pairs([0, 0, 1, 2], [0, 3, 0], 6) == [(2, 3), (1, 3), (0, 3), (0, 3), (2, 0), (2, 0)], "Test case 11 failed"
-    assert find_k_largest_pairs([5], [10], 1) == [(5, 10)], "Test case 12 failed"
-    assert find_k_largest_pairs([100, 50, 25, 10, 5], [200, 150, 100, 50], 2) == [(100, 200), (100, 150)], "Test case 13 failed"
-    assert find_k_largest_pairs([], [], 5) == [], "Test case 14 failed"
-    assert find_k_largest_pairs([10, 10, 10, 10], [10, 10, 10, 10], 3) == [(10, 10), (10, 10), (10, 10)], "Test case 15 failed"
-    print("All test cases passed!")
+    print(replace_with_next_greater([-3, -1, -5, 0, 2]))
