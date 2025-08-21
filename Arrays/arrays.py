@@ -1283,7 +1283,15 @@ def find_subarray_max_min_diff(arr, k):
         >>> find_subarray_max_min_diff([-1, 0, 2, -2], 2)
         (0, 1)  # Subarray [-1, 0] has max-min = 1
     """
-    # TODO
+    max_min = max(arr[:k]) - min(arr[:k])
+    indices = 0, k-1
+    for i in range(len(arr)-k+1):
+        subarray = arr[i:i+k]
+        if max(subarray) - min(subarray) < max_min:
+            max_min = max(subarray) - min(subarray)
+            indices = i, i+k
+    return indices
+
 
 def find_missing_and_repeated(arr):
     """
@@ -2195,4 +2203,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
     # TODO
 
 if __name__ == "__main__":
-    print(replace_with_next_greater([-3, -1, -5, 0, 2]))
+    print(find_subarray_max_min_diff([-1, 0, 2, -2], 2))
