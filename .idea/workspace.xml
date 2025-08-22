@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="solved zigzag_array(arr)&#10;&#10;My solution sorts the array prior to solving it. There are other ways to do it but the aim of problem is to have a&lt;b&gt;c&lt;d.">
+    <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="solved more problems">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arrays/arrays.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arrays/arrays_unittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays_unittest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +183,7 @@
       <workItem from="1755719714988" duration="4410000" />
       <workItem from="1755789824000" duration="1205000" />
       <workItem from="1755802655257" duration="6380000" />
-      <workItem from="1755826367441" duration="1299000" />
+      <workItem from="1755826367441" duration="2051000" />
     </task>
     <task id="LOCAL-00001" summary="Updated README.markdown">
       <option name="closed" value="true" />
@@ -442,7 +441,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755812671593</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="solved more problems">
+      <option name="closed" value="true" />
+      <created>1755827689809</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1755827689809</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,14 +474,15 @@
     <MESSAGE value="Solved find_k_largest_pairs(arr1, arr2, k)" />
     <MESSAGE value="solved replace_with_next_greater(arr)" />
     <MESSAGE value="solved zigzag_array(arr)&#10;&#10;My solution sorts the array prior to solving it. There are other ways to do it but the aim of problem is to have a&lt;b&gt;c&lt;d." />
-    <option name="LAST_COMMIT_MESSAGE" value="solved zigzag_array(arr)&#10;&#10;My solution sorts the array prior to solving it. There are other ways to do it but the aim of problem is to have a&lt;b&gt;c&lt;d." />
+    <MESSAGE value="solved more problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="solved more problems" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Arrays/arrays.py</url>
-          <line>2308</line>
+          <line>2326</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -482,7 +490,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$Doctests_in_arrays.coverage" NAME="Doctests in arrays Coverage Results" MODIFIED="1754606125138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
-    <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$arrays.coverage" NAME="arrays Coverage Results" MODIFIED="1755827641988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
+    <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$arrays.coverage" NAME="arrays Coverage Results" MODIFIED="1755827853912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
     <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$Doctest_find_kth_largest.coverage" NAME="Doctest find_kth_largest Coverage Results" MODIFIED="1754606157323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
     <SUITE FILE_PATH="coverage/Data_Structures_and_Algorithms$arrays_unittest.coverage" NAME="arrays_unittest Coverage Results" MODIFIED="1754681926708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Arrays" />
   </component>

@@ -1493,7 +1493,12 @@ def find_elements_with_sum(arr1, arr2, target_sum):
         >>> find_elements_with_sum([1, 1], [1, 1], 2)
         [(1, 1), (1, 1)]
     """
-    # TODO
+    elements = []
+    for i in range(len(arr1)):
+        for j in range(len(arr2)):
+            if arr1[i] + arr2[j] == target_sum:
+                elements.append((arr1[i], arr2[j]))
+    return elements
 
 
 def rearrange_alternate_sign(arr):
@@ -1504,16 +1509,31 @@ def rearrange_alternate_sign(arr):
     @return: List[int] -- Array with alternating positive and negative elements, or [] if not possible
     @example:
         >>> rearrange_alternate_sign([1, -2, 3, -4])
-        [1, -2, 3, -4]
+        [1, -2, 3, -4]  # 1 > 0, -2 < 0, 3 > 0, -4 < 0
         >>> rearrange_alternate_sign([1, 2, 3, -1])
-        [1, -1, 2, 3]
+        [1, -1, 2, 3]  # 1 > 0, -1 < 0, 2 > 0, 3 > 0
         >>> rearrange_alternate_sign([1, 2, 3])
-        []
+        []  # Only positive numbers, cannot alternate
         >>> rearrange_alternate_sign([-1, -2, -3])
-        []
+        []  # Only negative numbers, cannot alternate
         >>> rearrange_alternate_sign([])
-        []
+        []  # Empty array
+        >>> rearrange_alternate_sign([5, -3, 7, -1, 2, -6, 4])
+        [5, -3, 7, -1, 2, -6, 4]  # 5 > 0, -3 < 0, 7 > 0, -1 < 0, 2 > 0, -6 < 0, 4 > 0
+        >>> rearrange_alternate_sign([-2, 8, -4, 6, -5, 3, 1, -7])
+        [8, -2, 6, -4, 3, -5, 1, -7]  # 8 > 0, -2 < 0, 6 > 0, -4 < 0, 3 > 0, -5 < 0, 1 > 0, -7 < 0
+        >>> rearrange_alternate_sign([1, 2, 3, 4, 5, 6, -1, -2, -3])
+        []  # 6 positives, 3 negatives; need 5 positives and 4 negatives for length 9
+        >>> rearrange_alternate_sign([10, -9, 0, 8, -7, 6, -5])
+        []  # Presence of zero makes alternation impossible
+        >>> rearrange_alternate_sign([4, -3, 2, -1, 6, -5, 8, -7, 9, -10])
+        [4, -3, 2, -1, 6, -5, 8, -7, 9, -10]  # 4 > 0, -3 < 0, ..., 9 > 0, -10 < 0
+        >>> rearrange_alternate_sign([-1, -2, -3, -4, 5, 6, 7, 8, 9, -10])
+        [5, -1, 6, -2, 7, -3, 8, -4, 9, -10]  # 5 > 0, -1 < 0, ..., 9 > 0, -10 < 0
+        >>> rearrange_alternate_sign([1, 2, 3, 4, 5, 6, 7])
+        []  # 7 positives, 0 negatives; need 4 positives and 3 negatives for length 7
     """
+
     # TODO
 
 
@@ -2306,4 +2326,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(max_sum_subarray_length_k([-1, -2, -3], 2))
+    print(find_elements_with_sum([1, 2], [3, 4], 10))
