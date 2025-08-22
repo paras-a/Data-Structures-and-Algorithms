@@ -1,5 +1,7 @@
 import unittest
+
 from arrays import *
+
 
 class TestArrayProblems(unittest.TestCase):
     def test_find_maximum_subarray_sum(self):
@@ -2511,6 +2513,7 @@ class TestArrayProblems(unittest.TestCase):
             find_min_product_in_windows_with_k_distinct([1, 2, 3], 1, 3), [],
             msg="Failed for [1, 2, 3] with k=1, window_size=3, expected []"
         )
+
 
 if __name__ == '__main__':
     unittest.main()

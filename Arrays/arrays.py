@@ -1385,9 +1385,7 @@ def zigzag_array(arr):
     arr = sorted(arr)
     for i in range(1, len(arr)):
         if i % 2 != 0 and i + 1 != len(arr):
-            swap = arr[i]
-            arr[i] = arr[i + 1]
-            arr[i + 1] = swap
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
     return arr
 
 
@@ -1406,11 +1404,19 @@ def find_all_pairs_with_product(arr, target_product):
         >>> find_all_pairs_with_product([], 1)
         []
         >>> find_all_pairs_with_product([-2, -6, 2, 3], 12)
-        [(-2, -6), (2, 6)]
+        [(-2, -6)]
         >>> find_all_pairs_with_product([0, 0, 1], 0)
         [(0, 0), (0, 1)]
     """
-    # TODO
+    pairs = []
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            pair = arr[i], arr[j]
+            reverse_pair = arr[j], arr[i]
+            product = arr[i] * arr[j]
+            if i != j and product == target_product and pair not in pairs and reverse_pair not in pairs:
+                pairs.append((arr[i], arr[j]))
+    return pairs
 
 
 def interleave_with_reverse(arr1, arr2):
@@ -1432,7 +1438,14 @@ def interleave_with_reverse(arr1, arr2):
         >>> interleave_with_reverse([1, 1], [2, 2, 2])
         [1, 2, 1, 2, 2]
     """
-    # TODO
+    if not arr1 and not arr2:
+        return []
+    if arr1 and not arr2:
+        return arr1[::-1]
+    if arr2 and not arr1:
+        return arr2[::-1]
+    interleaved = [arr1[0], arr2[len(arr2)-1]]
+    return interleaved + interleave_with_reverse(arr1[1:], arr2[:len(arr2)-1])
 
 
 def max_sum_subarray_length_k(arr, k):
@@ -1454,7 +1467,10 @@ def max_sum_subarray_length_k(arr, k):
         >>> max_sum_subarray_length_k([1, 1, 1], 2)
         2  # Subarray [1, 1]
     """
-    # TODO
+    if len(arr) < k:
+        return None
+    sorted_arr = sorted(arr.copy())
+    return sum(sorted_arr[len(arr)-k:])
 
 
 def find_elements_with_sum(arr1, arr2, target_sum):
@@ -2290,4 +2306,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(zigzag_array([10, 8, 6, 5]))
+    print(max_sum_subarray_length_k([-1, -2, -3], 2))
