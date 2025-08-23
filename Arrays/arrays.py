@@ -1617,7 +1617,18 @@ def find_subarray_with_median(arr, k, median):
         >>> find_subarray_with_median([-1, 0, 1, 2], 3, 0)
         (0, 2)  # Subarray [-1, 0, 1] has median 0
     """
-    # TODO
+    indices = -1, -1
+    for i in range(len(arr)):
+        for j in range(i, k):
+            subarray = arr[i:j+1]
+            if len(subarray) == k and k % 2 == 0 and subarray[k//2] == median:
+                indices = i, j
+                break
+            if len(subarray) == k and k % 2 != 0 and subarray[(k+1)//2] == median:
+                indices = i, j
+                break
+        break
+    return indices
 
 
 def count_distinct_in_window(arr, k):
@@ -2342,4 +2353,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(find_k_smallest_sums([1, 2, 3, 4], [1, 2, 3], 10))
+    print(find_subarray_with_median([1, 2], 3, 1))
