@@ -1444,8 +1444,8 @@ def interleave_with_reverse(arr1, arr2):
         return arr1[::-1]
     if arr2 and not arr1:
         return arr2[::-1]
-    interleaved = [arr1[0], arr2[len(arr2)-1]]
-    return interleaved + interleave_with_reverse(arr1[1:], arr2[:len(arr2)-1])
+    interleaved = [arr1[0], arr2[len(arr2) - 1]]
+    return interleaved + interleave_with_reverse(arr1[1:], arr2[:len(arr2) - 1])
 
 
 def max_sum_subarray_length_k(arr, k):
@@ -1470,7 +1470,7 @@ def max_sum_subarray_length_k(arr, k):
     if len(arr) < k:
         return None
     sorted_arr = sorted(arr.copy())
-    return sum(sorted_arr[len(arr)-k:])
+    return sum(sorted_arr[len(arr) - k:])
 
 
 def find_elements_with_sum(arr1, arr2, target_sum):
@@ -1547,17 +1547,33 @@ def find_k_smallest_sums(arr1, arr2, k):
     @return: List[int] -- List of k smallest sums of pairs
     @example:
         >>> find_k_smallest_sums([1, 2], [3, 4], 3)
-        [4, 5, 6]  # Sums: 1+3, 1+4 or 2+3, 2+4
+        [4, 5, 5]  # Sums: 1+3, 1+4, 2+3
         >>> find_k_smallest_sums([1], [2], 2)
-        [3]
+        [3]  # Sum: 1+2 (only one pair, k exceeds pairs)
         >>> find_k_smallest_sums([], [1], 1)
-        []
+        []  # No pairs possible
         >>> find_k_smallest_sums([-1, 0], [1, 2], 2)
-        [-1, 0]  # Sums: -1+1, -1+2 or 0+1
+        [0, 1]  # Sums: -1+1, -1+2
         >>> find_k_smallest_sums([1, 1], [1, 1], 2)
-        [2, 2]
+        [2, 2]  # Sums: 1+1, 1+1
+        >>> find_k_smallest_sums([1, 3, 5, 7], [2, 4, 6], 6)
+        [3, 5, 5, 7, 7, 9]  # Sums: 1+2, 1+4, 3+2, 1+6, 3+4, 5+4
+        >>> find_k_smallest_sums([-2, -1, 0, 1], [3, 4, 5], 5)
+        [1, 2, 2, 3, 3]  # Sums: -2+3, -2+4, -1+3, -2+5, -1+4
+        >>> find_k_smallest_sums([2, 4, 6, 8, 10], [1, 2], 7)
+        [3, 4, 5, 6, 7, 8, 10]  # Sums: 2+1, 2+2, 4+1, 4+2, 6+1, 6+2, 8+2 (k=7, 10 pairs)
+        >>> find_k_smallest_sums([1, 2, 3], [-3, -2, -1, 0], 8)
+        [-2, -1, -1, 0, 0, 1, 1, 2]  # Sums: 1+(-3), 1+(-2), 2+(-3), 1+(-1), 2+(-2), 3+(-3), 2+(-1), 3+(-2)
+        >>> find_k_smallest_sums([1, 1, 1, 1], [2, 2, 2], 12)
+        [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]  # Sums: 1+2 (all 12 pairs yield 3)
+        >>> find_k_smallest_sums([1, 2, 3, 4], [], 1)
+        []  # No pairs possible
     """
-    # TODO
+    sums = []
+    for i in range(len(arr1)):
+        for j in range(len(arr2)):
+            sums.append(arr1[i] + arr2[j])
+    return sorted(sums)[:k]
 
 
 def replace_with_previous_smaller(arr):
@@ -2326,4 +2342,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(find_elements_with_sum([1, 2], [3, 4], 10))
+    print(find_k_smallest_sums([1, 2, 3, 4], [1, 2, 3], 10))
