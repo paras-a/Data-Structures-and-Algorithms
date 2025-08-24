@@ -1620,11 +1620,11 @@ def find_subarray_with_median(arr, k, median):
     indices = -1, -1
     for i in range(len(arr)):
         for j in range(i, k):
-            subarray = arr[i:j+1]
-            if len(subarray) == k and k % 2 == 0 and subarray[k//2] == median:
+            subarray = arr[i:j + 1]
+            if len(subarray) == k and k % 2 == 0 and subarray[k // 2] == median:
                 indices = i, j
                 break
-            if len(subarray) == k and k % 2 != 0 and subarray[(k+1)//2] == median:
+            if len(subarray) == k and k % 2 != 0 and subarray[(k + 1) // 2] == median:
                 indices = i, j
                 break
         break
@@ -1676,8 +1676,8 @@ def count_distinct_in_window(arr, k):
         return []
 
     windows = []
-    for i in range(len(arr)-k+1):
-        window = arr[i:i+k]
+    for i in range(len(arr) - k + 1):
+        window = arr[i:i + k]
         windows.append(window)
 
     unique = []
@@ -1709,8 +1709,8 @@ def find_maximum_in_each_window(arr, k):
         return []
 
     windows = []
-    for i in range(len(arr)-k):
-        window = arr[i:i+k]
+    for i in range(len(arr) - k):
+        window = arr[i:i + k]
         windows.append(window)
 
     max_window = []
@@ -1771,7 +1771,7 @@ def find_subarrays_with_k_distinct(arr, k):
     distinct = []
     for i in range(len(arr)):
         for j in range(len(arr)):
-            subarray = arr[i:j+1]
+            subarray = arr[i:j + 1]
             if len(subarray) > 1 and len(set(subarray)) == k:
                 distinct.append((i, j))
     return distinct
@@ -1807,6 +1807,7 @@ def merge_arrays_with_sum(arr1, arr2, target_sum):
 
     return summed_array
 
+
 def max_product_subarray_length_k(arr, k):
     """
     Find the maximum product of a subarray of length k.
@@ -1833,7 +1834,7 @@ def max_product_subarray_length_k(arr, k):
     max_product = 0
 
     for i in range(len(arr)):
-        subarray = arr[i:i+k]
+        subarray = arr[i:i + k]
         if math.prod(subarray) > max_product:
             max_product = math.prod(subarray)
 
@@ -1947,7 +1948,16 @@ def find_subarray_with_sum_range(arr, min_sum, max_sum):
         >>> find_subarray_with_sum_range([2, 2, 2], 4, 4)
         (0, 1)  # Subarray [2,2] sums to 4
     """
-    # TODO
+    indices = -1, -1
+
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            subarray = arr[i:j + 1]
+            if min_sum <= sum(subarray) <= max_sum:
+                indices = i, j
+                break
+        break
+    return indices
 
 
 def count_subarrays_with_product_less_k(arr, k):
@@ -1959,17 +1969,25 @@ def count_subarrays_with_product_less_k(arr, k):
     @return: int -- Number of subarrays with product less than k
     @example:
         >>> count_subarrays_with_product_less_k([1, 2, 3, 4], 10)
-        4  # Subarrays [1], [2], [3], [1,2]
+        7
         >>> count_subarrays_with_product_less_k([1, 2], 1)
         0
         >>> count_subarrays_with_product_less_k([], 1)
         0
         >>> count_subarrays_with_product_less_k([2, 2], 4)
-        2  # Subarrays [2], [2]
+        2
         >>> count_subarrays_with_product_less_k([1, 1, 1], 2)
-        3  # Subarrays [1], [1], [1]
+        3
     """
-    # TODO
+    num_subarrays = 0
+
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            subarray = arr[i:j + 1]
+            if math.prod(subarray) < k:
+                num_subarrays += 1
+
+    return num_subarrays
 
 
 def find_min_difference_in_windows(arr, k):
@@ -1981,17 +1999,22 @@ def find_min_difference_in_windows(arr, k):
     @return: List[int] -- List of min differences for each window
     @example:
         >>> find_min_difference_in_windows([1, 3, 5, 2], 3)
-        [2, 3]  # Windows: [1,3,5] (5-3=2), [3,5,2] (5-2=3)
+        [4, 3]
         >>> find_min_difference_in_windows([1], 1)
         [0]
         >>> find_min_difference_in_windows([], 1)
         []
         >>> find_min_difference_in_windows([-1, -2, -3], 2)
-        [1, 1]  # Windows: [-1,-2], [-2,-3]
+        [1, 1]
         >>> find_min_difference_in_windows([2, 2, 2], 2)
         [0, 0]
     """
-    # TODO
+    difference = []
+    for i in range(len(arr)):
+        window = arr[i:i+k]
+        if len(window) == k:
+            difference.append(max(window) - min(window))
+    return difference
 
 
 def find_subarrays_with_k_pairs_sum(arr, k, target_sum):
@@ -2451,4 +2474,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(max_product_subarray_length_k([0, 1, 0], 2))
+    print(find_min_difference_in_windows([-1, -2, -3], 2))
