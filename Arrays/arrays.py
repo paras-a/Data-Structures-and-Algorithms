@@ -1640,17 +1640,50 @@ def count_distinct_in_window(arr, k):
     @return: List[int] -- List of distinct element counts for each window
     @example:
         >>> count_distinct_in_window([1, 2, 1, 3, 4], 3)
-        [3, 3, 3]  # Windows: [1,2,1], [2,1,3], [1,3,4]
+        [2, 3, 3]  # Windows: [1,2,1], [2,1,3], [1,3,4]
         >>> count_distinct_in_window([1, 1], 2)
-        [1]
+        [1]  # Window: [1,1]
         >>> count_distinct_in_window([], 1)
-        []
+        []  # No windows
         >>> count_distinct_in_window([1, 1, 1], 2)
-        [1, 1]
+        [1, 1]  # Windows: [1,1], [1,1]
         >>> count_distinct_in_window([1, 2, 3], 4)
-        []
+        []  # k > n, no windows
+        >>> count_distinct_in_window([1, 1, 2, 2, 3, 3, 4], 3)
+        [2, 2, 2, 2, 2]  # Windows: [1,1,2], [1,2,2], [2,2,3], [2,3,3], [3,3,4]
+        >>> count_distinct_in_window([-1, 0, 1, -1, 2, 3, 4], 4)
+        [3, 4, 4, 4]  # Windows: [-1,0,1,-1], [0,1,-1,2], [1,-1,2,3], [-1,2,3,4]
+        >>> count_distinct_in_window([1, 2, 3, 4, 5, 5, 5, 5], 5)
+        [5, 4, 3, 2]  # Windows: [1,2,3,4,5], [2,3,4,5,5], [3,4,5,5,5], [4,5,5,5,5]
+        >>> count_distinct_in_window([0, 0, 0, 0, 0, 0], 2)
+        [1, 1, 1, 1, 1]  # Windows: [0,0], [0,0], [0,0], [0,0], [0,0]
+        >>> count_distinct_in_window([1, 2, 3, 4, 5, 6], 7)
+        []  # k > n, no windows
+        >>> count_distinct_in_window([-2, -2, -1, -1, 0, 1, 2, 2], 6)
+        [4, 5, 4]  # Windows: [-2,-2,-1,-1,0,1], [-2,-1,-1,0,1,2], [-1,-1,0,1,2,2]
+        >>> count_distinct_in_window([1, 2, 2, 3, 3, 4, 4, 5, 5], 4)
+        [3, 3, 3, 3, 3, 3]  # Windows: [1,2,2,3], [2,2,3,3], [2,3,3,4], [3,3,4,4], [3,4,4,5], [4,4,5,5]
+        >>> count_distinct_in_window([-3, -2, -1, 0, 1, 2, 3, 4, 5], 5)
+        [5, 5, 5, 5, 5]  # Windows: [-3,-2,-1,0,1], [-2,-1,0,1,2], [-1,0,1,2,3], [0,1,2,3,4], [1,2,3,4,5]
+        >>> count_distinct_in_window([1, 1, 1, 2, 2, 2, 3, 3], 6)
+        [3, 3, 3]  # Windows: [1,1,1,2,2,2], [1,1,2,2,2,3], [1,2,2,2,3,3]
+        >>> count_distinct_in_window([5, 5, 5, 5, 5, 5, 5], 3)
+        [1, 1, 1, 1, 1]  # Windows: [5,5,5], [5,5,5], [5,5,5], [5,5,5], [5,5,5]
+        >>> count_distinct_in_window([1, 2, 3, 4, 5, 6, 7, 8], 2)
+        [2, 2, 2, 2, 2, 2, 2]  # Windows: [1,2], [2,3], [3,4], [4,5], [5,6], [6,7], [7,8]
     """
-    # TODO
+    if k > len(arr):
+        return []
+
+    windows = []
+    for i in range(len(arr)-k+1):
+        window = arr[i:i+k]
+        windows.append(window)
+
+    unique = []
+    for window in windows:
+        unique.append(len(set(window)))
+    return unique
 
 
 def find_maximum_in_each_window(arr, k):
@@ -1672,7 +1705,19 @@ def find_maximum_in_each_window(arr, k):
         >>> find_maximum_in_each_window([2, 2, 2], 2)
         [2, 2]
     """
-    # TODO
+    if k > len(arr):
+        return []
+
+    windows = []
+    for i in range(len(arr)-k):
+        window = arr[i:i+k]
+        windows.append(window)
+
+    max_window = []
+    for window in windows:
+        max_window.append(max(window))
+
+    return max_window
 
 
 def find_subarrays_with_k_distinct(arr, k):
@@ -1684,17 +1729,52 @@ def find_subarrays_with_k_distinct(arr, k):
     @return: List[tuple[int, int]] -- List of (start, end) indices of subarrays with k distinct elements
     @example:
         >>> find_subarrays_with_k_distinct([1, 2, 1, 3], 2)
-        [(0, 1), (0, 2), (1, 3), (2, 3)]  # Subarrays [1,2], [1,2,1], [2,1,3], [1,3]
+        [(0, 1), (0, 2), (1, 2), (2, 3)]  # Subarrays: [1,2], [1,2,1], [2,1], [1,3]
         >>> find_subarrays_with_k_distinct([1, 1, 1], 2)
-        []
+        []  # No subarrays with 2 distinct elements
         >>> find_subarrays_with_k_distinct([], 1)
-        []
+        []  # No subarrays
         >>> find_subarrays_with_k_distinct([1, 2, 2, 3], 3)
-        [(0, 3)]  # Subarray [1,2,2,3]
+        [(0, 3)]  # Subarray: [1,2,2,3]
         >>> find_subarrays_with_k_distinct([-1, -1, 0], 2)
-        [(0, 2), (1, 2)]  # Subarrays [-1,-1,0], [-1,0]
+        [(0, 2), (1, 2)]  # Subarrays: [-1,-1,0], [-1,0]
+        >>> find_subarrays_with_k_distinct([1, 2, 2, 3, 3, 4], 2)
+        [(0, 1), (0, 2), (1, 3), (2, 3), (2, 4), (3, 5), (4, 5)]  # Subarrays: [1,2], [1,2,2], [2,2,3], [2,3], [2,3,3],
+        [3,3,4], [3,4]
+        >>> find_subarrays_with_k_distinct([-1, 0, 1, -1, 2, 0], 3)
+        [(0, 2), (0, 3), (1, 3), (2, 4), (3, 5)]  # Subarrays: [-1,0,1], [-1,0,1,-1], [0,1,-1], [1,-1,2], [-1,2,0]
+        >>> find_subarrays_with_k_distinct([1, 1, 1, 1, 1], 1)
+        [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 1), (1, 2), (1, 3), (1, 4), (2, 2), (2, 3), (2, 4), (3, 3), (3, 4),
+         (4, 4)]  # All subarrays with only 1
+        >>> find_subarrays_with_k_distinct([1, 2, 3, 4, 5, 6], 6)
+        [(0, 5)]  # Subarray: [1,2,3,4,5,6]
+        >>> find_subarrays_with_k_distinct([2, 2, 2, 2, 3, 3, 3], 2)
+        [(0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 3), (1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6),
+        (3, 5), (3, 6), (4, 6)]  # Subarrays: [2,2,3], [2,2,2,3], [2,2,2,2,3], [2,2,2,2,3,3], [2,2,2,2,3,3,3],
+        [2,2,3], [2,2,2,3], [2,2,2,3,3], [2,2,2,3,3,3], [2,2,3,3], [2,2,3,3,3], [2,2,3,3,3,3], [2,3,3], [2,3,3,3],
+        [3,3,3]
+        >>> find_subarrays_with_k_distinct([1, 1, 2, 2, 3, 3, 4, 4], 3)
+        [(0, 3), (0, 4), (1, 4), (1, 5), (2, 5), (2, 6), (3, 6), (3, 7), (4, 7)]  # Subarrays: [1,1,2,2], [1,1,2,2,3],
+        [1,2,2,3], [1,2,2,3,3], [2,2,3,3], [2,2,3,3,4], [2,3,3,4], [2,3,3,4,4], [3,3,4,4]
+        >>> find_subarrays_with_k_distinct([-2, -1, 0, 1, 2, 3, 4], 4)
+        [(0, 3), (0, 4), (1, 4), (1, 5), (2, 5), (2, 6), (3, 6)]  # Subarrays: [-2,-1,0,1], [-2,-1,0,1,2], [-1,0,1,2],
+        [-1,0,1,2,3], [0,1,2,3], [0,1,2,3,4], [1,2,3,4]
+        >>> find_subarrays_with_k_distinct([0, 0, 0, 0, 1, 1], 2)
+        [(0, 4), (0, 5), (1, 5), (2, 5), (3, 5)]  # Subarrays: [0,0,0,0,1], [0,0,0,0,1,1], [0,0,0,1,1], [0,0,1,1],
+        [0,1,1]
+        >>> find_subarrays_with_k_distinct([1, 2, 3, 4, 5, 5, 5], 5)
+        [(0, 4), (0, 5), (0, 6)]  # Subarrays: [1,2,3,4,5], [1,2,3,4,5,5], [1,2,3,4,5,5,5]
+        >>> find_subarrays_with_k_distinct([1, 1, 2, 2, 3, 3, 4, 5], 4)
+        [(0, 5), (0, 6), (1, 6), (1, 7), (2, 7)]  # Subarrays: [1,1,2,2,3,3], [1,1,2,2,3,3,4], [1,2,2,3,3,4],
+        [1,2,2,3,3,4,5], [2,2,3,3,4,5]
     """
-    # TODO
+    distinct = []
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            subarray = arr[i:j+1]
+            if len(subarray) > 1 and len(set(subarray)) == k:
+                distinct.append((i, j))
+    return distinct
 
 
 def merge_arrays_with_sum(arr1, arr2, target_sum):
@@ -2353,4 +2433,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(find_subarray_with_median([1, 2], 3, 1))
+    print(find_subarrays_with_k_distinct([-1, 0, 1, -1, 2, 0], 3))
