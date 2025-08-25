@@ -2011,7 +2011,7 @@ def find_min_difference_in_windows(arr, k):
     """
     difference = []
     for i in range(len(arr)):
-        window = arr[i:i+k]
+        window = arr[i:i + k]
         if len(window) == k:
             difference.append(max(window) - min(window))
     return difference
@@ -2400,7 +2400,19 @@ def replace_with_furthest_larger(arr):
         >>> replace_with_furthest_larger([2, 2, 2])
         [-1, -1, -1]
     """
-    # TODO
+    max_element = max(arr)
+    max_index = arr.index(max_element)
+
+    if 1 < max_index < len(arr) - 1:
+        arr[0:max_index] = [4] * max_index
+        arr[max_index:] = [-1] * (len(arr) - max_index)
+    elif max_index == len(arr) - 1:
+        arr[0:max_index].fill(max_element)
+        arr[max_index] = -1
+    else:
+        arr = [-1] * len(arr)
+
+    return arr
 
 
 def find_subarray_with_k_sum_range(arr, k, min_sum, max_sum):
@@ -2424,7 +2436,15 @@ def find_subarray_with_k_sum_range(arr, k, min_sum, max_sum):
         >>> find_subarray_with_k_sum_range([2, 2, 2], 2, 4, 4)
         (0, 1)  # Subarray [2,2] sums to 4
     """
-    # TODO
+    indices = -1, -1
+
+    for i in range(len(arr) - k):
+        subarray = arr[i:i + k]
+        if min_sum <= sum(subarray) <= max_sum:
+            indices = i, i + k - 1
+            break
+
+    return indices
 
 
 def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
@@ -2474,4 +2494,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(find_min_difference_in_windows([-1, -2, -3], 2))
+    print(replace_with_furthest_larger([5, 4, 3]))
