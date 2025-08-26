@@ -2457,17 +2457,43 @@ def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
     @return: int -- Number of subarrays with target median and sum
     @example:
         >>> count_subarrays_with_median_and_sum([1, 2, 3, 2], 2, 5)
-        2  # Subarrays [1,2,3], [2,3] have median 2, sum 5
+        0  # No subarrays have median 2 and sum 5
         >>> count_subarrays_with_median_and_sum([1, 2], 1, 3)
-        0
+        0  # No subarrays have median 1 and sum 3
         >>> count_subarrays_with_median_and_sum([], 0, 0)
-        0
+        0  # No subarrays
         >>> count_subarrays_with_median_and_sum([-1, 0, 1], 0, 0)
-        1  # Subarray [-1,0,1] has median 0, sum 0
+        2  # Subarrays: [0], [-1,0,1]
         >>> count_subarrays_with_median_and_sum([2, 2], 2, 4)
-        1  # Subarray [2,2] has median 2, sum 4
+        1  # Subarray: [2,2]
+        >>> count_subarrays_with_median_and_sum([1, 2, 3, 4, 5], 3, 15)
+        1  # Subarray: [1,2,3,4,5]
+        >>> count_subarrays_with_median_and_sum([-2, -1, 0, 1, 2], 0, 0)
+        2  # Subarrays: [0], [-2,-1,0,1,2]
+        >>> count_subarrays_with_median_and_sum([2, 2, 2, 2, 2], 2, 10)
+        1  # Subarray: [2,2,2,2,2]
+        >>> count_subarrays_with_median_and_sum([1, 1, 2, 2, 3], 1.5, 3)
+        2  # Subarrays: [1,2], [2,1]
+        >>> count_subarrays_with_median_and_sum([-1, 0, 1, 2, 3], -0.5, 0)
+        1  # Subarray: [-1,0,1]
     """
-    # TODO
+    count = 0
+
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            subarray = arr[i:j+1]
+            if len(subarray) % 2 == 0:
+                median = subarray[(len(subarray) + 1)//2]
+                total = sum(subarray)
+                if median == target_median and total == target_sum:
+                    count += 1
+            else:
+                median = subarray[len(subarray)//2]
+                total = sum(subarray)
+                if median == target_median and total == target_sum:
+                    count += 1
+
+    return count
 
 
 def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
@@ -2494,4 +2520,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(replace_with_furthest_larger([5, 4, 3]))
+    print(count_subarrays_with_median_and_sum([1, 2, 3, 4, 5], 3, 15))
