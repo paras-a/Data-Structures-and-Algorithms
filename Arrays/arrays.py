@@ -2055,13 +2055,34 @@ def merge_four_arrays_alternate(arr1, arr2, arr3, arr4):
         >>> merge_four_arrays_alternate([1], [2], [3], [4])
         [1, 2, 3, 4]
         >>> merge_four_arrays_alternate([], [1], [2], [3])
-        []
+        [1, 2, 3]
         >>> merge_four_arrays_alternate([-1, -2], [1], [2], [3])
-        [-1, 1, 2, 3]
+        [-1, 1, 2, 3, -2]
         >>> merge_four_arrays_alternate([1, 1], [2, 2], [3, 3], [])
-        []
+        [1, 2, 3, 1, 2, 3]
     """
-    # TODO
+
+    interleaved = []
+
+    array_lengths = {"arr1": (len(arr1), arr1), "arr2": (len(arr2), arr2),
+                     "arr3": (len(arr3), arr3), "arr4": (len(arr4), arr4)}
+
+    max_length_key = max(array_lengths, key=array_lengths.get)
+    max_length_val = array_lengths[max_length_key]
+
+    for i in range(max_length_val[0]):
+        if len(arr1) != 0 and i < len(arr1):
+            interleaved.append(arr1[i])
+        if len(arr2) != 0 and i < len(arr2):
+            interleaved.append(arr2[i])
+        if len(arr3) != 0 and i < len(arr3):
+            interleaved.append(arr3[i])
+        if len(arr4) != 0 and i < len(arr4):
+            interleaved.append(arr4[i])
+
+    return interleaved
+
+
 
 
 def max_sum_subarray_with_min_k(arr, k):
@@ -2082,9 +2103,29 @@ def max_sum_subarray_with_min_k(arr, k):
         -3  # Subarray [-1,-2]
         >>> max_sum_subarray_with_min_k([0, 0, 0, 0], 2)
         0  # Subarray [0,0]
+        >>> max_sum_subarray_with_min_k([5, -2, 3, 1, -1], 2)
+        7  # Subarray [5,-2,3,1]
+        >>> max_sum_subarray_with_min_k([1, 1, 1, 1, 1], 5)
+        5  # Subarray [1,1,1,1,1]
+        >>> max_sum_subarray_with_min_k([-5, -4, -3, -2, -1], 3)
+        -6  # Subarray [-3,-2,-1]
+        >>> max_sum_subarray_with_min_k([10], 1)
+        10  # Subarray [10]
+        >>> max_sum_subarray_with_min_k([2, -3, 4, -2, 5], 4)
+        4  # Subarray [2,-3,4,-2,5] or [-3,4,-2,5]
     """
-    # TODO
+    if not arr or len(arr) < k:
+        return None
 
+    max_sum = sum(arr[:k])
+
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            subarray = arr[i:j+1]
+            if max_sum < sum(subarray) and len(subarray) >= k:
+                max_sum = sum(subarray)
+
+    return max_sum
 
 def find_triplets_with_product(arr, target_product):
     """
@@ -2333,7 +2374,14 @@ def find_pairs_with_sum_and_product(arr1, arr2, target_sum, target_product):
         >>> find_pairs_with_sum_and_product([2, 2], [2, 2], 4, 4)
         [(2, 2), (2, 2)]  # Pairs (2,2)
     """
-    # TODO
+    pairs = []
+
+    for i in range(len(arr1)):
+        for j in range(len(arr2)):
+            if arr1[i] + arr2[j] == target_sum and arr1[i] * arr2[j] == target_product:
+                pairs.append((arr1[i], arr2[j]))
+
+    return pairs
 
 
 def rearrange_by_value_and_frequency(arr):
@@ -2373,11 +2421,21 @@ def find_k_smallest_quads(arr1, arr2, arr3, arr4, k):
         >>> find_k_smallest_quads([1], [2], [3], [4], 2)
         [(1, 2, 3, 4)]  # Sum: 10
         >>> find_k_smallest_quads([], [1], [2], [3], 1)
-        []
+        []  # No quadruplets possible
         >>> find_k_smallest_quads([-1, 0], [1, 2], [3], [4], 2)
         [(-1, 1, 3, 4), (-1, 2, 3, 4)]  # Sums: 7, 8
         >>> find_k_smallest_quads([1, 1], [2, 2], [3, 3], [4, 4], 2)
         [(1, 2, 3, 4), (1, 2, 3, 4)]  # Sums: 10, 10
+        >>> find_k_smallest_quads([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], 3)
+        [(1, 1, 1, 1), (1, 1, 1, 2), (1, 1, 1, 3)]  # Sums: 4, 5, 6
+        >>> find_k_smallest_quads([-2, -1, 0, 1, 2], [2, 3, 4, 5, 6], [1, 2, 3, 4, 5], [0, 1, 2, 3, 4], 2)
+        [(-2, 2, 1, 0), (-2, 2, 1, 1)]  # Sums: 1, 2
+        >>> find_k_smallest_quads([1, 1, 1, 1, 1], [2, 2, 2, 2, 2], [3, 3, 3, 3, 3], [4, 4, 4, 4, 4], 5)
+        [(1, 2, 3, 4), (1, 2, 3, 4), (1, 2, 3, 4), (1, 2, 3, 4), (1, 2, 3, 4)]  # Sums: 10, 10, 10, 10, 10
+        >>> find_k_smallest_quads([2, 3, 4, 5, 6], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [10, 20, 30, 40, 50], 2)
+        [(2, 1, 1, 10), (2, 1, 2, 10)]  # Sums: 14, 15
+        >>> find_k_smallest_quads([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [], 1)
+        []  # No quadruplets possible
     """
     # TODO
 
@@ -2520,4 +2578,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(count_subarrays_with_median_and_sum([1, 2, 3, 4, 5], 3, 15))
+    print(merge_four_arrays_alternate([], [1], [2], [3]))
