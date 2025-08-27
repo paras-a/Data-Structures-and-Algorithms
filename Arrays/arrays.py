@@ -2083,8 +2083,6 @@ def merge_four_arrays_alternate(arr1, arr2, arr3, arr4):
     return interleaved
 
 
-
-
 def max_sum_subarray_with_min_k(arr, k):
     """
     Find the maximum sum of a subarray with at least k elements.
@@ -2121,11 +2119,12 @@ def max_sum_subarray_with_min_k(arr, k):
 
     for i in range(len(arr)):
         for j in range(i, len(arr)):
-            subarray = arr[i:j+1]
+            subarray = arr[i:j + 1]
             if max_sum < sum(subarray) and len(subarray) >= k:
                 max_sum = sum(subarray)
 
     return max_sum
+
 
 def find_triplets_with_product(arr, target_product):
     """
@@ -2539,14 +2538,14 @@ def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
 
     for i in range(len(arr)):
         for j in range(i, len(arr)):
-            subarray = arr[i:j+1]
+            subarray = arr[i:j + 1]
             if len(subarray) % 2 == 0:
-                median = subarray[(len(subarray) + 1)//2]
+                median = subarray[(len(subarray) + 1) // 2]
                 total = sum(subarray)
                 if median == target_median and total == target_sum:
                     count += 1
             else:
-                median = subarray[len(subarray)//2]
+                median = subarray[len(subarray) // 2]
                 total = sum(subarray)
                 if median == target_median and total == target_sum:
                     count += 1
