@@ -2033,7 +2033,7 @@ def find_subarrays_with_k_pairs_sum(arr, k, target_sum):
         >>> find_subarrays_with_k_pairs_sum([], 1, 1)
         []
         >>> find_subarrays_with_k_pairs_sum([-1, 1, -1, 1], 2, 0)
-        [(0, 3)]  # Subarray [-1,1,-1,1] (pairs: -1+1, -1+1)
+        [(0, 2), (1, 3)]
         >>> find_subarrays_with_k_pairs_sum([2, 2, 2, 2], 1, 4)
         [(0, 1), (1, 2), (2, 3)]  # Subarrays [2,2] (pair: 2+2)
     """
@@ -2258,7 +2258,15 @@ def count_subarrays_with_sum_and_product(arr, target_sum, target_product):
         >>> count_subarrays_with_sum_and_product([2, 2], 4, 4)
         1  # Subarray [2,2]
     """
-    # TODO
+    count = 0
+
+    for i in range(len(arr)):
+        for j in range(i, len(arr)):
+            subarray = arr[i:j+1]
+            if sum(subarray) == target_sum and math.prod(subarray) == target_product:
+                count += 1
+
+    return count
 
 
 def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
@@ -2577,4 +2585,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(merge_four_arrays_alternate([], [1], [2], [3]))
+    print(count_subarrays_with_sum_and_product([1, 2, 3, 2], 5, 6))
