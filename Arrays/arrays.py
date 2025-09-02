@@ -2279,7 +2279,7 @@ def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
     @return: List[int] -- Maximum sum for each valid window
     @example:
         >>> find_max_sum_in_windows_with_k_distinct([1, 2, 1, 3, 4], 2, 3)
-        [4, 6, 8]  # Windows: [1,2,1], [2,1,3], [1,3,4]
+        [4]  # Windows: [1,2,1]
         >>> find_max_sum_in_windows_with_k_distinct([1, 1], 2, 2)
         [2]  # Window: [1,1]
         >>> find_max_sum_in_windows_with_k_distinct([], 1, 1)
@@ -2289,8 +2289,14 @@ def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
         >>> find_max_sum_in_windows_with_k_distinct([1, 2, 3], 1, 3)
         []  # No window with 1 distinct element
     """
-    # TODO
+    max_sums = []
 
+    for i in range(len(arr)):
+        subarray = arr[i:i+window_size]
+        if len(set(subarray)) == k and len(subarray) == window_size:
+            max_sums.append(sum(subarray))
+
+    return max_sums
 
 def find_subarrays_with_k_triplets(arr, k, target_sum):
     """
@@ -2585,4 +2591,4 @@ def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
 
 
 if __name__ == "__main__":
-    print(count_subarrays_with_sum_and_product([1, 2, 3, 2], 5, 6))
+    print(find_max_sum_in_windows_with_k_distinct([1, 2, 1, 3, 4], 2, 3))
