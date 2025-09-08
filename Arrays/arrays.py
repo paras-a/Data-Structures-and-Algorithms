@@ -1870,6 +1870,7 @@ def count_pairs_with_diff_k(arr, k):
     """
     # TODO
 
+
 def replace_with_nearest_larger(arr):
     """
     Replace each element with the nearest larger element to its right, or -1 if none exists.
@@ -2225,7 +2226,7 @@ def count_subarrays_with_sum_and_product(arr, target_sum, target_product):
 
     for i in range(len(arr)):
         for j in range(i, len(arr)):
-            subarray = arr[i:j+1]
+            subarray = arr[i:j + 1]
             if sum(subarray) == target_sum and math.prod(subarray) == target_product:
                 count += 1
 
@@ -2255,11 +2256,12 @@ def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
     max_sums = []
 
     for i in range(len(arr)):
-        subarray = arr[i:i+window_size]
+        subarray = arr[i:i + window_size]
         if len(set(subarray)) == k and len(subarray) == window_size:
             max_sums.append(sum(subarray))
 
     return max_sums
+
 
 def find_subarrays_with_k_triplets(arr, k, target_sum):
     """

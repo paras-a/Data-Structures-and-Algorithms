@@ -1686,7 +1686,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [1, 1] and [1, 1] with sum 2, expected [(1, 1), (1, 1)]"
         )
 
-
     def test_find_k_smallest_sums(self):
         """Test find_k_smallest_sums function."""
         self.assertEqual(
@@ -2377,7 +2376,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [1, 2, 3], expected [3, 2, 1]"
         )
 
-
     def test_replace_with_furthest_larger(self):
         """Test replace_with_furthest_larger function."""
         self.assertEqual(
@@ -2446,6 +2444,7 @@ class TestArrayProblems(unittest.TestCase):
             count_subarrays_with_median_and_sum([2, 2], 2, 4), 1,
             msg="Failed for [2, 2] with target_median=2, target_sum=4, expected 1"
         )
+
 
 if __name__ == '__main__':
     unittest.main()
