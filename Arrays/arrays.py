@@ -1501,42 +1501,6 @@ def find_elements_with_sum(arr1, arr2, target_sum):
     return elements
 
 
-def rearrange_alternate_sign(arr):
-    """
-    Rearrange array so that elements alternate in sign (positive, negative, positive, ...).
-
-    @param arr: List[int] -- Array of integers
-    @return: List[int] -- Array with alternating positive and negative elements, or [] if not possible
-    @example:
-        >>> rearrange_alternate_sign([1, -2, 3, -4])
-        [1, -2, 3, -4]  # 1 > 0, -2 < 0, 3 > 0, -4 < 0
-        >>> rearrange_alternate_sign([1, 2, 3, -1])
-        [1, -1, 2, 3]  # 1 > 0, -1 < 0, 2 > 0, 3 > 0
-        >>> rearrange_alternate_sign([1, 2, 3])
-        []  # Only positive numbers, cannot alternate
-        >>> rearrange_alternate_sign([-1, -2, -3])
-        []  # Only negative numbers, cannot alternate
-        >>> rearrange_alternate_sign([])
-        []  # Empty array
-        >>> rearrange_alternate_sign([5, -3, 7, -1, 2, -6, 4])
-        [5, -3, 7, -1, 2, -6, 4]  # 5 > 0, -3 < 0, 7 > 0, -1 < 0, 2 > 0, -6 < 0, 4 > 0
-        >>> rearrange_alternate_sign([-2, 8, -4, 6, -5, 3, 1, -7])
-        [8, -2, 6, -4, 3, -5, 1, -7]  # 8 > 0, -2 < 0, 6 > 0, -4 < 0, 3 > 0, -5 < 0, 1 > 0, -7 < 0
-        >>> rearrange_alternate_sign([1, 2, 3, 4, 5, 6, -1, -2, -3])
-        []  # 6 positives, 3 negatives; need 5 positives and 4 negatives for length 9
-        >>> rearrange_alternate_sign([10, -9, 0, 8, -7, 6, -5])
-        []  # Presence of zero makes alternation impossible
-        >>> rearrange_alternate_sign([4, -3, 2, -1, 6, -5, 8, -7, 9, -10])
-        [4, -3, 2, -1, 6, -5, 8, -7, 9, -10]  # 4 > 0, -3 < 0, ..., 9 > 0, -10 < 0
-        >>> rearrange_alternate_sign([-1, -2, -3, -4, 5, 6, 7, 8, 9, -10])
-        [5, -1, 6, -2, 7, -3, 8, -4, 9, -10]  # 5 > 0, -1 < 0, ..., 9 > 0, -10 < 0
-        >>> rearrange_alternate_sign([1, 2, 3, 4, 5, 6, 7])
-        []  # 7 positives, 0 negatives; need 4 positives and 3 negatives for length 7
-    """
-
-    # TODO
-
-
 def find_k_smallest_sums(arr1, arr2, k):
     """
     Find the k smallest sums of pairs from two arrays.
@@ -1905,7 +1869,6 @@ def count_pairs_with_diff_k(arr, k):
         3  # Pairs (1,1)
     """
     # TODO
-
 
 def replace_with_nearest_larger(arr):
     """
@@ -2415,42 +2378,20 @@ def rearrange_by_value_and_frequency(arr):
         >>> rearrange_by_value_and_frequency([1, 2, 3])
         [3, 2, 1]  # 3(freq 1), 2(freq 1), 1(freq 1)
     """
-    # TODO
+    freq = {}
 
+    for i in range(len(arr)):
+        freq[arr[i]] = arr.count(arr[i])
 
-def find_k_smallest_quads(arr1, arr2, arr3, arr4, k):
-    """
-    Find k quadruplets with smallest sums, one element from each array.
+    sorted_freq = sorted(freq.items(), key=lambda item: item[1], reverse=True)
+    freq = dict(sorted_freq)
 
-    @param arr1: List[int] -- First array of integers
-    @param arr2: List[int] -- Second array of integers
-    @param arr3: List[int] -- Third array of integers
-    @param arr4: List[int] -- Fourth array of integers
-    @param k: int -- Number of quadruplets to return
-    @return: List[tuple[int, int, int, int]] -- k quadruplets with smallest sums
-    @example:
-        >>> find_k_smallest_quads([1, 2], [2, 3], [3, 4], [4, 5], 2)
-        [(1, 2, 3, 4), (1, 2, 3, 5)]  # Sums: 10, 11
-        >>> find_k_smallest_quads([1], [2], [3], [4], 2)
-        [(1, 2, 3, 4)]  # Sum: 10
-        >>> find_k_smallest_quads([], [1], [2], [3], 1)
-        []  # No quadruplets possible
-        >>> find_k_smallest_quads([-1, 0], [1, 2], [3], [4], 2)
-        [(-1, 1, 3, 4), (-1, 2, 3, 4)]  # Sums: 7, 8
-        >>> find_k_smallest_quads([1, 1], [2, 2], [3, 3], [4, 4], 2)
-        [(1, 2, 3, 4), (1, 2, 3, 4)]  # Sums: 10, 10
-        >>> find_k_smallest_quads([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], 3)
-        [(1, 1, 1, 1), (1, 1, 1, 2), (1, 1, 1, 3)]  # Sums: 4, 5, 6
-        >>> find_k_smallest_quads([-2, -1, 0, 1, 2], [2, 3, 4, 5, 6], [1, 2, 3, 4, 5], [0, 1, 2, 3, 4], 2)
-        [(-2, 2, 1, 0), (-2, 2, 1, 1)]  # Sums: 1, 2
-        >>> find_k_smallest_quads([1, 1, 1, 1, 1], [2, 2, 2, 2, 2], [3, 3, 3, 3, 3], [4, 4, 4, 4, 4], 5)
-        [(1, 2, 3, 4), (1, 2, 3, 4), (1, 2, 3, 4), (1, 2, 3, 4), (1, 2, 3, 4)]  # Sums: 10, 10, 10, 10, 10
-        >>> find_k_smallest_quads([2, 3, 4, 5, 6], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [10, 20, 30, 40, 50], 2)
-        [(2, 1, 1, 10), (2, 1, 2, 10)]  # Sums: 14, 15
-        >>> find_k_smallest_quads([1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5], [], 1)
-        []  # No quadruplets possible
-    """
-    # TODO
+    rearranged = []
+
+    for key in freq:
+        rearranged += [key] * freq[key]
+
+    return sorted(rearranged, reverse=True)
 
 
 def replace_with_furthest_larger(arr):
@@ -2567,28 +2508,5 @@ def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
     return count
 
 
-def find_min_product_in_windows_with_k_distinct(arr, k, window_size):
-    """
-    Find the minimum product of elements in each window of size window_size with at most k distinct elements.
-
-    @param arr: List[int] -- Array of integers
-    @param k: int -- Maximum number of distinct elements
-    @param window_size: int -- Size of the window
-    @return: List[int] -- Minimum product for each valid window
-    @example:
-        >>> find_min_product_in_windows_with_k_distinct([1, 2, 1, 3, 4], 2, 3)
-        [2, 6, 12]  # Windows: [1,2,1], [2,1,3], [1,3,4]
-        >>> find_min_product_in_windows_with_k_distinct([1, 1], 2, 2)
-        [1]  # Window: [1,1]
-        >>> find_min_product_in_windows_with_k_distinct([], 1, 1)
-        []
-        >>> find_min_product_in_windows_with_k_distinct([-1, -1, -2], 2, 2)
-        [1, 2]  # Windows: [-1,-1], [-1,-2]
-        >>> find_min_product_in_windows_with_k_distinct([1, 2, 3], 1, 3)
-        []  # No window with 1 distinct element
-    """
-    # TODO
-
-
 if __name__ == "__main__":
-    print(find_max_sum_in_windows_with_k_distinct([1, 2, 1, 3, 4], 2, 3))
+    print(rearrange_by_value_and_frequency([1, 2, 2, 1, 3, 3, 3]))
