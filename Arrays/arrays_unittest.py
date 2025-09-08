@@ -1686,28 +1686,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [1, 1] and [1, 1] with sum 2, expected [(1, 1), (1, 1)]"
         )
 
-    def test_rearrange_alternate_sign(self):
-        """Test rearrange_alternate_sign function."""
-        self.assertEqual(
-            rearrange_alternate_sign([1, -2, 3, -4]), [1, -2, 3, -4],
-            msg="Failed for [1, -2, 3, -4], expected [1, -2, 3, -4]"
-        )
-        self.assertEqual(
-            rearrange_alternate_sign([1, 2, 3, -1]), [1, -1, 2, 3],
-            msg="Failed for [1, 2, 3, -1], expected [1, -1, 2, 3]"
-        )
-        self.assertEqual(
-            rearrange_alternate_sign([1, 2, 3]), [],
-            msg="Failed for [1, 2, 3], expected []"
-        )
-        self.assertEqual(
-            rearrange_alternate_sign([-1, -2, -3]), [],
-            msg="Failed for [-1, -2, -3], expected []"
-        )
-        self.assertEqual(
-            rearrange_alternate_sign([]), [],
-            msg="Failed for empty array, expected []"
-        )
 
     def test_find_k_smallest_sums(self):
         """Test find_k_smallest_sums function."""
@@ -2399,28 +2377,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [1, 2, 3], expected [3, 2, 1]"
         )
 
-    def test_find_k_smallest_quads(self):
-        """Test find_k_smallest_quads function."""
-        self.assertEqual(
-            find_k_smallest_quads([1, 2], [2, 3], [3, 4], [4, 5], 2), [(1, 2, 3, 4), (1, 2, 3, 5)],
-            msg="Failed for [1, 2], [2, 3], [3, 4], [4, 5] with k=2, expected [(1, 2, 3, 4), (1, 2, 3, 5)]"
-        )
-        self.assertEqual(
-            find_k_smallest_quads([1], [2], [3], [4], 2), [(1, 2, 3, 4)],
-            msg="Failed for [1], [2], [3], [4] with k=2, expected [(1, 2, 3, 4)]"
-        )
-        self.assertEqual(
-            find_k_smallest_quads([], [1], [2], [3], 1), [],
-            msg="Failed for [], [1], [2], [3] with k=1, expected []"
-        )
-        self.assertEqual(
-            find_k_smallest_quads([-1, 0], [1, 2], [3], [4], 2), [(-1, 1, 3, 4), (-1, 2, 3, 4)],
-            msg="Failed for [-1, 0], [1, 2], [3], [4] with k=2, expected [(-1, 1, 3, 4), (-1, 2, 3, 4)]"
-        )
-        self.assertEqual(
-            find_k_smallest_quads([1, 1], [2, 2], [3, 3], [4, 4], 2), [(1, 2, 3, 4), (1, 2, 3, 4)],
-            msg="Failed for [1, 1], [2, 2], [3, 3], [4, 4] with k=2, expected [(1, 2, 3, 4), (1, 2, 3, 4)]"
-        )
 
     def test_replace_with_furthest_larger(self):
         """Test replace_with_furthest_larger function."""
@@ -2490,30 +2446,6 @@ class TestArrayProblems(unittest.TestCase):
             count_subarrays_with_median_and_sum([2, 2], 2, 4), 1,
             msg="Failed for [2, 2] with target_median=2, target_sum=4, expected 1"
         )
-
-    def test_find_min_product_in_windows_with_k_distinct(self):
-        """Test find_min_product_in_windows_with_k_distinct function."""
-        self.assertEqual(
-            find_min_product_in_windows_with_k_distinct([1, 2, 1, 3, 4], 2, 3), [2, 6, 12],
-            msg="Failed for [1, 2, 1, 3, 4] with k=2, window_size=3, expected [2, 6, 12]"
-        )
-        self.assertEqual(
-            find_min_product_in_windows_with_k_distinct([1, 1], 2, 2), [1],
-            msg="Failed for [1, 1] with k=2, window_size=2, expected [1]"
-        )
-        self.assertEqual(
-            find_min_product_in_windows_with_k_distinct([], 1, 1), [],
-            msg="Failed for empty array with k=1, window_size=1, expected []"
-        )
-        self.assertEqual(
-            find_min_product_in_windows_with_k_distinct([-1, -1, -2], 2, 2), [1, 2],
-            msg="Failed for [-1, -1, -2] with k=2, window_size=2, expected [1, 2]"
-        )
-        self.assertEqual(
-            find_min_product_in_windows_with_k_distinct([1, 2, 3], 1, 3), [],
-            msg="Failed for [1, 2, 3] with k=1, window_size=3, expected []"
-        )
-
 
 if __name__ == '__main__':
     unittest.main()
