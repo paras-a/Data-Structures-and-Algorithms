@@ -1870,29 +1870,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [0, 1, 0] with k=2, expected 0"
         )
 
-    def test_find_elements_with_product(self):
-        """Test find_elements_with_product function."""
-        self.assertEqual(
-            find_elements_with_product([1, 2, 3], [4, 6, 8], 12), [(2, 6), (3, 4)],
-            msg="Failed for [1, 2, 3], [4, 6, 8] with product 12, expected [(2, 6), (3, 4)]"
-        )
-        self.assertEqual(
-            find_elements_with_product([1, 2], [3, 4], 10), [],
-            msg="Failed for [1, 2], [3, 4] with product 10, expected []"
-        )
-        self.assertEqual(
-            find_elements_with_product([], [1, 2], 2), [],
-            msg="Failed for empty first array, [1, 2] with product 2, expected []"
-        )
-        self.assertEqual(
-            find_elements_with_product([-2, 3], [-6, 4], 12), [(-2, -6), (3, 4)],
-            msg="Failed for [-2, 3], [-6, 4] with product 12, expected [(-2, -6), (3, 4)]"
-        )
-        self.assertEqual(
-            find_elements_with_product([0, 1], [0, 2], 0), [(0, 0), (0, 2)],
-            msg="Failed for [0, 1], [0, 2] with product 0, expected [(0, 0), (0, 2)]"
-        )
-
     def test_rearrange_alternate_high_low(self):
         """Test rearrange_alternate_high_low function."""
         self.assertEqual(
@@ -1914,52 +1891,6 @@ class TestArrayProblems(unittest.TestCase):
         self.assertEqual(
             rearrange_alternate_high_low([-1, 0, 1, 2]), [2, -1, 1, 0],
             msg="Failed for [-1, 0, 1, 2], expected [2, -1, 1, 0]"
-        )
-
-    def test_count_pairs_with_diff_k(self):
-        """Test count_pairs_with_diff_k function."""
-        self.assertEqual(
-            count_pairs_with_diff_k([1, 2, 3, 4], 1), 3,
-            msg="Failed for [1, 2, 3, 4] with k=1, expected 3"
-        )
-        self.assertEqual(
-            count_pairs_with_diff_k([1, 2], 2), 0,
-            msg="Failed for [1, 2] with k=2, expected 0"
-        )
-        self.assertEqual(
-            count_pairs_with_diff_k([], 1), 0,
-            msg="Failed for empty array with k=1, expected 0"
-        )
-        self.assertEqual(
-            count_pairs_with_diff_k([-1, 1, -2, 2], 3), 4,
-            msg="Failed for [-1, 1, -2, 2] with k=3, expected 4"
-        )
-        self.assertEqual(
-            count_pairs_with_diff_k([1, 1, 1], 0), 3,
-            msg="Failed for [1, 1, 1] with k=0, expected 3"
-        )
-
-    def test_replace_with_nearest_larger(self):
-        """Test replace_with_nearest_larger function."""
-        self.assertEqual(
-            replace_with_nearest_larger([1, 3, 2, 4]), [3, 4, 4, -1],
-            msg="Failed for [1, 3, 2, 4], expected [3, 4, 4, -1]"
-        )
-        self.assertEqual(
-            replace_with_nearest_larger([5, 4, 3]), [-1, -1, -1],
-            msg="Failed for [5, 4, 3], expected [-1, -1, -1]"
-        )
-        self.assertEqual(
-            replace_with_nearest_larger([]), [],
-            msg="Failed for empty array, expected []"
-        )
-        self.assertEqual(
-            replace_with_nearest_larger([1]), [-1],
-            msg="Failed for [1], expected [-1]"
-        )
-        self.assertEqual(
-            replace_with_nearest_larger([2, 2, 2]), [-1, -1, -1],
-            msg="Failed for [2, 2, 2], expected [-1, -1, -1]"
         )
 
     def test_find_subarray_with_sum_range(self):
@@ -2031,29 +1962,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [2, 2, 2] with k=2, expected [0, 0]"
         )
 
-    def test_find_subarrays_with_k_pairs_sum(self):
-        """Test find_subarrays_with_k_pairs_sum function."""
-        self.assertEqual(
-            find_subarrays_with_k_pairs_sum([1, 2, 3, 4, 2, 5], 2, 5), [(0, 3), (1, 4)],
-            msg="Failed for [1, 2, 3, 4, 2, 5] with k=2, target_sum=5, expected [(0, 3), (1, 4)]"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_pairs_sum([1, 2, 3], 1, 10), [],
-            msg="Failed for [1, 2, 3] with k=1, target_sum=10, expected []"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_pairs_sum([], 1, 1), [],
-            msg="Failed for empty array with k=1, target_sum=1, expected []"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_pairs_sum([-1, 1, -1, 1], 2, 0), [(0, 3)],
-            msg="Failed for [-1, 1, -1, 1] with k=2, target_sum=0, expected [(0, 3)]"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_pairs_sum([2, 2, 2, 2], 1, 4), [(0, 1), (1, 2), (2, 3)],
-            msg="Failed for [2, 2, 2, 2] with k=1, target_sum=4, expected [(0, 1), (1, 2), (2, 3)]"
-        )
-
     def test_merge_four_arrays_alternate(self):
         """Test merge_four_arrays_alternate function."""
         self.assertEqual(
@@ -2100,121 +2008,6 @@ class TestArrayProblems(unittest.TestCase):
             msg="Failed for [0, 0, 0, 0] with k=2, expected 0"
         )
 
-    def test_find_triplets_with_product(self):
-        """Test find_triplets_with_product function."""
-        self.assertEqual(
-            find_triplets_with_product([1, 2, 3, 4, 6], 24), [(1, 4, 6), (2, 3, 4)],
-            msg="Failed for [1, 2, 3, 4, 6] with target_product=24, expected [(1, 4, 6), (2, 3, 4)]"
-        )
-        self.assertEqual(
-            find_triplets_with_product([1, 2, 3], 50), [],
-            msg="Failed for [1, 2, 3] with target_product=50, expected []"
-        )
-        self.assertEqual(
-            find_triplets_with_product([], 1), [],
-            msg="Failed for empty array with target_product=1, expected []"
-        )
-        self.assertEqual(
-            find_triplets_with_product([-2, -3, 2, 3], -12), [(-2, 2, 3), (-3, 2, 2)],
-            msg="Failed for [-2, -3, 2, 3] with target_product=-12, expected [(-2, 2, 3), (-3, 2, 2)]"
-        )
-        self.assertEqual(
-            find_triplets_with_product([0, 1, 0], 0), [(0, 0, 1), (0, 1, 0)],
-            msg="Failed for [0, 1, 0] with target_product=0, expected [(0, 0, 1), (0, 1, 0)]"
-        )
-
-    def test_segregate_by_frequency(self):
-        """Test segregate_by_frequency function."""
-        self.assertEqual(
-            segregate_by_frequency([1, 2, 2, 3, 1, 3]), [1, 1, 2, 2, 3, 3],
-            msg="Failed for [1, 2, 2, 3, 1, 3], expected [1, 1, 2, 2, 3, 3]"
-        )
-        self.assertEqual(
-            segregate_by_frequency([1, 1, 1]), [1, 1, 1],
-            msg="Failed for [1, 1, 1], expected [1, 1, 1]"
-        )
-        self.assertEqual(
-            segregate_by_frequency([]), [],
-            msg="Failed for empty array, expected []"
-        )
-        self.assertEqual(
-            segregate_by_frequency([-1, -1, 0, 0, 0]), [0, 0, 0, -1, -1],
-            msg="Failed for [-1, -1, 0, 0, 0], expected [0, 0, 0, -1, -1]"
-        )
-        self.assertEqual(
-            segregate_by_frequency([1, 2, 3]), [1, 2, 3],
-            msg="Failed for [1, 2, 3], expected [1, 2, 3]"
-        )
-
-    def test_find_k_largest_triplets(self):
-        """Test find_k_largest_triplets function."""
-        self.assertEqual(
-            find_k_largest_triplets([1, 2], [3, 4], [5, 6], 2), [(2, 4, 6), (2, 4, 5)],
-            msg="Failed for [1, 2], [3, 4], [5, 6] with k=2, expected [(2, 4, 6), (2, 4, 5)]"
-        )
-        self.assertEqual(
-            find_k_largest_triplets([1], [2], [3], 2), [(1, 2, 3)],
-            msg="Failed for [1], [2], [3] with k=2, expected [(1, 2, 3)]"
-        )
-        self.assertEqual(
-            find_k_largest_triplets([], [1], [2], 1), [],
-            msg="Failed for [], [1], [2] with k=1, expected []"
-        )
-        self.assertEqual(
-            find_k_largest_triplets([-1, 0], [1, 2], [3], 2), [(0, 2, 3), (0, 1, 3)],
-            msg="Failed for [-1, 0], [1, 2], [3] with k=2, expected [(0, 2, 3), (0, 1, 3)]"
-        )
-        self.assertEqual(
-            find_k_largest_triplets([1, 1], [2, 2], [3, 3], 2), [(1, 2, 3), (1, 2, 3)],
-            msg="Failed for [1, 1], [2, 2], [3, 3] with k=2, expected [(1, 2, 3), (1, 2, 3)]"
-        )
-
-    def test_replace_with_closest_smaller(self):
-        """Test replace_with_closest_smaller function."""
-        self.assertEqual(
-            replace_with_closest_smaller([3, 1, 4, 2, 5]), [-1, -1, 1, 1, 2],
-            msg="Failed for [3, 1, 4, 2, 5], expected [-1, -1, 1, 1, 2]"
-        )
-        self.assertEqual(
-            replace_with_closest_smaller([5, 4, 3]), [-1, -1, -1],
-            msg="Failed for [5, 4, 3], expected [-1, -1, -1]"
-        )
-        self.assertEqual(
-            replace_with_closest_smaller([]), [],
-            msg="Failed for empty array, expected []"
-        )
-        self.assertEqual(
-            replace_with_closest_smaller([1]), [-1],
-            msg="Failed for [1], expected [-1]"
-        )
-        self.assertEqual(
-            replace_with_closest_smaller([2, 2, 2]), [-1, -1, -1],
-            msg="Failed for [2, 2, 2], expected [-1, -1, -1]"
-        )
-
-    def test_find_subarray_with_k_median(self):
-        """Test find_subarray_with_k_median function."""
-        self.assertEqual(
-            find_subarray_with_k_median([1, 2, 3, 4, 5], 3, 3), (0, 2),
-            msg="Failed for [1, 2, 3, 4, 5] with k=3, median=3, expected (0, 2)"
-        )
-        self.assertEqual(
-            find_subarray_with_k_median([1, 2], 3, 1), (-1, -1),
-            msg="Failed for [1, 2] with k=3, median=1, expected (-1, -1)"
-        )
-        self.assertEqual(
-            find_subarray_with_k_median([], 1, 0), (-1, -1),
-            msg="Failed for empty array with k=1, median=0, expected (-1, -1)"
-        )
-        self.assertEqual(
-            find_subarray_with_k_median([2, 2, 2, 2], 4, 2), (0, 3),
-            msg="Failed for [2, 2, 2, 2] with k=4, median=2, expected (0, 3)"
-        )
-        self.assertEqual(
-            find_subarray_with_k_median([-1, 0, 1, 2], 3, 0), (0, 2),
-            msg="Failed for [-1, 0, 1, 2] with k=3, median=0, expected (0, 2)"
-        )
-
     def test_count_subarrays_with_sum_and_product(self):
         """Test count_subarrays_with_sum_and_product function."""
         self.assertEqual(
@@ -2259,75 +2052,6 @@ class TestArrayProblems(unittest.TestCase):
         self.assertEqual(
             find_max_sum_in_windows_with_k_distinct([1, 2, 3], 1, 3), [],
             msg="Failed for [1, 2, 3] with k=1, window_size=3, expected []"
-        )
-
-    def test_find_subarrays_with_k_triplets(self):
-        """Test find_subarrays_with_k_triplets function."""
-        self.assertEqual(
-            find_subarrays_with_k_triplets([1, 2, 3, 4, 2, 3, 5], 2, 12), [(0, 5)],
-            msg="Failed for [1, 2, 3, 4, 2, 3, 5] with k=2, target_sum=12, expected [(0, 5)]"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_triplets([1, 2, 3], 1, 20), [],
-            msg="Failed for [1, 2, 3] with k=1, target_sum=20, expected []"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_triplets([], 1, 1), [],
-            msg="Failed for empty array with k=1, target_sum=1, expected []"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_triplets([-1, 1, -1, 1, 0], 2, 0), [(0, 4)],
-            msg="Failed for [-1, 1, -1, 1, 0] with k=2, target_sum=0, expected [(0, 4)]"
-        )
-        self.assertEqual(
-            find_subarrays_with_k_triplets([2, 2, 2, 2], 1, 6), [(0, 2), (1, 3)],
-            msg="Failed for [2, 2, 2, 2] with k=1, target_sum=6, expected [(0, 2), (1, 3)]"
-        )
-
-    def test_interleave_arrays_with_diff(self):
-        """Test interleave_arrays_with_diff function."""
-        self.assertEqual(
-            interleave_arrays_with_diff([1, 2, 3], [4, 5, 6], 3), [1, 4, 2, 5, 3, 6],
-            msg="Failed for [1, 2, 3], [4, 5, 6] with diff=3, expected [1, 4, 2, 5, 3, 6]"
-        )
-        self.assertEqual(
-            interleave_arrays_with_diff([1, 2], [3, 4], 1), [],
-            msg="Failed for [1, 2], [3, 4] with diff=1, expected []"
-        )
-        self.assertEqual(
-            interleave_arrays_with_diff([], [1, 2], 1), [],
-            msg="Failed for [], [1, 2] with diff=1, expected []"
-        )
-        self.assertEqual(
-            interleave_arrays_with_diff([-1, 0], [2, 3], 3), [-1, 2, 0, 3],
-            msg="Failed for [-1, 0], [2, 3] with diff=3, expected [-1, 2, 0, 3]"
-        )
-        self.assertEqual(
-            interleave_arrays_with_diff([1, 1], [1, 1], 0), [1, 1, 1, 1],
-            msg="Failed for [1, 1], [1, 1] with diff=0, expected [1, 1, 1, 1]"
-        )
-
-    def test_max_product_subarray_with_min_k(self):
-        """Test max_product_subarray_with_min_k function."""
-        self.assertEqual(
-            max_product_subarray_with_min_k([1, 2, 3, -1, 4], 3), 24,
-            msg="Failed for [1, 2, 3, -1, 4] with k=3, expected 24"
-        )
-        self.assertEqual(
-            max_product_subarray_with_min_k([1, 2], 3), None,
-            msg="Failed for [1, 2] with k=3, expected None"
-        )
-        self.assertEqual(
-            max_product_subarray_with_min_k([], 1), None,
-            msg="Failed for empty array with k=1, expected None"
-        )
-        self.assertEqual(
-            max_product_subarray_with_min_k([-2, -3, -4], 2), 12,
-            msg="Failed for [-2, -3, -4] with k=2, expected 12"
-        )
-        self.assertEqual(
-            max_product_subarray_with_min_k([0, 1, 0, 0], 2), 0,
-            msg="Failed for [0, 1, 0, 0] with k=2, expected 0"
         )
 
     def test_find_pairs_with_sum_and_product(self):

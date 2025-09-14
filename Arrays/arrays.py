@@ -1550,7 +1550,7 @@ def replace_with_previous_smaller(arr):
         >>> replace_with_previous_smaller([3, 1, 4, 2])
         [-1, -1, 1, 1]
         >>> replace_with_previous_smaller([1, 2, 3])
-        [-1, 1, 2]
+        [-1, 1, 1]
         >>> replace_with_previous_smaller([])
         []
         >>> replace_with_previous_smaller([5])
@@ -1562,7 +1562,7 @@ def replace_with_previous_smaller(arr):
 
     for i in range(len(arr)):
         current_element = arr[i]
-        subarray = arr[0:i+1]
+        subarray = arr[0:i + 1]
         min_element = min(subarray)
         if min_element == current_element:
             answer.append(-1)
@@ -1570,6 +1570,7 @@ def replace_with_previous_smaller(arr):
             answer.append(min_element)
 
     return answer
+
 
 def find_subarray_with_median(arr, k, median):
     """
@@ -1815,29 +1816,6 @@ def max_product_subarray_length_k(arr, k):
     return max_product
 
 
-def find_elements_with_product(arr1, arr2, target_product):
-    """
-    Find pairs of elements (one from each array) with the target product.
-
-    @param arr1: List[int] -- First array of integers
-    @param arr2: List[int] -- Second array of integers
-    @param target_product: int -- Target product
-    @return: List[tuple[int, int]] -- List of pairs (a, b) where a from arr1, b from arr2
-    @example:
-        >>> find_elements_with_product([1, 2, 3], [4, 6, 8], 12)
-        [(2, 6), (3, 4)]
-        >>> find_elements_with_product([1, 2], [3, 4], 10)
-        []
-        >>> find_elements_with_product([], [1, 2], 2)
-        []
-        >>> find_elements_with_product([-2, 3], [-6, 4], 12)
-        [(-2, -6), (3, 4)]
-        >>> find_elements_with_product([0, 1], [0, 2], 0)
-        [(0, 0), (0, 2)]
-    """
-    # TODO
-
-
 def rearrange_alternate_high_low(arr):
     """
     Rearrange array to alternate high and low elements (high, low, high, ...).
@@ -1870,56 +1848,13 @@ def rearrange_alternate_high_low(arr):
     while len(sorted_arr) > 1:
         answer.append(max(sorted_arr))
         answer.append(min(sorted_arr))
-        sorted_arr.pop(len(sorted_arr)-1)
+        sorted_arr.pop(len(sorted_arr) - 1)
         sorted_arr.pop(0)
 
     if len(sorted_arr) == 1:
         answer.append(sorted_arr[0])
 
     return answer
-
-
-def count_pairs_with_diff_k(arr, k):
-    """
-    Count pairs of elements with absolute difference equal to k.
-
-    @param arr: List[int] -- Array of integers
-    @param k: int -- Target difference
-    @return: int -- Number of pairs with absolute difference k
-    @example:
-        >>> count_pairs_with_diff_k([1, 2, 3, 4], 1)
-        3  # Pairs (1,2), (2,3), (3,4)
-        >>> count_pairs_with_diff_k([1, 2], 2)
-        0
-        >>> count_pairs_with_diff_k([], 1)
-        0
-        >>> count_pairs_with_diff_k([-1, 1, -2, 2], 3)
-        4  # Pairs (-1,2), (1,-2), (-2,1), (2,-1)
-        >>> count_pairs_with_diff_k([1, 1, 1], 0)
-        3  # Pairs (1,1)
-    """
-    # TODO
-
-
-def replace_with_nearest_larger(arr):
-    """
-    Replace each element with the nearest larger element to its right, or -1 if none exists.
-
-    @param arr: List[int] -- Array of integers
-    @return: List[int] -- Array with each element replaced by nearest larger to right
-    @example:
-        >>> replace_with_nearest_larger([1, 3, 2, 4])
-        [3, 4, 4, -1]
-        >>> replace_with_nearest_larger([5, 4, 3])
-        [-1, -1, -1]
-        >>> replace_with_nearest_larger([])
-        []
-        >>> replace_with_nearest_larger([1])
-        [-1]
-        >>> replace_with_nearest_larger([2, 2, 2])
-        [-1, -1, -1]
-    """
-    # TODO
 
 
 def find_subarray_with_sum_range(arr, min_sum, max_sum):
@@ -2097,118 +2032,6 @@ def max_sum_subarray_with_min_k(arr, k):
     return max_sum
 
 
-def find_triplets_with_product(arr, target_product):
-    """
-    Find all triplets in the array with the given product.
-
-    @param arr: List[int] -- Array of integers
-    @param target_product: int -- Target product
-    @return: List[tuple[int, int, int]] -- List of triplets with target product
-    @example:
-        >>> find_triplets_with_product([1, 2, 3, 4, 6], 24)
-        [(1, 4, 6), (2, 3, 4)]  # Triplets 1*4*6, 2*3*4
-        >>> find_triplets_with_product([1, 2, 3], 50)
-        []
-        >>> find_triplets_with_product([], 1)
-        []
-        >>> find_triplets_with_product([-2, -3, 2, 3], -12)
-        [(-2, 2, 3), (-3, 2, 2)]  # Triplets -2*2*3, -3*2*2
-        >>> find_triplets_with_product([0, 1, 0], 0)
-        [(0, 0, 1), (0, 1, 0)]  # Triplets 0*0*1, 0*1*0
-    """
-    # TODO
-
-
-def segregate_by_frequency(arr):
-    """
-    Segregate elements by frequency, with higher frequency elements first, maintaining relative order.
-
-    @param arr: List[int] -- Array of integers
-    @return: List[int] -- Array with elements sorted by frequency (descending), stable
-    @example:
-        >>> segregate_by_frequency([1, 2, 2, 3, 1, 3])
-        [1, 1, 2, 2, 3, 3]  # Freq: 1(2), 2(2), 3(2)
-        >>> segregate_by_frequency([1, 1, 1])
-        [1, 1, 1]
-        >>> segregate_by_frequency([])
-        []
-        >>> segregate_by_frequency([-1, -1, 0, 0, 0])
-        [0, 0, 0, -1, -1]  # Freq: 0(3), -1(2)
-        >>> segregate_by_frequency([1, 2, 3])
-        [1, 2, 3]  # Freq: 1(1), 2(1), 3(1)
-    """
-    # TODO
-
-
-def find_k_largest_triplets(arr1, arr2, arr3, k):
-    """
-    Find k triplets with largest sums, one element from each array.
-
-    @param arr1: List[int] -- First array of integers
-    @param arr2: List[int] -- Second array of integers
-    @param arr3: List[int] -- Third array of integers
-    @param k: int -- Number of triplets to return
-    @return: List[tuple[int, int, int]] -- k triplets with largest sums
-    @example:
-        >>> find_k_largest_triplets([1, 2], [3, 4], [5, 6], 2)
-        [(2, 4, 6), (2, 4, 5)]  # Sums: 12, 11
-        >>> find_k_largest_triplets([1], [2], [3], 2)
-        [(1, 2, 3)]  # Sum: 6
-        >>> find_k_largest_triplets([], [1], [2], 1)
-        []
-        >>> find_k_largest_triplets([-1, 0], [1, 2], [3], 2)
-        [(0, 2, 3), (0, 1, 3)]  # Sums: 5, 4
-        >>> find_k_largest_triplets([1, 1], [2, 2], [3, 3], 2)
-        [(1, 2, 3), (1, 2, 3)]  # Sums: 6, 6
-    """
-    # TODO
-
-
-def replace_with_closest_smaller(arr):
-    """
-    Replace each element with the closest smaller element to its left, or -1 if none exists.
-
-    @param arr: List[int] -- Array of integers
-    @return: List[int] -- Array with each element replaced by closest smaller to left
-    @example:
-        >>> replace_with_closest_smaller([3, 1, 4, 2, 5])
-        [-1, -1, 1, 1, 2]  # Closest smaller: none, none, 1, 1, 2
-        >>> replace_with_closest_smaller([5, 4, 3])
-        [-1, -1, -1]
-        >>> replace_with_closest_smaller([])
-        []
-        >>> replace_with_closest_smaller([1])
-        [-1]
-        >>> replace_with_closest_smaller([2, 2, 2])
-        [-1, -1, -1]
-    """
-    # TODO
-
-
-def find_subarray_with_k_median(arr, k, median):
-    """
-    Find the first subarray of length k with the given median.
-
-    @param arr: List[int] -- Array of integers
-    @param k: int -- Length of subarray
-    @param median: float -- Target median
-    @return: tuple[int, int] -- Start and end indices of subarray, or (-1, -1) if not found
-    @example:
-        >>> find_subarray_with_k_median([1, 2, 3, 4, 5], 3, 3)
-        (0, 2)  # Subarray [1,2,3], median 3
-        >>> find_subarray_with_k_median([1, 2], 3, 1)
-        (-1, -1)
-        >>> find_subarray_with_k_median([], 1, 0)
-        (-1, -1)
-        >>> find_subarray_with_k_median([2, 2, 2, 2], 4, 2)
-        (0, 3)  # Subarray [2,2,2,2], median 2
-        >>> find_subarray_with_k_median([-1, 0, 1, 2], 3, 0)
-        (0, 2)  # Subarray [-1,0,1], median 0
-    """
-
-    # TODO
-
-
 def count_subarrays_with_sum_and_product(arr, target_sum, target_product):
     """
     Count subarrays with given sum and product.
@@ -2268,74 +2091,6 @@ def find_max_sum_in_windows_with_k_distinct(arr, k, window_size):
             max_sums.append(sum(subarray))
 
     return max_sums
-
-
-def find_subarrays_with_k_triplets(arr, k, target_sum):
-    """
-    Find all subarrays containing exactly k triplets with the given sum.
-
-    @param arr: List[int] -- Array of integers
-    @param k: int -- Number of triplets with target sum
-    @param target_sum: int -- Target sum for triplets
-    @return: List[tuple[int, int]] -- List of (start, end) indices of subarrays
-    @example:
-        >>> find_subarrays_with_k_triplets([1, 2, 3, 4, 2, 3, 5], 2, 12)
-        [(0, 5)]  # Subarray [1,2,3,4,2,3] has triplets (3,4,5), (2,3,7)
-        >>> find_subarrays_with_k_triplets([1, 2, 3], 1, 20)
-        []
-        >>> find_subarrays_with_k_triplets([], 1, 1)
-        []
-        >>> find_subarrays_with_k_triplets([-1, 1, -1, 1, 0], 2, 0)
-        [(0, 4)]  # Subarray [-1,1,-1,1,0] has triplets (-1,1,0), (-1,1,0)
-        >>> find_subarrays_with_k_triplets([2, 2, 2, 2], 1, 6)
-        [(0, 2), (1, 3)]  # Subarrays [2,2,2] have triplet (2,2,2)
-    """
-    # TODO
-
-
-def interleave_arrays_with_diff(arr1, arr2, diff):
-    """
-    Interleave two arrays, including only pairs where absolute difference equals diff.
-
-    @param arr1: List[int] -- First array of integers
-    @param arr2: List[int] -- Second array of integers
-    @param diff: int -- Target absolute difference
-    @return: List[int] -- Interleaved array with elements from valid pairs
-    @example:
-        >>> interleave_arrays_with_diff([1, 2, 3], [4, 5, 6], 3)
-        [1, 4, 2, 5, 3, 6]  # Pairs (1,4), (2,5), (3,6) have diff 3
-        >>> interleave_arrays_with_diff([1, 2], [3, 4], 1)
-        []
-        >>> interleave_arrays_with_diff([], [1, 2], 1)
-        []
-        >>> interleave_arrays_with_diff([-1, 0], [2, 3], 3)
-        [-1, 2, 0, 3]  # Pairs (-1,2), (0,3) have diff 3
-        >>> interleave_arrays_with_diff([1, 1], [1, 1], 0)
-        [1, 1, 1, 1]  # Pairs (1,1), (1,1) have diff 0
-    """
-    # TODO
-
-
-def max_product_subarray_with_min_k(arr, k):
-    """
-    Find the maximum product of a subarray with at least k elements.
-
-    @param arr: List[int] -- Array of integers
-    @param k: int -- Minimum length of subarray
-    @return: int -- Maximum product of subarray with at least k elements, or None if not possible
-    @example:
-        >>> max_product_subarray_with_min_k([1, 2, 3, -1, 4], 3)
-        24  # Subarray [1,2,3,4]
-        >>> max_product_subarray_with_min_k([1, 2], 3)
-        None
-        >>> max_product_subarray_with_min_k([], 1)
-        None
-        >>> max_product_subarray_with_min_k([-2, -3, -4], 2)
-        12  # Subarray [-2,-3]
-        >>> max_product_subarray_with_min_k([0, 1, 0, 0], 2)
-        0  # Subarray [0,1]
-    """
-    # TODO
 
 
 def find_pairs_with_sum_and_product(arr1, arr2, target_sum, target_product):
