@@ -1558,8 +1558,18 @@ def replace_with_previous_smaller(arr):
         >>> replace_with_previous_smaller([2, 2, 2])
         [-1, -1, -1]
     """
-    # TODO
+    answer = []
 
+    for i in range(len(arr)):
+        current_element = arr[i]
+        subarray = arr[0:i+1]
+        min_element = min(subarray)
+        if min_element == current_element:
+            answer.append(-1)
+        else:
+            answer.append(min_element)
+
+    return answer
 
 def find_subarray_with_median(arr, k, median):
     """
@@ -1846,7 +1856,27 @@ def rearrange_alternate_high_low(arr):
         >>> rearrange_alternate_high_low([-1, 0, 1, 2])
         [2, -1, 1, 0]
     """
-    # TODO
+    # array needs to be arranged as such
+    # first pass: [4, 1, 2, 3]
+    # second pass: [4, 1, 3, 2]
+    # take the largest element move it to the front
+    # shift the smallest element to the right of the largest element
+    # then, take the second-largest element, shift it to the right of the second smallest
+
+    answer = []
+
+    sorted_arr = sorted(arr.copy())
+
+    while len(sorted_arr) > 1:
+        answer.append(max(sorted_arr))
+        answer.append(min(sorted_arr))
+        sorted_arr.pop(len(sorted_arr)-1)
+        sorted_arr.pop(0)
+
+    if len(sorted_arr) == 1:
+        answer.append(sorted_arr[0])
+
+    return answer
 
 
 def count_pairs_with_diff_k(arr, k):
@@ -1979,29 +2009,6 @@ def find_min_difference_in_windows(arr, k):
         if len(window) == k:
             difference.append(max(window) - min(window))
     return difference
-
-
-def find_subarrays_with_k_pairs_sum(arr, k, target_sum):
-    """
-    Find all subarrays containing exactly k pairs of elements summing to target_sum.
-
-    @param arr: List[int] -- Array of integers
-    @param k: int -- Number of pairs with target sum
-    @param target_sum: int -- Target sum for pairs
-    @return: List[tuple[int, int]] -- List of (start, end) indices of subarrays
-    @example:
-        >>> find_subarrays_with_k_pairs_sum([1, 2, 3, 4, 2, 5], 2, 5)
-        [(0, 3), (1, 4)]  # Subarrays [1,2,3,4] (pairs: 1+4, 2+3), [2,3,4,2] (pairs: 2+3, 3+2)
-        >>> find_subarrays_with_k_pairs_sum([1, 2, 3], 1, 10)
-        []
-        >>> find_subarrays_with_k_pairs_sum([], 1, 1)
-        []
-        >>> find_subarrays_with_k_pairs_sum([-1, 1, -1, 1], 2, 0)
-        [(0, 2), (1, 3)]
-        >>> find_subarrays_with_k_pairs_sum([2, 2, 2, 2], 1, 4)
-        [(0, 1), (1, 2), (2, 3)]  # Subarrays [2,2] (pair: 2+2)
-    """
-    # TODO
 
 
 def merge_four_arrays_alternate(arr1, arr2, arr3, arr4):
@@ -2511,4 +2518,4 @@ def count_subarrays_with_median_and_sum(arr, target_median, target_sum):
 
 
 if __name__ == "__main__":
-    print(rearrange_by_value_and_frequency([1, 2, 2, 1, 3, 3, 3]))
+    print(replace_with_previous_smaller([1, 2, 3]))
