@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="solved more problems">
-      <change beforePath="$PROJECT_DIR$/Arrays/arrays.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arrays/arrays_unittest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays/arrays_unittest.py" afterDir="false" />
-    </list>
+    <list default="true" id="71976eff-8aac-421f-86ff-f5a6bbd77c98" name="Changes" comment="Solved all problems. Removed some repeated or similar problems." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,28 +40,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Doctest find_kth_largest.executor": "Run",
-    "Python tests.Doctests in arrays.executor": "Debug",
-    "Python.arrays.executor": "Debug",
-    "Python.arrays_unittest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/paras/PycharmProjects/Data-Structures-and-Algorithms",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Doctest find_kth_largest.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Doctests in arrays.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.arrays.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.arrays_unittest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/paras/PycharmProjects/Data-Structures-and-Algorithms&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\paras\PycharmProjects\Data-Structures-and-Algorithms" />
@@ -197,15 +194,7 @@
       <workItem from="1757363571167" duration="1110000" />
       <workItem from="1757364781044" duration="1137000" />
       <workItem from="1757450283474" duration="4787000" />
-      <workItem from="1757853359832" duration="3045000" />
-    </task>
-    <task id="LOCAL-00002" summary="Updated README.markdown">
-      <option name="closed" value="true" />
-      <created>1754605388194</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1754605388194</updated>
+      <workItem from="1757853359832" duration="3079000" />
     </task>
     <task id="LOCAL-00003" summary="Updated README.markdown">
       <option name="closed" value="true" />
@@ -591,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757856236938</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Solved all problems. Removed some repeated or similar problems.">
+      <option name="closed" value="true" />
+      <created>1757856451699</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1757856451699</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +614,8 @@
     <MESSAGE value="solved replace_with_next_greater(arr)" />
     <MESSAGE value="solved zigzag_array(arr)&#10;&#10;My solution sorts the array prior to solving it. There are other ways to do it but the aim of problem is to have a&lt;b&gt;c&lt;d." />
     <MESSAGE value="solved more problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="solved more problems" />
+    <MESSAGE value="Solved all problems. Removed some repeated or similar problems." />
+    <option name="LAST_COMMIT_MESSAGE" value="Solved all problems. Removed some repeated or similar problems." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
